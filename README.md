@@ -16,7 +16,7 @@ I have created a shareable access link to the Google Drive folder I use to store
 5. Choose the local directory you'd like the repo files to be stored in
 6. Done! (Remember to create a branch using the Github interface to push your own work to, before initiating a merge request!)
 
-At start of session pull from Github, at end of session don't just commit, make sure to push to Github.
+At start of session pull from Github, at end of session commit and push from dropdown, dont forget to comment.
 
 ## Design Documents
 Design documents to adhere to will be linked here.
