@@ -22,3 +22,10 @@ Design documents to adhere to will be linked here.
 + UML Class Diagram
 + Functional Requirements
 + UI Storyboard / Prototypes
+
+## Frameworks Required
++ Slim Framework
++ Monolog
++ Twig 
+
+It is best to use Composer to install the above frameworks - [bad practice](https://getcomposer.org/doc/faqs/should-i-commit-the-dependencies-in-my-vendor-directory.md "Composer - Should I commit dependencies?") to push framework (vendor) files to Git. 
