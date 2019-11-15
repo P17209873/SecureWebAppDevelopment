@@ -4,6 +4,8 @@ CREATE DATABASE SWADCoursework;
 
 USE SWADCoursework;
 
+GRANT ALL ON SWADCoursework.* to 'coursework'@'localhost' IDENTIFIED BY 'Password';
+
 DROP TABLE IF EXISTS Users;
 
 CREATE TABLE Users (
