@@ -3,10 +3,6 @@
  * class XmlParser
  *
  * Parses a given XML string and returns an associative array
- * todo: include attributes in output - how?
- *
- * @author CF Ingrams - cfi@dmu.ac.uk
- * @copyright De Montfort University
  */
 
 namespace Country;;
