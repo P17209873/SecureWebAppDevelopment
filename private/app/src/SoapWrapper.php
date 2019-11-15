@@ -1,6 +1,6 @@
 <?php
 
-namespace Country;
+namespace SecureWebAppCoursework;
 
 class SoapWrapper
 {

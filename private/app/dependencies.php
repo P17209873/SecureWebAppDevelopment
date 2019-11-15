@@ -18,30 +18,30 @@ return $view;
 };
 
 $container['validator'] = function ($container) {
-$validator = new \secureWebAppCoursework\Validator(); // requires "secureWebAppCoursework\\": "secureWebAppCoursework/app/src" in composer.json
+$validator = new \SecureWebAppCoursework\Validator(); // requires "secureWebAppCoursework\\": "secureWebAppCoursework/app/src" in composer.json
 return $validator;
 };
 $container['soapWrapper'] = function ($container) {
-$validator = new \secureWebAppCoursework\SoapWrapper();
+$validator = new \SecureWebAppCoursework\SoapWrapper();
 return $validator;
 };
 
 $container['databaseWrapper'] = function ($container) {
-    $database_wrapper = new \secureWebAppCoursework\DatabaseWrapper();
+    $database_wrapper = new \SecureWebAppCoursework\DatabaseWrapper();
     return $database_wrapper;
 };
 
 $container['sqlQueries'] = function ($container) {
-    $sql_queries = new \secureWebAppCoursework\SQLQueries();
+    $sql_queries = new \SecureWebAppCoursework\SQLQueries();
     return $sql_queries;
 };
 
 $container['processOutput'] = function ($container) {
-$model = new \secureWebAppCoursework\ProcessOutput();
+$model = new \SecureWebAppCoursework\ProcessOutput();
 return $model;
 };
 
 $container['xmlParser'] = function ($container) {
-$model = new \secureWebAppCoursework\XmlParser();
+$model = new \SecureWebAppCoursework\XmlParser();
 return $model;
 };

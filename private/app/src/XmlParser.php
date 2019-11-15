@@ -5,7 +5,7 @@
  * Parses a given XML string and returns an associative array
  */
 
-namespace Country;;
+namespace SecureWebAppCoursework;
 
 class XmlParser
 {

@@ -6,7 +6,7 @@
  * Access the sessions database
  */
 
-namespace Sessions;
+namespace SecureWebAppCoursework;
 
 class DatabaseWrapper
 {
