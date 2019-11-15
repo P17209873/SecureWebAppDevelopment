@@ -6,7 +6,7 @@
  * hosts all SQL queries to be used by the Model
  */
 
-namespace Sessions;
+namespace SecureWebAppCoursework;
 
 class SQLQueries
 {
