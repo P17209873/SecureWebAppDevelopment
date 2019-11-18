@@ -1,0 +1,44 @@
+DROP DATABASE IF EXISTS SWADCoursework;
+
+CREATE DATABASE SWADCoursework;
+
+USE SWADCoursework;
+
+GRANT ALL ON SWADCoursework.* to 'coursework'@'localhost' IDENTIFIED BY 'Password';
+
+DROP TABLE IF EXISTS Users;
+
+CREATE TABLE Users (
+	UserID INT(11) NOT NULL AUTO_INCREMENT,
+	UserUsername VARCHAR(25) NOT NULL,
+	UserPassword VARCHAR(50) NOT NULL,
+	UserFirstName VARCHAR(30) NOT NULL,
+	UserLastName VARCHAR(30) NOT NULL,
+	PRIMARY KEY (UserID)
+);
+
+DROP TABLE IF EXISTS RetrievedMessages;
+
+CREATE TABLE RetrievedMessages(
+	RetrievedMessageID INT(11) NOT NULL AUTO_INCREMENT,
+	MessageType VARCHAR(25) NOT NULL,
+	MessageSentTo VARCHAR(35) NOT NULL,
+	MessageSentFrom VARCHAR(35) NOT NULL,
+	MessageText VARCHAR(10000) NOT NULL,
+	UserID INT(11) NOT NULL,
+	PRIMARY KEY (RetrievedMessageID),
+	FOREIGN KEY (UserID) REFERENCES Users(UserID)
+);
+
+DROP TABLE IF EXISTS Logs;
+
+CREATE TABLE Logs (
+	LogID INT(11) NOT NULL AUTO_INCREMENT,
+	LogType VARCHAR(25) NOT NULL,
+	LogMessage VARCHAR(500) NOT NULL,
+	UserID INT(11) NOT NULL,
+	RetrievedMessageID INT(11),
+	PRIMARY KEY (LogID),
+	FOREIGN KEY (UserID) REFERENCES Users(UserID),
+	FOREIGN KEY (RetrievedMessageID) REFERENCES RetrievedMessages(RetrievedMessageID)
+);
