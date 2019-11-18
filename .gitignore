@@ -93,4 +93,7 @@ fabric.properties
 # Vendor folder - composer
 private/vendor/
 
+# PHPStorm
+.idea/*
+
 # End of https://www.gitignore.io/api/phpstorm
