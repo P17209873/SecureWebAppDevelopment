@@ -17,7 +17,7 @@ $wsdl = 'https://m2mconnect.ee.co.uk/orange-soap/services/MessageServiceByCountr
 define('WSDL', $wsdl);
 
 //TODO: Detail types are not accurate and will need to be updated once connected to machine
-$detail_types = ['switches', 'fan', 'heater', 'keypad'];
+$detail_types = ['peekMessages'];
 define('DETAIL_TYPES', $detail_types);
 
 $settings = [

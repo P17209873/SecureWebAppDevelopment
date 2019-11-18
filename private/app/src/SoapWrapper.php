@@ -20,8 +20,7 @@ class SoapWrapper
         try
         {
             $soap_client_handle = new \SoapClient($wsdl, $soap_client_parameters);
-            //var_dump($soap_client_handle->__getFunctions());
-            //var_dump($soap_client_handle->__getTypes());
+            var_dump($soap_client_handle->__getFunctions());
         }
         catch (\SoapFault $exception)
         {
@@ -39,8 +38,9 @@ class SoapWrapper
         {
             try
             {
-                $webservice_call_result = $soap_client->{$webservice_function}($webservice_call_parameters);
-                $soap_call_result = $webservice_call_result->{$webservice_value};
+                $soap_call_result = $soap_client->{'peekMessages'}('19p17204157', 'cameraN1nthchair', 50);
+                //$webservice_call_result = $soap_client->{$webservice_function}($webservice_call_parameters);
+                //$webservice_value = 'returnMsg';
             }
             catch (\SoapFault $exception)
             {

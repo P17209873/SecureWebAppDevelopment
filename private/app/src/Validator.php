@@ -8,27 +8,6 @@ class Validator
 
     public function __destruct() { }
 
-    //TODO: Validator needs completly redoing
-    public function validateCountryCode($country_code_to_check)
-    {
-        $checked_country = false;
-        if (isset($country_code_to_check))
-        {
-            if (!empty($country_code_to_check))
-            {
-                if (strlen($country_code_to_check) == 2)
-                {
-                    $checked_country = $country_code_to_check;
-                }
-            }
-            else
-            {
-                $checked_country = 'none selected';
-            }
-        }
-        return $checked_country;
-    }
-
     public function validateDetailType($type_to_check)
     {
         $checked_detail_type = false;
