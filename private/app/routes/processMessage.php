@@ -25,7 +25,11 @@ $app->post(
                 'page_heading_2' => 'Result',
             ]);
 
+        /*Tom delete
         $processed_output = processOutput($app, $html_output);
 
         return $processed_output;
+        */
+
+        return $html_output;
     });

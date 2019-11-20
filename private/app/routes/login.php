@@ -19,9 +19,14 @@ $app->get('/', function (Request $request, Response $response) use ($app) {
             'page_text' => 'Please Login to your account',
         ]);
 
+    /*Tom delete
     $processed_output = processOutput($app, $html_output);
 
     return $processed_output;
+
+    */
+
+    return $html_output;
 
 })->setName('login');
 
