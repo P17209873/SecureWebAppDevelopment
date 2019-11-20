@@ -11,8 +11,8 @@ $app->get('/', function (Request $request, Response $response) use ($app) {
         [
             'css_path' => CSS_PATH,
             'landing_page' => LANDING_PAGE,
-            'method' => 'get',
-            'action' => 'index.php',
+            'method' => 'post',
+            'action' => 'processmessage',
             'initial_input_box_value' => null,
             'page_title' => APP_NAME,   //TODO: Title and text need changing
             'page_heading_1' => APP_NAME,

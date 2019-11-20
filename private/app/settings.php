@@ -33,7 +33,6 @@ $settings = [
                 'cache' => false,
                 'auto_reload' => true,
             ]],
-        //todo: remove comment (update pdo_settings <- complete 19:20 18 Nov, accurate as per CreateDatabaseScript.sql on Github)
         'pdo_settings' => [
             'rdbms' => 'mysql',
             'host' => 'localhost',
@@ -51,5 +50,4 @@ $settings = [
         ]
     ],
 ];
-
 return $settings;
