@@ -2,12 +2,20 @@
 
 namespace SecureWebAppCoursework;
 
+/**
+ * SoapWrapper.php
+ *
+ * Contains all of the necessary functions to create the SOAP client and perform the SOAP call.
+ */
 class SoapWrapper
 {
 
     public function __construct(){}
     public function __destruct(){}
 
+    /**
+     * Creates the SOAP client
+     */
     public function createSoapClient()
     {
         $soap_client_handle = false;
@@ -29,6 +37,9 @@ class SoapWrapper
         return $soap_client_handle;
     }
 
+    /**
+     * Performs the SOAP call
+     */
     public function performSoapCall($soap_client, $webservice_function, $webservice_call_parameters, $webservice_value)
     {
         $soap_call_result = null;
@@ -40,7 +51,7 @@ class SoapWrapper
             {
                 $soap_call_result = $soap_client->{'peekMessages'}('19p17204157', 'cameraN1nthchair', 50);
                 //$webservice_call_result = $soap_client->{$webservice_function}($webservice_call_parameters);
-                //$webservice_value = 'returnMsg';
+                //                //$webservice_value = 'returnMsg';
             }
             catch (\SoapFault $exception)
             {
