@@ -1,4 +1,5 @@
 <?php
+
 /** Initial Login page */
 
 use \Psr\Http\Message\ServerRequestInterface as Request;
@@ -36,3 +37,18 @@ function processOutput($app, $html_output)
     $html_output = $process_output->processOutput($html_output);
     return $html_output;
 }
+
+//function getCountryNamesAndIsoCodes($app)
+//{
+//    $country_detail_result = [];
+//    $soap_wrapper = $app->getContainer()->get('soapWrapper');
+//
+//    $countrydetails_model = $app->getContainer()->get('countryDetailsModel');
+//    $countrydetails_model->setSoapWrapper($soap_wrapper);
+//
+//    $countrydetails_model->retrieveCountryNames();
+//    $country_detail_result = $countrydetails_model->getResult();
+//
+//    return $country_detail_result;
+//
+//}
