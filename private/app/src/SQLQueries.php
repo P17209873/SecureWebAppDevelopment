@@ -14,4 +14,8 @@ class SQLQueries
 
     public function __destruct() {}
 
+    //TODO: Add necessary queries here!
+
+    //TODO: Add Docblock comments to query methods
+
 }

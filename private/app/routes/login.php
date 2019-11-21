@@ -20,9 +20,13 @@ $app->get('/', function (Request $request, Response $response) use ($app) {
             'page_text' => 'Please Login to your account',
         ]);
 
-    $processed_output = processOutput($app, $html_output);
-
-    return $processed_output;
+    /* Tom delete
+     $processed_output = processOutput($app, $html_output);
+     return $processed_output;
+    */
+    
+    return $html_output;
+    
 
 })->setName('login');
 
@@ -33,17 +37,17 @@ function processOutput($app, $html_output)
     return $html_output;
 }
 
-function getCountryNamesAndIsoCodes($app)
-{
-    $country_detail_result = [];
-    $soap_wrapper = $app->getContainer()->get('soapWrapper');
-
-    $countrydetails_model = $app->getContainer()->get('countryDetailsModel');
-    $countrydetails_model->setSoapWrapper($soap_wrapper);
-
-    $countrydetails_model->retrieveCountryNames();
-    $country_detail_result = $countrydetails_model->getResult();
-
-    return $country_detail_result;
-
-}
+//function getCountryNamesAndIsoCodes($app)
+//{
+//    $country_detail_result = [];
+//    $soap_wrapper = $app->getContainer()->get('soapWrapper');
+//
+//    $countrydetails_model = $app->getContainer()->get('countryDetailsModel');
+//    $countrydetails_model->setSoapWrapper($soap_wrapper);
+//
+//    $countrydetails_model->retrieveCountryNames();
+//    $country_detail_result = $countrydetails_model->getResult();
+//
+//    return $country_detail_result;
+//
+//}
