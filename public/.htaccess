@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # map URL parameters to actual file paths
 
 RewriteEngine On
@@ -11,3 +12,9 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ ./index.php [QSA,L]
+=======
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L] 
+>>>>>>> 83a6f2a7f5f04a7ca6e48f720a4c1bba1d74190f

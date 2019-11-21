@@ -1,0 +1,40 @@
+{% extends 'banner.html.twig' %}
+{% block content %}
+<div id="page-content-div">
+    <table width = 100% border = 1>
+        <caption>Metadata</caption>
+        <tr>
+            <td>Team No:</td>
+            <td>Sim No:</td>
+            <td>Name:</td>
+            <td>Email:</td>
+        </tr>
+        <tr>
+            <td>{{ team_number }}</td>
+            <td>{{ sim_number }}</td>
+            <td>{{ name }}</td>
+            <td>{{ email_address }}</td>
+        </tr>
+    </table>
+    <table width= 100% border = 1>
+        <caption>Message</caption>
+        <tr>
+            <td>Switch A:</td>
+            <td>Switch B:</td>
+            <td>Switch C:</td>
+            <td>Switch D:</td>
+            <td>Fan:</td>
+            <td>Temperature:</td>
+            <td>Last Key Pressed:</td>
+        </tr>
+        <tr>
+            <td>{{ switch_a }}</td>
+            <td>{{ switch_b }}</td>
+            <td>{{ switch_c }}</td>
+            <td>{{ switch_d }}</td>
+            <td>{{ fan_rotation }}</td>
+            <td>{{ temperature }}</td>
+            <td>{{ key_pressed }}</td>
+        </tr>
+    </table>
+</div>

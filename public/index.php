@@ -6,4 +6,4 @@
  * Time: 00:36
  */
 
-require 'secureWebAppCoursework/bootstrap.php';
+require 'SecureWebAppCoursework/bootstrap.php';
