@@ -27,7 +27,8 @@ CREATE TABLE CircuitBoardStates (
 	Switch04State VARCHAR(5) NOT NULL,
 	FanState VARCHAR(10) NOT NULL,
 	HeaterTemperature VARCHAR(10) NOT NULL,
-	KeypadValue VARCHAR(1) NOT NULL
+	KeypadValue VARCHAR(1) NOT NULL,
+	PRIMARY KEY (StateID)
 );
 
 DROP TABLE IF EXISTS RetrievedMessages;
