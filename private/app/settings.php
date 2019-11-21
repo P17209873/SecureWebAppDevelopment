@@ -2,13 +2,13 @@
 
 ini_set('display_errors', 'On');
 ini_set('html_errors', 'On');
-ini_set('xdebug.trace_output_name', 'coursework.%t');
+ini_set('xdebug.trace_output_name', 'country_details.%t');
 
 define('DIRSEP', DIRECTORY_SEPARATOR);
 
 $url_root = $_SERVER['SCRIPT_NAME'];
 $url_root = implode('/', explode('/', $url_root, -1));
-$css_path = $url_root . '/css/style.css';
+$css_path = $url_root . '/css/standard.css';
 define('CSS_PATH', $css_path);
 define('APP_NAME', 'Coursework'); //TODO: change name later
 define('LANDING_PAGE', $_SERVER['SCRIPT_NAME']);
@@ -17,7 +17,7 @@ $wsdl = 'https://m2mconnect.ee.co.uk/orange-soap/services/MessageServiceByCountr
 define('WSDL', $wsdl);
 
 //TODO: Detail types are not accurate and will need to be updated once connected to machine
-$detail_types = ['switches', 'fan', 'heater', 'keypad'];
+$detail_types = ['peekMessages'];
 define('DETAIL_TYPES', $detail_types);
 
 $settings = [
@@ -33,13 +33,14 @@ $settings = [
                 'cache' => false,
                 'auto_reload' => true,
             ]],
+        //todo: update pdo_settings
         'pdo_settings' => [
             'rdbms' => 'mysql',
             'host' => 'localhost',
-            'db_name' => 'SWADCoursework',
+            'db_name' => 'db',
             'port' => '3306',
-            'user_name' => 'coursework',
-            'user_password' => 'Password',
+            'user_name' => 'user',
+            'user_password' => 'user_pass',
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'options' => [
@@ -50,4 +51,5 @@ $settings = [
         ]
     ],
 ];
+
 return $settings;

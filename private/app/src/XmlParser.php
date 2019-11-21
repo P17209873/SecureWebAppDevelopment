@@ -9,10 +9,10 @@ namespace SecureWebAppCoursework;
 
 class XmlParser
 {
-    private $xml_parser;            // handle to instance of the XML parser
-    private $parsed_data;           // array holds extracted data
-    private $element_name;          // store the current element name
-    private $temporary_attributes;  // temporarily store tag attributes and values
+    private $xml_parser;							  // handle to instance of the XML parser
+    private $parsed_data;	          // array holds extracted data
+    private $element_name;	            // store the current element name
+    private $temporary_attributes;	// temporarily store tag attributes and values
     private $xml_string_to_parse;
 
     public function __construct()
@@ -20,42 +20,27 @@ class XmlParser
         $this->parsed_data = [];
     }
 
+    // release retained memory
     public function __destruct()
     {
         xml_parser_free($this->xml_parser);
     }
 
-    /**
-     * Resets the XML Parser
-     */
     public function resetXmlParser()
     {
         $this->xml_parser = null;
     }
 
-    /**
-     * @param $xml_string_to_parse
-     *
-     * Passes the string that needs to be parsed
-     */
     public function setXmlStringToParse($xml_string_to_parse)
     {
         $this->xml_string_to_parse = $xml_string_to_parse;
     }
 
-    /**
-     * @return array
-     *
-     * Returns the parsed data
-     */
     public function getParsedData()
     {
         return $this->parsed_data;
     }
 
-    /**
-     * Parses the XML String
-     */
     public function parseTheXmlString()
     {
         $this->xml_parser = xml_parser_create();
@@ -71,18 +56,14 @@ class XmlParser
         $this->parseTheDataString();
     }
 
-    /**
-     * Use the parser to step through the element tags
-     */
+    // use the parser to step through the element tags
     private function parseTheDataString()
     {
         xml_parse($this->xml_parser, $this->xml_string_to_parse);
     }
 
-    /**
-     * process an open element event & store the tag name
-     * extract the attribute names and values, if any
-     */
+    // process an open element event & store the tag name
+    // extract the attribute names and values, if any
     private function open_element($parser, $element_name, $attributes)
     {
         $this->element_name = $element_name;
@@ -96,13 +77,7 @@ class XmlParser
         }
     }
 
-
-    /**
-     * @param $parser
-     * @param $element_data
-     *
-     * Process data from an element
-     */
+    // process data from an element
     private function process_element_data($parser, $element_data)
     {
         if (array_key_exists($this->element_name, $this->parsed_data) === false)
@@ -118,9 +93,7 @@ class XmlParser
         }
     }
 
-    /**
-     * Process a close element event
-     */
+    // process a close element event
     private function close_element($parser, $element_name)
     {
         // do nothing here

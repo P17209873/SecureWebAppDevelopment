@@ -3,7 +3,7 @@
 /**
  * DatabaseWrapper.php
  *
- * Accesses the application database
+ * Access the sessions database
  */
 
 namespace SecureWebAppCoursework;
@@ -27,11 +27,6 @@ class DatabaseWrapper
 
     public function __destruct() { }
 
-    /**
-     * Takes passed database connection settings and copies to local variable
-     *
-     * @param $database_connection_settings
-     */
     public function setDatabaseConnectionSettings($database_connection_settings)
     {
         $this->database_connection_settings = $database_connection_settings;
@@ -71,12 +66,6 @@ class DatabaseWrapper
         return $pdo_error;
     }
 
-    /**
-     * Retrieves the predefined SQL queries from the SQLQueries class, when // TODO: Complete this comment
-     *
-     * @param $sql_queries
-     */
-
     public function setSqlQueries($sql_queries)
     {
         $this->sql_queries = $sql_queries;
@@ -115,33 +104,18 @@ class DatabaseWrapper
         return $this->errors['db_error'];
     }
 
-    /**
-     * Returns the number of rows within the database
-     *
-     * @return num_rows
-     */
     public function countRows()
     {
         $num_rows = $this->prepared_statement->rowCount();
         return $num_rows;
     }
 
-    /**
-     * Safely fetches a result row as an array indexed by column number
-     *
-     * @return mixed
-     */
     public function safeFetchRow()
     {
         $record_set = $this->prepared_statement->fetch(PDO::FETCH_NUM);
         return $record_set;
     }
 
-    /**
-     * Safely fetches a result row as an associated array using a key-value pair
-     *
-     * @return mixed
-     */
     public function safeFetchArray()
     {
         $row = $this->prepared_statement->fetch(PDO::FETCH_ASSOC);
@@ -149,11 +123,6 @@ class DatabaseWrapper
         return $row;
     }
 
-    /**
-     * Returns the auto_increment id of the last row that has been inserted or updated in a table
-     *
-     * @return mixed
-     */
     public function lastInsertedID()
     {
         $sql_query = 'SELECT LAST_INSERT_ID()';

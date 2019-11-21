@@ -2,20 +2,12 @@
 
 namespace SecureWebAppCoursework;
 
-/**
- * Validator.php
- *
- * Class is used to validate the data that has been downloaded from EE M2M
- */
 class Validator
 {
     public function __construct() { }
 
     public function __destruct() { }
 
-    /**
-     * Validates details - compares to DETAIL_TYPES array in settings.php
-     */
     public function validateDetailType($type_to_check)
     {
         $checked_detail_type = false;
@@ -29,9 +21,6 @@ class Validator
         return $checked_detail_type;
     }
 
-    /**
-     * Filters and sanitizes any string data
-     */
     public function validateDownloadedData($tainted_data)
     {
         $validated_string_data = '';
