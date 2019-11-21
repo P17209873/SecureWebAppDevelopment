@@ -46,9 +46,8 @@ class SecureWebAppModel
             $webservice_parameters = $this->selectDetail();
             $webservice_function = $webservice_parameters['required_service'];
             $webservice_call_parameters = $webservice_parameters['service_parameters'];
-            $webservice_object_name = $webservice_parameters['result_message'];
 
-            $soapcall_message = $this->soap_wrapper->performSoapCall($soap_client_handle, $webservice_function, $webservice_call_parameters, $webservice_object_name);
+            $soapcall_message = $this->soap_wrapper->performSoapCall($soap_client_handle, $webservice_function, $webservice_call_parameters);
 
             $this->xml_message = $soapcall_message;
         }
@@ -70,7 +69,7 @@ class SecureWebAppModel
                 $select_detail['service_parameters'] = [
                     'username' => $this->username,
                     'password' => $this->password,
-                    'count' => 100,
+                    'count' => 50,
                     //'deviceMSISDN' => $this->MSISDN,
                     //'countryCode' => '+44',
                 ];

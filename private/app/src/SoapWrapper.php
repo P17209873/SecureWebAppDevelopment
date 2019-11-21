@@ -29,7 +29,7 @@ class SoapWrapper
         return $soap_client_handle;
     }
 
-    public function performSoapCall($soap_client, $webservice_function, $webservice_call_parameters, $webservice_value)
+    public function performSoapCall($soap_client, $webservice_function, $webservice_call_parameters)
     {
         $soap_call_result = null;
         $raw_xml = '';
@@ -38,9 +38,9 @@ class SoapWrapper
         {
             try
             {
-                $soap_call_result = $soap_client->{'peekMessages'}('19p17204157', 'cameraN1nthchair', 50);
-                //$webservice_call_result = $soap_client->{$webservice_function}($webservice_call_parameters);
-                //$webservice_value = 'returnMsg';
+                if ($webservice_function == 'peekMessages') {
+                    $soap_call_result = $soap_client->{$webservice_function}($webservice_call_parameters['username'], $webservice_call_parameters['password'],$webservice_call_parameters['count']);
+                }
             }
             catch (\SoapFault $exception)
             {
