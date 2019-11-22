@@ -26,7 +26,7 @@ require __DIR__ . '/app/routes.php';
 
 $app->run();
 
-session_regenerate_id(true);
+// session_regenerate_id(true);
 
 if (function_exists('xdebug_stop_trace'))
 {
