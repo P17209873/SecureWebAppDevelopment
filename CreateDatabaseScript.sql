@@ -12,6 +12,7 @@ CREATE TABLE Users (
 	UserID INT(11) NOT NULL AUTO_INCREMENT,
 	UserUsername VARCHAR(25) NOT NULL,
 	UserPassword VARCHAR(50) NOT NULL,
+	UserEmail VARCHAR(250) NOT NULL,
 	UserFirstName VARCHAR(30) NOT NULL,
 	UserLastName VARCHAR(30) NOT NULL,
 	PRIMARY KEY (UserID)
@@ -27,7 +28,8 @@ CREATE TABLE CircuitBoardStates (
 	Switch04State VARCHAR(5) NOT NULL,
 	FanState VARCHAR(10) NOT NULL,
 	HeaterTemperature VARCHAR(10) NOT NULL,
-	KeypadValue VARCHAR(1) NOT NULL
+	KeypadValue VARCHAR(1) NOT NULL,
+	PRIMARY KEY (StateID)
 );
 
 DROP TABLE IF EXISTS RetrievedMessages;

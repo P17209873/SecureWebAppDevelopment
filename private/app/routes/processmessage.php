@@ -29,9 +29,13 @@ $app->post(
                 'messages' => $validated_messages
             ]);
 
+        /* Tom delete
         $processed_output = processOutput($app, $html_output);
 
         return $processed_output;
+        */
+        
+        return $html_output;
     });
 
 function cleanupParameters($app, $tainted_parameters)
