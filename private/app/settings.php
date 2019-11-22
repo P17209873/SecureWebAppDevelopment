@@ -33,14 +33,14 @@ $settings = [
                 'cache' => false,
                 'auto_reload' => true,
             ]],
-        //todo: update pdo_settings
+        
         'pdo_settings' => [
             'rdbms' => 'mysql',
             'host' => 'localhost',
-            'db_name' => 'db',
+            'db_name' => 'SWADCoursework',
             'port' => '3306',
-            'user_name' => 'user',
-            'user_password' => 'user_pass',
+            'user_name' => 'coursework',
+            'user_password' => 'Password',
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'options' => [
