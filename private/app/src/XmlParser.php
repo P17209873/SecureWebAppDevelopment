@@ -23,6 +23,7 @@ class XmlParser
     public function __destruct()
     {
         xml_parser_free($this->xml_parser);
+        unset($this->xml_parser);
     }
 
     /**
@@ -94,6 +95,10 @@ class XmlParser
                 $this->temporary_attributes[$tag_att] = $att_value;
             }
         }
+        else
+        {
+            $this->temporary_attributes = [];
+        }
     }
 
 
@@ -108,6 +113,7 @@ class XmlParser
         if (array_key_exists($this->element_name, $this->parsed_data) === false)
         {
             $this->parsed_data[$this->element_name] = $element_data;
+
             if (sizeof($this->temporary_attributes) > 0)
             {
                 foreach ($this->temporary_attributes as $tag_att_name => $tag_att_value)
