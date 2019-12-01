@@ -60,3 +60,14 @@ CREATE TABLE Logs (
 	FOREIGN KEY (RetrievedMessageID) REFERENCES RetrievedMessages(RetrievedMessageID),
 	FOREIGN KEY (CircuitBoardStateID) REFERENCES  CircuitBoardStates(StateID)
 );
+
+DROP TABLE IF EXISTS UserLoginLogs;
+
+CREATE TABLE UserLoginLogs (
+	UserLoginLogsID INT(11) NOT NULL AUTO_INCREMENT,
+	UserID INT(11) NOT NULL,
+	LoginCompleted BOOLEAN,
+	LoginTimestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	PRIMARY KEY (UserLoginLogsID),
+	FOREIGN KEY (UserID) REFERENCES Users(UserID)
+);
