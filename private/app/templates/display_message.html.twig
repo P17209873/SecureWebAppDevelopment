@@ -5,7 +5,7 @@
         <ul>
             {% for message in messages %}
                 <h3>Message</h3>
-                {%for detailName, detail in message %}
+                {% for detailName, detail in message %}
                     <li>{{ detailName }}: {{ detail }}</li>
                 {% endfor %}
             {% endfor %}

@@ -1,6 +1,6 @@
 <?php
 
-namespace SecureWebAppCoursework;
+namespace secureWebAppCoursework;
 
 /**
  * Validator.php
@@ -39,5 +39,16 @@ class Validator
         $validated_string_data = filter_var($tainted_data, FILTER_SANITIZE_STRING);
 
         return $validated_string_data;
+    }
+
+    public function sanitiseString(string $string_to_sanitise): string
+    {
+        $sanitised_string = false;
+
+        if (!empty($string_to_sanitise))
+        {
+            $sanitised_string = filter_var($string_to_sanitise, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+        }
+        return $sanitised_string;
     }
 }

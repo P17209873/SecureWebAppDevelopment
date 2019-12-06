@@ -1,6 +1,6 @@
 <?php
 
-namespace SecureWebAppCoursework;
+namespace secureWebAppCoursework;
 
 /**
  * SoapWrapper.php
