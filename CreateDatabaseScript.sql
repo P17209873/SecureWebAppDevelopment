@@ -1,61 +1,81 @@
-DROP DATABASE IF EXISTS SWADCoursework;
+DROP DATABASE IF EXISTS swadcoursework;
 
-CREATE DATABASE SWADCoursework;
+CREATE DATABASE swadcoursework;
 
-USE SWADCoursework;
+USE swadcoursework;
 
-GRANT ALL ON SWADCoursework.* to 'coursework'@'localhost' IDENTIFIED BY 'Password';
+GRANT ALL ON swadcoursework.* to 'coursework'@'localhost' IDENTIFIED BY 'password';
 
-DROP TABLE IF EXISTS Users;
+DROP TABLE IF EXISTS users;
 
-CREATE TABLE Users (
-	UserID INT(11) NOT NULL AUTO_INCREMENT,
-	UserUsername VARCHAR(25) NOT NULL,
-	UserPassword VARCHAR(50) NOT NULL,
-	UserEmail VARCHAR(250) NOT NULL,
-	UserFirstName VARCHAR(30) NOT NULL,
-	UserLastName VARCHAR(30) NOT NULL,
-	PRIMARY KEY (UserID)
+CREATE TABLE users (
+	userid INT(11) NOT NULL AUTO_INCREMENT,
+	userusername VARCHAR(25) NOT NULL,
+	userpassword VARCHAR(256) NOT NULL,
+	useremail VARCHAR(250) NOT NULL,
+	userfirstname VARCHAR(30) NOT NULL,
+	userlastname VARCHAR(30) NOT NULL,
+	usercreationtimestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	PRIMARY KEY (userid)
 );
 
-DROP TABLE IF EXISTS CircuitBoardStates;
+DROP TABLE IF EXISTS circuitboardstates;
 
-CREATE TABLE CircuitBoardStates (
-	StateID INT(11) NOT NULL AUTO_INCREMENT,
-	Switch01State VARCHAR(5) NOT NULL,
-	Switch02State VARCHAR(5) NOT NULL,
-	Switch03State VARCHAR(5) NOT NULL,
-	Switch04State VARCHAR(5) NOT NULL,
-	FanState VARCHAR(10) NOT NULL,
-	HeaterTemperature VARCHAR(10) NOT NULL,
-	KeypadValue VARCHAR(1) NOT NULL,
-	PRIMARY KEY (StateID)
+CREATE TABLE circuitboardstates (
+	stateid INT(11) NOT NULL AUTO_INCREMENT,
+	switch01state VARCHAR(5) NOT NULL,
+	switch02state VARCHAR(5) NOT NULL,
+	switch03state VARCHAR(5) NOT NULL,
+	switch04state VARCHAR(5) NOT NULL,
+	fanstate VARCHAR(10) NOT NULL,
+	heatertemperature VARCHAR(10) NOT NULL,
+	keypadvalue VARCHAR(1) NOT NULL,
+	PRIMARY KEY (stateid)
 );
 
-DROP TABLE IF EXISTS RetrievedMessages;
+DROP TABLE IF EXISTS retrievedmessages;
 
-CREATE TABLE RetrievedMessages(
-	RetrievedMessageID INT(11) NOT NULL AUTO_INCREMENT,
-	MessageSentTo VARCHAR(35) NOT NULL,
-	MessageSentFrom VARCHAR(35) NOT NULL,
-	UserID INT(11) NOT NULL,
-	StateID INT(11) NOT NULL,
-	PRIMARY KEY (RetrievedMessageID),
-	FOREIGN KEY (UserID) REFERENCES Users(UserID),
-  FOREIGN KEY (StateID) REFERENCES  CircuitBoardStates(StateID)
+CREATE TABLE retrievedmessages(
+	retrievedmessageid INT(11) NOT NULL AUTO_INCREMENT,
+	messagesentto VARCHAR(35) NOT NULL,
+	messagesentfrom VARCHAR(35) NOT NULL,
+	userid INT(11) NOT NULL,
+	stateid INT(11) NOT NULL,
+	PRIMARY KEY (retrievedmessageid),
+	FOREIGN KEY (userid) REFERENCES users(userid),
+  	FOREIGN KEY (stateid) REFERENCES  circuitboardstates(stateid)
 );
 
-DROP TABLE IF EXISTS Logs;
+DROP TABLE IF EXISTS logs;
 
-CREATE TABLE Logs (
-	LogID INT(11) NOT NULL AUTO_INCREMENT,
-	LogType VARCHAR(25) NOT NULL,
-	LogMessage VARCHAR(500) NOT NULL,
-	UserID INT(11) NOT NULL,
-	RetrievedMessageID INT(11),
-	CircuitBoardStateID INT(11),
-	PRIMARY KEY (LogID),
-	FOREIGN KEY (UserID) REFERENCES Users(UserID),
-	FOREIGN KEY (RetrievedMessageID) REFERENCES RetrievedMessages(RetrievedMessageID),
-	FOREIGN KEY (CircuitBoardStateID) REFERENCES  CircuitBoardStates(StateID)
+CREATE TABLE logs (
+	logid INT(11) NOT NULL AUTO_INCREMENT,
+	logtype VARCHAR(25) NOT NULL,
+	logmessage VARCHAR(500) NOT NULL,
+	userid INT(11) NOT NULL,
+	retrievedmessageid INT(11),
+	circuitboardstateid INT(11),
+	PRIMARY KEY (logid),
+	FOREIGN KEY (userid) REFERENCES users(userid),
+	FOREIGN KEY (retrievedmessageid) REFERENCES retrievedmessages(retrievedmessageid),
+	FOREIGN KEY (circuitboardstateid) REFERENCES  circuitboardstates(stateid)
+);
+
+DROP TABLE IF EXISTS userloginlogs;
+
+CREATE TABLE userloginlogs (
+	userloginlogsid INT(11) NOT NULL AUTO_INCREMENT,
+	userid INT(11) NOT NULL,
+	logincompleted BOOLEAN,
+	logintimestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	PRIMARY KEY (userloginlogsid),
+	FOREIGN KEY (userid) REFERENCES users(userid)
+);
+
+DROP TABLE IF EXISTS sessions;
+
+CREATE TABLE sessions (
+	sessionid INT(11) NOT NULL AUTO_INCREMENT,
+	userid INT(11) NOT NULL,
+	// TODO: COMPLETE
 );
