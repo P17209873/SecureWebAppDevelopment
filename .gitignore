@@ -91,9 +91,13 @@ fabric.properties
 .idea/**/markdown-navigator/
 
 # Vendor folder - composer
-private/vendor/
+vendor/
 
 # PHPStorm
 .idea/*
 
 # End of https://www.gitignore.io/api/phpstorm
+/vendor/
+/composer.json
+/composer.lock
+/composer.phar
