@@ -1,0 +1,18 @@
+
+
+Code Coverage Report:     
+  2019-12-11 00:59:47     
+                          
+ Summary:                 
+  Classes: 18.18% (2/11)  
+  Methods: 25.00% (13/52) 
+  Lines:   20.24% (67/331)
+
+\SecureWebAppCoursework::SecureWebAppCoursework\XmlParser
+  Methods:  60.00% ( 6/10)   Lines:  68.75% ( 22/ 32)
+\secureWebAppCoursework::secureWebAppCoursework\SQLQueries
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 19/ 19)
+\secureWebAppCoursework::secureWebAppCoursework\SoapWrapper
+  Methods:   0.00% ( 0/ 2)   Lines:  77.78% ( 14/ 18)
+\secureWebAppCoursework::secureWebAppCoursework\Validator
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 12/ 12)
