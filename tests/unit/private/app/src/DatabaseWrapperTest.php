@@ -9,8 +9,7 @@ class DatabaseWrapperTest extends TestCase
 {
     public function testdbConnection() {
         $dbWrapper = new \SecureWebAppCoursework\DatabaseWrapper();
-        $dbWrapper->setDatabaseConnectionSettings();
 
-        $this->assertEquals('', $dbWrapper->makeDatabaseConnection());
+        $this->assertEquals(false, true);
     }
 }

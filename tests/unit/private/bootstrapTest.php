@@ -48,6 +48,11 @@ class bootstrapTest extends TestCase
         $this->assertSame((string)$response->getBody(), '{"foo":"bar"}');
     }*/
 
+    public function testFakeTest() {
+
+        $this->assertEquals(false, true);
+    }
+
 }
 
 

@@ -23,7 +23,8 @@ class SecureWebAppModelTest extends TestCase
 
         $cleaned_parameters['detail'] = 'peekMessages';
         $secureWebAppModel -> setParameters($cleaned_parameters);
+        $secureWebAppModel -> performDetailRetrieval();
 
-        $this->assertNotEquals([], $secureWebAppModel -> selectDetail());
+        $this->assertNotEquals([], $secureWebAppModel -> getResult());
     }
 }
