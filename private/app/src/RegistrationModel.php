@@ -4,7 +4,7 @@ namespace SecureWebAppCoursework;
 
 /**
  * Class RegistrationModel
- * @package secureWebAppCoursework
+ * @package SecureWebAppCoursework
  *
  * Data model that deals with registering new users of the application
  */
@@ -46,9 +46,9 @@ class RegistrationModel
     {
         $query_string = $this->sql_queries->createNewUser();
 
-        $query_params = array(':UserUsername' => $cleaned_username, ':UserPassword' => $hashed_password,
-            ':UserEmail' => $cleaned_email, ':UserFirstName' => $cleaned_firstname,
-            ':UserLastName' => $cleaned_lastname);
+        $query_params = array(':userusername' => $cleaned_username, ':userpassword' => $hashed_password,
+            ':useremail' => $cleaned_email, ':userfirstname' => $cleaned_firstname,
+            ':userlastname' => $cleaned_lastname);
 
         $this->database_wrapper->setDatabaseConnectionSettings($this->database_connection_settings);
         $this->database_wrapper->makeDatabaseConnection();
@@ -67,11 +67,6 @@ class RegistrationModel
         }
     }
 
-    public function attemptLogin()
-    {
-        return true;
-    }
-
     /**
      * Checks the database to see whether the username passed in already exists.
      *
@@ -81,7 +76,7 @@ class RegistrationModel
     public function doesUsernameExist($username)
     {
         $query_string = $this->sql_queries->getUserId();
-        $query_params = array(':UserUsername' => $username);
+        $query_params = array(':userusername' => $username);
 
         $this->database_wrapper->setDatabaseConnectionSettings($this->database_connection_settings);
         $this->database_wrapper->makeDatabaseConnection();
@@ -118,7 +113,7 @@ class RegistrationModel
     public function doesEmailExist($email)
     {
         $query_string = $this->sql_queries->getUserEmail();
-        $query_params = array(':UserEmail' => $email);
+        $query_params = array(':useremail' => $email);
 
         $this->database_wrapper->setDatabaseConnectionSettings($this->database_connection_settings);
         $this->database_wrapper->makeDatabaseConnection();

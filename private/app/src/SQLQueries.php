@@ -1,13 +1,12 @@
 <?php
 
+namespace SecureWebAppCoursework;
+
 /**
  * SQLQueries.php
  *
- * hosts all SQL queries to be used by the Model
+ * hosts all SQL queries to be used by the data models
  */
-
-namespace SecureWebAppCoursework;
-
 class SQLQueries
 {
     public function __construct() {}
@@ -25,10 +24,10 @@ class SQLQueries
      */
     public function storeUserLoginLog()
     {
-        $query_string  = "INSERT INTO UserLoginLogs ";
+        $query_string  = "INSERT INTO userloginlogs ";
         $query_string .= "SET ";
-        $query_string .= "UserID = :User_ID ";
-        $query_string .= "LoginCompleted = :LoginCompleted";
+        $query_string .= "userid = :userid, ";
+        $query_string .= "logincompleted = :logincompleted";
         return $query_string;
     }
 
@@ -39,13 +38,27 @@ class SQLQueries
      */
     public function createNewUser()
     {
-        $query_string = "INSERT INTO Users ";
+        $query_string = "INSERT INTO users ";
         $query_string .= "SET ";
-        $query_string .= "UserUsername = :UserUsername, ";
-        $query_string .= "UserPassword = :UserPassword, ";
-        $query_string .= "UserEmail = :UserEmail, ";
-        $query_string .= "UserFirstName = :UserFirstName, ";
-        $query_string .= "UserLastName = :UserLastName";
+        $query_string .= "userusername = :userusername, ";
+        $query_string .= "userpassword = :userpassword, ";
+        $query_string .= "useremail = :useremail, ";
+        $query_string .= "userfirstname = :userfirstname, ";
+        $query_string .= "userlastname = :userlastname";
+
+        return $query_string;
+    }
+
+    /**
+     * @return string
+     */
+    public function checkUserPassword()
+    {
+        $query_string = "SELECT userid, userusername, userpassword ";
+        $query_string .= "FROM users ";
+        $query_string .= "WHERE ";
+        $query_string .= "userid = :userid AND ";
+        $query_string .= "userusername = :userusername";
 
         return $query_string;
     }
@@ -58,8 +71,8 @@ class SQLQueries
      */
     public function getUserID()
     {
-        $query_string = "SELECT UserID FROM Users ";
-        $query_string .= "WHERE UserUsername = :UserUsername";
+        $query_string = "SELECT userid FROM users ";
+        $query_string .= "WHERE userusername = :userusername";
 
         return $query_string;
     }
@@ -71,8 +84,8 @@ class SQLQueries
      * @return string
      */
     public function getUserEmail(){
-        $query_string = "SELECT UserID FROM Users ";
-        $query_string .= "WHERE UserEmail = :UserEmail";
+        $query_string = "SELECT userid FROM users ";
+        $query_string .= "WHERE useremail = :useremail";
 
         return $query_string;
     }

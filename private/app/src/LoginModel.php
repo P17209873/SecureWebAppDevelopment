@@ -4,7 +4,7 @@ namespace SecureWebAppCoursework;
 
 /**
  * Class LoginModel
- * @package secureWebAppCoursework
+ * @package SecureWebAppCoursework
  *
  * Data model that deals with logging into and logging out of the application
  */
@@ -33,10 +33,10 @@ class LoginModel
         $this->sql_queries = $sql_queries;
     }
 
-    public function storeLoginAttempt($user_id, $login_result)
+    public function storeLoginAttempt($userid, $login_result)
     {
         $query_string = $this->sql_queries->storeUserLoginLog();
-        $query_params = array(':User_ID' => $user_id, ':LoginCompleted' => $login_result);
+        $query_params = array(':userid' => $userid, ':logincompleted' => $login_result);
 
         $this->database_wrapper->setDatabaseConnectionSettings($this->database_connection_settings);
         $this->database_wrapper->makeDatabaseConnection();
@@ -44,15 +44,33 @@ class LoginModel
         $this->database_wrapper->safeQuery($query_string, $query_params);
     }
 
-    public function attemptLogin()
+    public function checkUserPassword($userid, $username)
     {
-        return true;
+        $query_string = $this->sql_queries->checkUserPassword();
+        $query_params = array(':userid' => $userid, ':userusername' => $username);
+
+        $this->database_wrapper->setDatabaseConnectionSettings($this->database_connection_settings);
+        $this->database_wrapper->makeDatabaseConnection();
+
+        $result = $this->database_wrapper->safeQuery($query_string, $query_params);
+
+
+        if($result == true) // This signifies that there was a QUERY ERROR
+        {
+            return 'Unfortunately there has been a query error';
+        }
+
+        else
+        {
+            $result = $this->database_wrapper->safeFetchArray();
+            return $result['userpassword'];
+        }
     }
 
     public function checkUserID($username)
     {
         $query_string = $this->sql_queries->getUserID();
-        $query_params = array(':UserUsername' => $username);
+        $query_params = array(':userusername' => $username);
 
         $this->database_wrapper->setDatabaseConnectionSettings($this->database_connection_settings);
         $this->database_wrapper->makeDatabaseConnection();
@@ -67,9 +85,7 @@ class LoginModel
         else
         {
             $result = $this->database_wrapper->safeFetchArray();
-            return $result['UserID'];
+            return $result['userid'];
         }
-
-        var_dump($result); //TODO: remove - testing purposes (
     }
 }
