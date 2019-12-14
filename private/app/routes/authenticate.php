@@ -10,18 +10,43 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
 $app->post('/authenticate', function (Request $request, Response $response, $args) use ($app){
-    // var_dump($request->getParsedBody());
 
     $tainted_parameters = $request->getParsedBody();
     $cleaned_parameters = cleanParameters($app, $tainted_parameters);
 
+    $bcrypt_wrapper = $app->getContainer()->get('bcryptWrapper');
+
     $user_id_result = checkUserID($app, $cleaned_parameters['sanitised_username']);
+    $user_id_result = intval($user_id_result);
 
     if($user_id_result != null)
     {
         if($user_id_result != 'Unfortunately there has been a query error')
         {
-            echo 'desired behaviour ' . $user_id_result;
+            $check_user_password = checkUserPassword($app, $user_id_result, $cleaned_parameters['sanitised_username']);
+
+            $user_authenticated_result = $bcrypt_wrapper->authenticatePassword($cleaned_parameters['password'], $check_user_password);
+
+            // uses switch statement to prevent MySQL PDO error of incorrect integer value when trying to insert 'false'
+            switch($user_authenticated_result){
+                case true:
+                    $user_authenticated_result = 1;
+                    break;
+                case false:
+                    $user_authenticated_result = 0;
+                    break;
+            }
+
+            if($user_authenticated_result == 1)
+            {
+                echo 'you are now logged in';
+            }
+
+            else{
+                echo 'you are not logged in';
+            }
+
+            logAttemptToDatabase($app, $user_id_result, $user_authenticated_result);
         }
 
         else
@@ -29,7 +54,7 @@ $app->post('/authenticate', function (Request $request, Response $response, $arg
             echo 'There has been an error performing the query';
         }
 
-        //logAttemptToDatabase($app, $user_id_result, $login_result);
+        //
     }
 
     else // This signifies that there is NO SUCH USER in the database
@@ -37,56 +62,41 @@ $app->post('/authenticate', function (Request $request, Response $response, $arg
         return 'Unfortunately this user doesn\'t exist';
     }
 
-    $login_result = '';
-
-
-
 })->setName('authenticate');
 
 
-function retrieveFromDatabase($app, $cleaned_parameters)
+function checkUserPassword($app, $userid, $username)
 {
-
-}
-
-function loginToApplication($app, $username, $hashed_password)
-{
+    $settings = $app->getContainer()->get('settings');
     $model = $app->getContainer()->get('loginModel');
+    $model->setSqlQueries($app->getContainer()->get('sqlQueries'));
+    $model->setDatabaseWrapper($app->getContainer()->get('databaseWrapper'));
+    $model->setDatabaseConnectionSettings($settings['pdo_settings']);
+    $password_result = $model->checkUserPassword($userid, $username);
 
-    $login_result = $model->attemptLogin($username, $hashed_password);
-
-    if($login_result == true)
-    {
-        // TODO: Implement logic
-    }
-
-    else
-    {
-        // TODO: Implement logic
-    }
-}
-
-function logAttemptToDatabase($app, $user_id, $login_result)
-{
-    $model = $app->getContainer()->get('loginModel');
-    $model->storeLoginAttempt($user_id, $login_result);
+    return $password_result;
 }
 
 function checkUserID($app, $username)
 {
     $settings = $app->getContainer()->get('settings');
-
     $model = $app->getContainer()->get('loginModel');
-
     $model->setSqlQueries($app->getContainer()->get('sqlQueries'));
-
     $model->setDatabaseWrapper($app->getContainer()->get('databaseWrapper'));
-
     $model->setDatabaseConnectionSettings($settings['pdo_settings']);
+    $userid = $model->checkUserID($username);
 
-    $user_id = $model->checkUserID($username);
+    return $userid;
+}
 
-    return $user_id;
+function logAttemptToDatabase($app, $userid, $login_result)
+{
+    $settings = $app->getContainer()->get('settings');
+    $model = $app->getContainer()->get('loginModel');
+    $model->setSqlQueries($app->getContainer()->get('sqlQueries'));
+    $model->setDatabaseWrapper($app->getContainer()->get('databaseWrapper'));
+    $model->setDatabaseConnectionSettings($settings['pdo_settings']);
+    $model->storeLoginAttempt($userid, $login_result);
 }
 
 function cleanParameters($app, $tainted_parameters){
