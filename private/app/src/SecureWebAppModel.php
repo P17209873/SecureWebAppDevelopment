@@ -1,11 +1,11 @@
 <?php
 
-namespace SecureWebAppCoursework;
+namespace secureWebAppCoursework;
 
 /**
  * SecureWebAppModel.php
  *
- * This class acts as the Model of the application, containing all methods that implement and manage the data logic
+ * This class acts as the Data Model of the application, containing all methods that implement and manage the data logic
  * required to access the M2M SOAP Service
  */
 class SecureWebAppModel

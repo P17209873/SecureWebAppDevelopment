@@ -2,22 +2,24 @@
 {% block content %}
     <div id="page-content-div">
         <h2>{{ page_heading_2 }}</h2>
-        <p>{{ page_text }}</p>
+        <p class="cent">{{ page_text }}</p>
+        <fieldset class="cent">
         <form action="{{ action }}" method="{{ method }}">
-            <label for="name">Name: </label><input id="name" type="text" name="name" size="10" required>
+            <label for="first_name">First Name: </label><input id="first_name" type="text" name="first_name" size="10" required>
+            <br>
+            <label for="last_name">Last Name: </label><input id="last_name" type="text" name="last_name" size="10" required>
             <br>
             <label for="username">Username: </label><input id="username" type="text" name="username" size="10" required>
             <br>
             <label for="email">Email address: </label><input id="email" type="text" name="email" size="10" required>
             <br>
-            <label for="password">Password: </label><input id="password" type="text" name="password" size="10" required>
+            <label for="password">Password: </label><input id="password" type="password" name="password" size="10" required>
             <br>
-            <label for="rpassword">Repeat Password: </label><input id="rpassword" type="text" name="rpassword" size="10" required>
+            <label for="rpassword">Repeat Password: </label><input id="rpassword" type="password" name="rpassword" size="10" required>
             <br><br>
             <input type="submit" value="Register">
-
-
         </form>
+        </fieldset>
     </div>
 
 {% endblock %}

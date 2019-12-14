@@ -1,17 +1,29 @@
 <?php
 
+/**
+ * Contains the required settings for the application to run.
+ * These settings vary from Development Only (!!!) ini settings, to the WSDL path for the soap server,
+ * to the PDO database connection settings
+ */
+
 ini_set('display_errors', 'On');
 ini_set('html_errors', 'On');
-ini_set('xdebug.trace_output_name', 'country_details.%t');
+ini_set('xdebug.trace_output_name', 'swad_coursework.%t');
 
 define('DIRSEP', DIRECTORY_SEPARATOR);
 
 $url_root = $_SERVER['SCRIPT_NAME'];
 $url_root = implode('/', explode('/', $url_root, -1));
-$css_path = $url_root . '/css/standard.css';
+$css_path = $url_root . '/css/style.css';
+$js_path = $url_root . '/js/script.js';
+
+define('JS_PATH', $js_path);
 define('CSS_PATH', $css_path);
 define('APP_NAME', 'Coursework'); //TODO: change name later
 define('LANDING_PAGE', $_SERVER['SCRIPT_NAME']);
+
+define ('BCRYPT_ALGO', PASSWORD_DEFAULT);
+define ('BCRYPT_COST', 12);
 
 $wsdl = 'https://m2mconnect.ee.co.uk/orange-soap/services/MessageServiceByCountry?wsdl';
 define('WSDL', $wsdl);
@@ -33,14 +45,15 @@ $settings = [
                 'cache' => false,
                 'auto_reload' => true,
             ]],
-        //todo: update pdo_settings
+
+        //TEMPORARY DATABASE SETTINGS (FOR ON CAMPUS USING CHRIS' SERVER ACCOUNTS)
         'pdo_settings' => [
             'rdbms' => 'mysql',
-            'host' => 'localhost',
-            'db_name' => 'db',
+            'host' => 'mysql.tech.dmu.ac.uk',
+            'db_name' => 'p17204157',
             'port' => '3306',
-            'user_name' => 'user',
-            'user_password' => 'user_pass',
+            'user_name' => 'p17204157',
+            'user_password' => 'taXes+86',
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'options' => [

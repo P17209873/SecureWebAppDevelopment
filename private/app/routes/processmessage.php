@@ -17,6 +17,7 @@ $app->post(
         $cleaned_parameters = cleanupParameters($app, $tainted_parameters);
         $downloaded_messages = getMessage($app, $cleaned_parameters);
         $validated_messages = validateDownloadedData($app, $downloaded_messages);
+        $parsed_xml_messages = parseXml($app, $validated_messages);
 
         $html_output = $this->view->render($response,
             'display_message.html.twig',
@@ -26,7 +27,7 @@ $app->post(
                 'page_title' => APP_NAME,
                 'page_heading_1' => APP_NAME,
                 'page_heading_2' => 'Result',
-                'messages' => $validated_messages
+                'messages' => $parsed_xml_messages
             ]);
 
         /* Tom delete
@@ -86,4 +87,29 @@ function getMessage($app, $cleaned_parameters)
     $messages = $securewebapp_model->getResult();
 
     return $messages;
+}
+
+function parseXml($app, $xml_strings_to_parse)
+{
+    $parsedXmlArray = [];
+
+    $xmlParser = $app->getContainer()->get('xmlParser');
+
+    foreach ($xml_strings_to_parse as $xml_string_to_parse)
+    {
+        if (is_string($xml_string_to_parse) == true)
+        {
+            $xmlParser->setXmlStringToParse($xml_string_to_parse);
+            $xmlParser->parseTheXmlString();
+            $parsedXml = $xmlParser->getParsedData();
+
+        }
+        else
+        {
+            $parsedXml = $xml_string_to_parse;
+        }
+        $parsedXmlArray[] = $parsedXml;
+    }
+
+    return $parsedXmlArray;
 }

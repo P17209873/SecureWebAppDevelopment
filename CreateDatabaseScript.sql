@@ -76,6 +76,8 @@ DROP TABLE IF EXISTS sessions;
 
 CREATE TABLE sessions (
 	sessionid INT(11) NOT NULL AUTO_INCREMENT,
+  session_data LONGTEXT,
 	userid INT(11) NOT NULL,
-	// TODO: COMPLETE
+  PRIMARY KEY (sessionid),
+  FOREIGN KEY (userid) REFERENCES users(userid)
 );

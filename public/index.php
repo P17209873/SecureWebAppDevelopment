@@ -1,9 +1,9 @@
 <?php
+
 /**
- * Created by PhpStorm.
- * User: Matt
- * Date: 08/11/2019
- * Time: 00:36
+ * Single point of access into Secure Web Application
+ *
+ * Team: 18-3110-AC - Matthew Trim, Sam Spencer-Mcfadden, Chris Sherlock
  */
 
-require 'SecureWebAppCoursework/bootstrap.php';
+require 'secureWebAppCoursework/bootstrap.php';

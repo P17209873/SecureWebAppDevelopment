@@ -1,12 +1,14 @@
 <?php
-
+/**
+ * This file declares the necessary dependencies for the Slim Application container, allowing the application to run.
+ */
 // Register component on container
 $container['view'] = function ($container) {
     $view = new \Slim\Views\Twig(
         $container['settings']['view']['template_path'],
         $container['settings']['view']['twig'],
         [
-        'debug' => true // This line should enable debug mode
+            'debug' => true // This line should enable debug mode
         ]
     );
 
@@ -18,37 +20,57 @@ $container['view'] = function ($container) {
 };
 
 $container['validator'] = function ($container) {
-    $validator = new \SecureWebAppCoursework\Validator(); // requires "secureWebAppCoursework\\": "secureWebAppCoursework/app/src" in composer.json
+    $validator = new \secureWebAppCoursework\Validator(); // requires "secureWebAppCoursework\\": "secureWebAppCoursework/app/src" in composer.json
     return $validator;
 };
 
 $container['soapWrapper'] = function ($container) {
-    $validator = new \SecureWebAppCoursework\SoapWrapper();
-    return $validator;
+    $soap_wrapper = new \secureWebAppCoursework\SoapWrapper();
+    return $soap_wrapper;
 };
 
 $container['secureWebAppModel'] = function ($container) {
-    $validator = new \SecureWebAppCoursework\SecureWebAppModel();
-    return $validator;
+    $model = new \secureWebAppCoursework\SecureWebAppModel();
+    return $model;
 };
 
 
 $container['databaseWrapper'] = function ($container) {
-    $database_wrapper = new \SecureWebAppCoursework\DatabaseWrapper();
+    $database_wrapper = new \secureWebAppCoursework\DatabaseWrapper();
     return $database_wrapper;
 };
 
 $container['sqlQueries'] = function ($container) {
-    $sql_queries = new \SecureWebAppCoursework\SQLQueries();
+    $sql_queries = new \secureWebAppCoursework\SQLQueries();
     return $sql_queries;
 };
 
 $container['processOutput'] = function ($container) {
-    $model = new \SecureWebAppCoursework\ProcessOutput();
-    return $model;
+    $output_processor = new \secureWebAppCoursework\ProcessOutput();
+    return $output_processor;
 };
 
 $container['xmlParser'] = function ($container) {
-    $model = new \SecureWebAppCoursework\XmlParser();
-    return $model;
+    $parser = new \secureWebAppCoursework\XmlParser();
+    return $parser;
+};
+
+$container['monologWrapper'] = function ($container) {
+    $logger = new \secureWebAppCoursework\MonologWrapper();
+    return $logger;
+};
+
+$container['loginModel'] = function ($container) {
+    $loginModel = new \secureWebAppCoursework\LoginModel();
+    return $loginModel;
+};
+
+$container['registrationModel'] = function ($container) {
+    $regModel = new \secureWebAppCoursework\RegistrationModel();
+    return $regModel;
+};
+
+$container['bcryptWrapper'] = function ($container) {
+  $bcryptWrapper = new secureWebAppCoursework\BcryptWrapper();
+  return $bcryptWrapper;
 };

@@ -6,7 +6,7 @@
  * Accesses the application database
  */
 
-namespace SecureWebAppCoursework;
+namespace secureWebAppCoursework;
 
 class DatabaseWrapper
 {
@@ -91,10 +91,14 @@ class DatabaseWrapper
      *
      * @return mixed
      */
-    private function safeQuery($query_string, $params = null)
+    public function safeQuery($query_string, $params = null)
     {
         $this->errors['db_error'] = false;
         $query_parameters = $params;
+
+        var_dump($query_string);
+
+        var_dump($query_parameters);
 
         try
         {
@@ -133,7 +137,7 @@ class DatabaseWrapper
      */
     public function safeFetchRow()
     {
-        $record_set = $this->prepared_statement->fetch(PDO::FETCH_NUM);
+        $record_set = $this->prepared_statement->fetch(\PDO::FETCH_NUM);
         return $record_set;
     }
 
@@ -144,7 +148,7 @@ class DatabaseWrapper
      */
     public function safeFetchArray()
     {
-        $row = $this->prepared_statement->fetch(PDO::FETCH_ASSOC);
+        $row = $this->prepared_statement->fetch(\PDO::FETCH_ASSOC);
         $this->prepared_statement->closeCursor();
         return $row;
     }
