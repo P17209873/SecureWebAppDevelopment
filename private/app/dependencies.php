@@ -20,57 +20,57 @@ $container['view'] = function ($container) {
 };
 
 $container['validator'] = function ($container) {
-    $validator = new \secureWebAppCoursework\Validator(); // requires "secureWebAppCoursework\\": "secureWebAppCoursework/app/src" in composer.json
+    $validator = new \SecureWebAppCoursework\Validator(); // requires "secureWebAppCoursework\\": "secureWebAppCoursework/app/src" in composer.json
     return $validator;
 };
 
 $container['soapWrapper'] = function ($container) {
-    $soap_wrapper = new \secureWebAppCoursework\SoapWrapper();
+    $soap_wrapper = new \SecureWebAppCoursework\SoapWrapper();
     return $soap_wrapper;
 };
 
 $container['secureWebAppModel'] = function ($container) {
-    $model = new \secureWebAppCoursework\SecureWebAppModel();
+    $model = new \SecureWebAppCoursework\SecureWebAppModel();
     return $model;
 };
 
 
 $container['databaseWrapper'] = function ($container) {
-    $database_wrapper = new \secureWebAppCoursework\DatabaseWrapper();
+    $database_wrapper = new \SecureWebAppCoursework\DatabaseWrapper();
     return $database_wrapper;
 };
 
 $container['sqlQueries'] = function ($container) {
-    $sql_queries = new \secureWebAppCoursework\SQLQueries();
+    $sql_queries = new \SecureWebAppCoursework\SQLQueries();
     return $sql_queries;
 };
 
 $container['processOutput'] = function ($container) {
-    $output_processor = new \secureWebAppCoursework\ProcessOutput();
+    $output_processor = new \SecureWebAppCoursework\ProcessOutput();
     return $output_processor;
 };
 
 $container['xmlParser'] = function ($container) {
-    $parser = new \secureWebAppCoursework\XmlParser();
+    $parser = new \SecureWebAppCoursework\XmlParser();
     return $parser;
 };
 
 $container['monologWrapper'] = function ($container) {
-    $logger = new \secureWebAppCoursework\MonologWrapper();
+    $logger = new \SecureWebAppCoursework\MonologWrapper();
     return $logger;
 };
 
 $container['loginModel'] = function ($container) {
-    $loginModel = new \secureWebAppCoursework\LoginModel();
+    $loginModel = new \SecureWebAppCoursework\LoginModel();
     return $loginModel;
 };
 
 $container['registrationModel'] = function ($container) {
-    $regModel = new \secureWebAppCoursework\RegistrationModel();
+    $regModel = new \SecureWebAppCoursework\RegistrationModel();
     return $regModel;
 };
 
 $container['bcryptWrapper'] = function ($container) {
-  $bcryptWrapper = new secureWebAppCoursework\BcryptWrapper();
+  $bcryptWrapper = new SecureWebAppCoursework\BcryptWrapper();
   return $bcryptWrapper;
 };

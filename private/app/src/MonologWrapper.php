@@ -1,6 +1,6 @@
 <?php
 
-namespace secureWebAppCoursework;
+namespace SecureWebAppCoursework;
 
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;

@@ -6,7 +6,7 @@
  * Accesses the application database
  */
 
-namespace secureWebAppCoursework;
+namespace SecureWebAppCoursework;
 
 class DatabaseWrapper
 {
@@ -95,10 +95,6 @@ class DatabaseWrapper
     {
         $this->errors['db_error'] = false;
         $query_parameters = $params;
-
-        var_dump($query_string);
-
-        var_dump($query_parameters);
 
         try
         {

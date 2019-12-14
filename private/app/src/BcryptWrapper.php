@@ -1,10 +1,10 @@
 <?php
 
 /**
- *
+ * Bcrypt Wrapper class to make using bcrypt inbuilt functions easier. (thanks cfi!)
  */
 
-namespace secureWebAppCoursework;
+namespace SecureWebAppCoursework;
 
 class BcryptWrapper
 {

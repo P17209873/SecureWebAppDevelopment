@@ -1,11 +1,11 @@
 <?php
 
-namespace secureWebAppCoursework;
+namespace SecureWebAppCoursework;
 
 /**
  * Validator.php
  *
- * Class is used to validate the data that has been downloaded from EE M2M
+ * Class is used to validate the data that has been downloaded from EE M2M, as well as any user input
  */
 class Validator
 {

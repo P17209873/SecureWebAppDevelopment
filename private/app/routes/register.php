@@ -25,6 +25,7 @@ $app->get('/register', function(Request $request, Response $response) use ($app)
             'page_text' => 'Enter registration details',
         ]);
 
-    return $html_output;
+    $processed_output = processOutput($app, $html_output);
+    return $processed_output;
 
 })->setName('register');

@@ -110,6 +110,7 @@ function createNewUser($app, $cleaned_parameters, $hashed_password)
 
     $verification = $model->createNewUser($cleaned_username, $hashed_password, $cleaned_firstname, $cleaned_lastname, $cleaned_email);
 
+    //TODO: Update the echo tag
     if($verification == true)
     {
         echo '<div style="text-align: center;">Your account has been created, please log in.</div>';

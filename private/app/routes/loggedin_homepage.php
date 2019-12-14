@@ -7,8 +7,6 @@ $app->post('/home', function (Request $request, Response $response) use ($app) {
 
     $app_parsed = $request->getParsedBody();
 
-    var_dump($request);
-
     $html_output = $this->view->render($response,
         'homepageform.html.twig',
         [

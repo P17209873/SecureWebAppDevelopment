@@ -46,14 +46,13 @@ $settings = [
                 'auto_reload' => true,
             ]],
 
-        //TEMPORARY DATABASE SETTINGS (FOR ON CAMPUS USING CHRIS' SERVER ACCOUNTS)
         'pdo_settings' => [
             'rdbms' => 'mysql',
-            'host' => 'mysql.tech.dmu.ac.uk',
-            'db_name' => 'p17204157',
+            'host' => 'localhost',
+            'db_name' => 'swadcoursework',
             'port' => '3306',
-            'user_name' => 'p17204157',
-            'user_password' => 'taXes+86',
+            'user_name' => 'coursework',
+            'user_password' => 'Password',
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'options' => [
