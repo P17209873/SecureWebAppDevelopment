@@ -1,6 +1,6 @@
 <?php
 
-namespace secureWebAppCoursework;
+namespace SecureWebAppCoursework;
 
 /**
  * SecureWebAppModel.php

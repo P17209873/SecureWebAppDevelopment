@@ -6,7 +6,7 @@
  * Accesses the application database
  */
 
-namespace secureWebAppCoursework;
+namespace SecureWebAppCoursework;
 
 class DatabaseWrapper
 {
