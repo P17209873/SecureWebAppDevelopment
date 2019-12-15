@@ -93,6 +93,7 @@ function parseXml($app, $xml_strings_to_parse)
     {
         if (is_string($xml_string_to_parse) == true)
         {
+            $xmlParser->resetXmlParser();
             $xmlParser->setXmlStringToParse($xml_string_to_parse);
             $xmlParser->parseTheXmlString();
             $parsedXml = $xmlParser->getParsedData();
