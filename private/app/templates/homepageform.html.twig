@@ -1,6 +1,6 @@
 {% extends 'banner.html.twig' %}
 {% block content %}
-    <div id="page-content-div">
+    <div id="page-content-div" class="cent">
         <ul id="navigation">
             {% for item in navigation %}
                 <li><a href="logout.php">Logout</a></li>
@@ -10,14 +10,12 @@
         <form action="{{ action }}" method="{{ method }}">
             <fieldset>
                 <legend>Message Hub</legend>
-                <br>
                 <p>Welcome {{ username }}, please select whether you want to download, view or send messages!</p>
                 <br>
-                <label for="download messages"><input id="download" type="radio" name="detail" value="download">Download Messages</label>
                 <label for="view messages"><input id="view" type="radio" name="detail" value="view">View Messages</label>
                 <label for="send messages"><input id="send" type="radio" name="detail" value="send">Send Messages</label>
                 <br><br>
-                <input type="submit" value="continue">
+                <input type="submit" value="Continue">
             </fieldset>
         </form>
     </div>

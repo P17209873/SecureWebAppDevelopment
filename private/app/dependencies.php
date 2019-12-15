@@ -71,6 +71,6 @@ $container['registrationModel'] = function ($container) {
 };
 
 $container['bcryptWrapper'] = function ($container) {
-  $bcryptWrapper = new SecureWebAppCoursework\BcryptWrapper();
+  $bcryptWrapper = new \SecureWebAppCoursework\BcryptWrapper();
   return $bcryptWrapper;
 };

@@ -7,7 +7,7 @@ $app->post('/registeruser', function(Request $request, Response $response) use (
 
     // TODO: IT IS VERY IMPORTANT TO RECONSIDER cleanParameters FUNCTION IN AUTHENTICATE - DO I NEED TO MAKE IT IT'S OWN CLASS?
     $tainted_parameters = $request->getParsedBody();
-    $cleaned_parameters = cleanParameters($app, $tainted_parameters); //cleaned parameters exists in authenticate.php route file
+    $cleaned_parameters = cleanParameters($app, $tainted_parameters); //cleaned parameters exists in loggedin_homepage.php route file
 
     $username_exists_result = doesUsernameExist($app, $cleaned_parameters['sanitised_username']);
     $email_exists_result = doesEmailExist($app, $cleaned_parameters['sanitised_email']);
