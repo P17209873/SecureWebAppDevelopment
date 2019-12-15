@@ -32,6 +32,8 @@ class XmlParser
     public function resetXmlParser()
     {
         $this->xml_parser = null;
+        $this->element_name = null;
+        $this->parsed_data = [];
     }
 
     /**
@@ -101,7 +103,6 @@ class XmlParser
         }
     }
 
-
     /**
      * @param $parser
      * @param $element_data
@@ -113,7 +114,6 @@ class XmlParser
         if (array_key_exists($this->element_name, $this->parsed_data) === false)
         {
             $this->parsed_data[$this->element_name] = $element_data;
-
             if (sizeof($this->temporary_attributes) > 0)
             {
                 foreach ($this->temporary_attributes as $tag_att_name => $tag_att_value)

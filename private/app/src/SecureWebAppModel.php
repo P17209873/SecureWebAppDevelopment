@@ -13,8 +13,8 @@ class SecureWebAppModel
     private $xml_message;
     private $xml_parser;
     private $soap_wrapper;
-    //private $MSISDN;
     private $detail;
+    private $msisdn;
     private $username;
     private $password;
 
@@ -26,6 +26,7 @@ class SecureWebAppModel
         $this->soap_wrapper = null;
         $this->xml_parser = null;
         $this->xml_message = '';
+        $this->msisdn = SYSTEM_MSISDN;
         $this->username = '19p17204157';
         $this->password = 'cameraN1nthchair';
     }
@@ -92,20 +93,28 @@ class SecureWebAppModel
     private function selectDetail()
     {
         $select_detail = [];
-        //$this->MSISDN = '+447817814149';
         switch($this->detail)
         {
             case 'peekMessages':
-                $select_detail['required_service'] = 'peekMessages';
+                $select_detail['required_service'] = $this->detail;
                 $select_detail['service_parameters'] = [
                     'username' => $this->username,
                     'password' => $this->password,
                     'count' => 50,
-                    //'deviceMSISDN' => $this->MSISDN,
-                    //'countryCode' => '+44',
+                    'deviceMsisdn' => $this->msisdn,
+                    'countryCode' => '+44',
                 ];
-                $select_detail['result_message'] = 'peekMessagesResult';
                 break;
+            case 'sendMessage':
+                $select_detail['required_service'] = $this->detail;
+                $select_detail['service_parameters'] = [
+                    'username' => $this->username,
+                    'password' => $this->password,
+                    'deviceMSISDN' => $this->msisdn,
+                    'message' => 'HOW DO I GET MSG HERE',
+                    'deliveryReport' => false,
+                    'mtBearer' => 'SMS'
+                ];
             default:
         }
         return $select_detail;

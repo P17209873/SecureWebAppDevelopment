@@ -19,17 +19,20 @@ $js_path = $url_root . '/js/script.js';
 
 define('JS_PATH', $js_path);
 define('CSS_PATH', $css_path);
-define('APP_NAME', 'Coursework'); //TODO: change name later
+define('APP_NAME', 'Coursework');
 define('LANDING_PAGE', $_SERVER['SCRIPT_NAME']);
 
 define ('BCRYPT_ALGO', PASSWORD_DEFAULT);
 define ('BCRYPT_COST', 12);
 
+define ('TEAM_CODE', '18-3110-AC');
+
+define ('SYSTEM_MSISDN', '+447817814149');
+
 $wsdl = 'https://m2mconnect.ee.co.uk/orange-soap/services/MessageServiceByCountry?wsdl';
 define('WSDL', $wsdl);
 
-//TODO: Detail types are not accurate and will need to be updated once connected to machine
-$detail_types = ['peekMessages'];
+$detail_types = ['peekMessages', 'sendMessage'];
 define('DETAIL_TYPES', $detail_types);
 
 $settings = [
@@ -44,15 +47,16 @@ $settings = [
             'twig' => [
                 'cache' => false,
                 'auto_reload' => true,
-            ]],
+            ]
+        ],
 
         'pdo_settings' => [
             'rdbms' => 'mysql',
-            'host' => 'localhost',
-            'db_name' => 'swadcoursework',
+            'host' => 'localhost',//'mysql.tech.dmu.ac.uk',
+            'db_name' => 'swadcoursework',//'p17204157',
             'port' => '3306',
-            'user_name' => 'coursework',
-            'user_password' => 'password',
+            'user_name' => 'coursework',//'p17204157',
+            'user_password' => 'password',//'taXes+86',
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'options' => [
