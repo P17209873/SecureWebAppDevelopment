@@ -8,6 +8,5 @@ require 'routes/login.php';
 require 'routes/processmessage.php';
 require 'routes/displaymessage.php';
 require 'routes/register.php';
-require 'routes/authenticate.php';
 require 'routes/loggedin_homepage.php';
 require 'routes/registeruser.php';

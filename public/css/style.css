@@ -1,6 +1,6 @@
 html {margin:0;padding:0;border:0;}
 
-body {color:black;background-color:lightgray;font-family:arial, sans-serif;font-size:12pt;}
+body {color:black;background-color:lightgray;font-family:arial, sans-serif;font-size:12pt;margin:0 0 100px}
 
 /***********************************************/
 /* link styles                                 */
@@ -35,18 +35,12 @@ hr {width:100%;height:1px;}
 /***********************************************/
 /* Table style                                 */
 /***********************************************/
-
 table, th, td { border: 1px solid black; }
-
 
 /***********************************************/
 /* Login and Registration Form styles          */
 /***********************************************/
-
 form { width: 60%; margin: 0 auto; }
-
 label, input { display: inline-block; }
-
 label { width: 30%; text-align: right; }
-
 label + input { width: 30%; margin: 0 30% 0 1%; }
