@@ -57,6 +57,11 @@ class DatabaseWrapper
         $user_password = $database_settings['user_password'];
         $pdo_attributes = $database_settings['options'];
 
+        var_dump($host_details);
+        var_dump($user_name);
+        var_dump($user_password);
+        var_dump($pdo_attributes);
+
         try
         {
             $pdo_handle = new \PDO($host_details, $user_name, $user_password, $pdo_attributes);
@@ -64,6 +69,7 @@ class DatabaseWrapper
         }
         catch (\PDOException $exception_object)
         {
+            var_dump($exception_object);
             trigger_error('error connecting to database');
             $pdo_error = 'error connecting to database';
         }
