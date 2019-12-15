@@ -14,7 +14,7 @@ $app->get('/', function (Request $request, Response $response) use ($app) {
             'js_path' => JS_PATH,
             'landing_page' => LANDING_PAGE,
             'method' => 'post', // post the session data
-            'action' => 'authenticate',
+            'action' => 'home',
             'initial_input_box_value' => null,
             'page_title' => APP_NAME,   //TODO: Title and text need changing
             'page_heading_1' => APP_NAME,

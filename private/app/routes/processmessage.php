@@ -29,12 +29,6 @@ $app->post(
                 'page_heading_2' => 'Result',
                 'messages' => $parsed_xml_messages
             ]);
-
-        /* Tom delete
-        $processed_output = processOutput($app, $html_output);
-
-        return $processed_output;
-        */
         
         return $html_output;
     });
