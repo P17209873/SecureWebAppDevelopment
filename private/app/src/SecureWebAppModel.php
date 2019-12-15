@@ -66,12 +66,10 @@ class SecureWebAppModel
         if ($soap_client_handle !== false)
         {
             $webservice_parameters = $this->selectDetail();
-            var_dump($webservice_parameters);
             $webservice_function = $webservice_parameters['required_service'];
             $webservice_call_parameters = $webservice_parameters['service_parameters'];
 
             $soapcall_message = $this->soap_wrapper->performSoapCall($soap_client_handle, $webservice_function, $webservice_call_parameters);
-            var_dump($soapcall_message);
 
             $this->xml_message = $soapcall_message;
         }
