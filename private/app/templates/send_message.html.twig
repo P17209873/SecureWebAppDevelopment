@@ -1,0 +1,16 @@
+{% extends 'banner.html.twig' %}
+{% block content %}
+    <div id="page-content-div">
+        <h2>{{ page_heading_2 }}</h2>
+        <p class="cent">{{ page_text }}</p>
+        <fieldset class="cent">
+            <form action="{{action}}" method="{{method}}">
+                <label for="usermessage">User Message: </label><input id="usermessage" type="text" name="usermessage" size="30" required>
+                <br><br>
+                <p>
+                    <input type="submit" value={{ action }}>
+                </p>
+            </form>
+        </fieldset>
+    </div>
+{% endblock %}
