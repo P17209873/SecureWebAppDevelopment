@@ -48,7 +48,7 @@ $app->post('/home', function (Request $request, Response $response, $args) use (
                         'page_heading_1' => APP_NAME,
                         'username' => $cleaned_parameters['sanitised_username'],
                         'method' => 'post',
-                        'action' => 'processmessage'
+                        'action' => 'processchoice'
                     ]);
 
                 $processed_output = processOutput($app, $html_output);

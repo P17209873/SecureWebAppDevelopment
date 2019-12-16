@@ -3,21 +3,19 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
-$app->post(
-    '/processmessage',
+$app->GET(
+    '/viewmessages',
     function(Request $request, Response $response) use ($app)
     {
-        $validated_messages = false;
-        $validated_detail = false;
-        $country_detail_result = [];
-        $comment = '';
-
-        $tainted_parameters = $request->getParsedBody();
-        $tainted_parameters['detail'] = 'peekMessages'; //TEMPORARY, should be passed in through request
+        //$tainted_parameters = $request->getParsedBody();
+        //var_dump($tainted_parameters);
+        $tainted_parameters['detail'] = 'peekMessages';
+        //TODO IS THIS NEEDED?
         $cleaned_parameters = cleanupParameters($app, $tainted_parameters);
         $downloaded_messages = getMessage($app, $cleaned_parameters);
         $validated_messages = validateDownloadedData($app, $downloaded_messages);
         $parsed_xml_messages = parseXml($app, $validated_messages);
+        $team_messages = filterTeamMessages($app, $parsed_xml_messages);
 
         $html_output = $this->view->render($response,
             'display_message.html.twig',
@@ -27,12 +25,14 @@ $app->post(
                 'page_title' => APP_NAME,
                 'page_heading_1' => APP_NAME,
                 'page_heading_2' => 'Result',
-                'messages' => $parsed_xml_messages
+                'messages' => $team_messages
             ]);
-        
-        return $html_output;
-    });
+        $processed_output = processOutput($app, $html_output);
+        return $processed_output;
 
+    })->setName('viewmessages');;
+
+//THIS MIGHT NOT BE NEEDED ANYMORE
 function cleanupParameters($app, $tainted_parameters)
 {
     $cleaned_parameters = [];
@@ -107,4 +107,21 @@ function parseXml($app, $xml_strings_to_parse)
     }
 
     return $parsedXmlArray;
+}
+
+function filterTeamMessages($app, $parsed_xml_messages)
+{
+    $team_messages = [];
+    foreach ($parsed_xml_messages as $msg)
+    {
+        if (isset($msg['MESSAGE']))
+        {
+            var_dump($msg);
+            if (strpos($msg['MESSAGE'], TEAM_CODE) !== false)
+            {
+                $team_messages[] = $msg;
+            }
+        }
+    }
+    return $team_messages;
 }

@@ -13,8 +13,8 @@ class SecureWebAppModel
     private $xml_message;
     private $xml_parser;
     private $soap_wrapper;
-    //private $MSISDN;
     private $detail;
+    private $msisdn;
     private $username;
     private $password;
 
@@ -26,6 +26,7 @@ class SecureWebAppModel
         $this->soap_wrapper = null;
         $this->xml_parser = null;
         $this->xml_message = '';
+        $this->msisdn = SYSTEM_MSISDN;
         $this->username = '19p17204157';
         $this->password = 'cameraN1nthchair';
     }
@@ -75,6 +76,29 @@ class SecureWebAppModel
     }
 
     /**
+     * Send message
+     */
+    public function sendMessage($cleaned_parameters)
+    {
+        $userMessage = $cleaned_parameters['usermessage'];
+
+        $soap_client_handle = $this->soap_wrapper->createSoapClient();
+
+        if ($soap_client_handle !== false)
+        {
+            $webservice_parameters = $this->selectDetail();
+            $webservice_parameters['service_parameters']['message'] = $cleaned_parameters['usermessage'] . TEAM_CODE;
+            $webservice_function = $webservice_parameters['required_service'];
+            $webservice_call_parameters = $webservice_parameters['service_parameters'];
+
+            $soapcall_message = $this->soap_wrapper->performSoapCall($soap_client_handle, $webservice_function, $webservice_call_parameters);
+
+            $this->xml_message = $soapcall_message;
+        }
+
+    }
+
+    /**
      * @return string
      *
      * Retrieves the XML Result from the model - Will be used in the displayMessage route, to show the message on screen
@@ -92,20 +116,28 @@ class SecureWebAppModel
     private function selectDetail()
     {
         $select_detail = [];
-        //$this->MSISDN = '+447817814149';
         switch($this->detail)
         {
             case 'peekMessages':
-                $select_detail['required_service'] = 'peekMessages';
+                $select_detail['required_service'] = $this->detail;
                 $select_detail['service_parameters'] = [
                     'username' => $this->username,
                     'password' => $this->password,
                     'count' => 50,
-                    //'deviceMSISDN' => $this->MSISDN,
-                    //'countryCode' => '+44',
+                    'deviceMsisdn' => $this->msisdn,
+                    'countryCode' => '+44',
                 ];
-                $select_detail['result_message'] = 'peekMessagesResult';
                 break;
+            case 'sendMessage':
+                $select_detail['required_service'] = $this->detail;
+                $select_detail['service_parameters'] = [
+                    'username' => $this->username,
+                    'password' => $this->password,
+                    'deviceMSISDN' => $this->msisdn,
+                    'message' => 'TEMP VALUE',
+                    'deliveryReport' => false,
+                    'mtBearer' => 'SMS'
+                ];
             default:
         }
         return $select_detail;
