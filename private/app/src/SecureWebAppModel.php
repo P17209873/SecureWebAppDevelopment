@@ -76,6 +76,31 @@ class SecureWebAppModel
     }
 
     /**
+     * Send message
+     */
+    public function sendMessage($cleaned_parameters)
+    {
+        $userMessage = $cleaned_parameters['usermessage'];
+
+        $soap_client_handle = $this->soap_wrapper->createSoapClient();
+
+        if ($soap_client_handle !== false)
+        {
+            $webservice_parameters = $this->selectDetail();
+            $webservice_parameters['service_parameters']['message'] = "&lt;msg&gt;Hello!&lt;/msg&gt";//$cleaned_parameters['usermessage'];
+            var_dump($webservice_parameters);
+            $webservice_function = $webservice_parameters['required_service'];
+            $webservice_call_parameters = $webservice_parameters['service_parameters'];
+
+            $soapcall_message = $this->soap_wrapper->performSoapCall($soap_client_handle, $webservice_function, $webservice_call_parameters);
+            var_dump($soapcall_message);
+
+            $this->xml_message = $soapcall_message;
+        }
+
+    }
+
+    /**
      * @return string
      *
      * Retrieves the XML Result from the model - Will be used in the displayMessage route, to show the message on screen
@@ -111,9 +136,9 @@ class SecureWebAppModel
                     'username' => $this->username,
                     'password' => $this->password,
                     'deviceMSISDN' => $this->msisdn,
-                    'message' => 'HOW DO I GET MSG HERE',
-                    'deliveryReport' => false,
-                    'mtBearer' => 'SMS'
+                    'message' => 'TEMP VALUE',
+                    //'deliveryReport' => SOAP::Data->type(boolean => 'false'),//false,
+                    //'mtBearer' => 'SMS'
                 ];
             default:
         }
