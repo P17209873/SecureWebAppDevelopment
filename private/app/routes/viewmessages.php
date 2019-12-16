@@ -10,6 +10,7 @@ $app->GET(
         //$tainted_parameters = $request->getParsedBody();
         //var_dump($tainted_parameters);
         $tainted_parameters['detail'] = 'peekMessages';
+        //TODO IS THIS NEEDED?
         $cleaned_parameters = cleanupParameters($app, $tainted_parameters);
         $downloaded_messages = getMessage($app, $cleaned_parameters);
         $validated_messages = validateDownloadedData($app, $downloaded_messages);
@@ -31,6 +32,7 @@ $app->GET(
 
     })->setName('viewmessages');;
 
+//THIS MIGHT NOT BE NEEDED ANYMORE
 function cleanupParameters($app, $tainted_parameters)
 {
     $cleaned_parameters = [];
@@ -109,7 +111,7 @@ function parseXml($app, $xml_strings_to_parse)
 
 function filterTeamMessages($app, $parsed_xml_messages)
 {
-    $teamMessages = [];
+    $team_messages = [];
     foreach ($parsed_xml_messages as $msg)
     {
         if (isset($msg['MESSAGE']))
@@ -117,9 +119,9 @@ function filterTeamMessages($app, $parsed_xml_messages)
             var_dump($msg);
             if (strpos($msg['MESSAGE'], TEAM_CODE) !== false)
             {
-                $teamMessages[] = $msg;
+                $team_messages[] = $msg;
             }
         }
     }
-    return $teamMessages;
+    return $team_messages;
 }
