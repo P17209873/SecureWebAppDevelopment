@@ -9,22 +9,10 @@ $app->POST('/processusermessage', function(Request $request, Response $response)
     $tainted_parameters['detail'] = 'sendMessage';
     $cleaned_parameters = cleanupAllParameters($app, $tainted_parameters);
     var_dump($cleaned_parameters);
-    $messageSent = sendMessage($app, $cleaned_parameters);
-    var_dump($messageSent);
+    $successfully_sent = sendMessage($app, $cleaned_parameters);
+    var_dump($successfully_sent);
 
-    $html_output = $this->view->render($response,
-        'display_message.html.twig',
-        [
-            'css_path' => CSS_PATH,
-            'landing_page' => LANDING_PAGE,
-            'page_title' => APP_NAME,
-            'page_heading_1' => APP_NAME,
-            'page_heading_2' => 'Result',
-            //'messages' => $parsed_xml_messages
-        ]);
-
-    $processed_output = processOutput($app, $html_output);
-    return $processed_output;
+    //return $response->withRedirect('home');
 
 })->setName('processusermessage');
 
@@ -81,7 +69,7 @@ function sendMessage($app, $cleaned_parameters)
 
     $securewebapp_model->setParameters($cleaned_parameters);
     $securewebapp_model->sendMessage($cleaned_parameters);
-    $successfullUpload = $securewebapp_model->getResult();
+    $successfully_sent = $securewebapp_model->getResult();
 
-    return $successfullUpload;
+    return $successfully_sent;
 }

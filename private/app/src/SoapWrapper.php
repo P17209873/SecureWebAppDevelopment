@@ -28,7 +28,7 @@ class SoapWrapper
         try
         {
             $soap_client_handle = new \SoapClient($wsdl, $soap_client_parameters);
-            var_dump($soap_client_handle->__getFunctions());
+            //var_dump($soap_client_handle->__getFunctions());
         }
         catch (\SoapFault $exception)
         {
@@ -49,8 +49,19 @@ class SoapWrapper
         {
             try
             {
-                if ($webservice_function == 'peekMessages') {
+                if ($webservice_function == 'peekMessages')
+                {
                     $soap_call_result = $soap_client->{$webservice_function}($webservice_call_parameters['username'], $webservice_call_parameters['password'],$webservice_call_parameters['count']);
+                }
+                elseif ($webservice_function == 'sendMessage')
+                {
+                    $soap_call_result = $soap_client->{$webservice_function}(
+                        $webservice_call_parameters['username'],
+                        $webservice_call_parameters['password'],
+                        $webservice_call_parameters['deviceMSISDN'],
+                        $webservice_call_parameters['message'],
+                        $webservice_call_parameters['deliveryReport'],
+                        $webservice_call_parameters['mtBearer']);
                 }
             }
             catch (\SoapFault $exception)

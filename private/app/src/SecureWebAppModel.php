@@ -87,13 +87,11 @@ class SecureWebAppModel
         if ($soap_client_handle !== false)
         {
             $webservice_parameters = $this->selectDetail();
-            $webservice_parameters['service_parameters']['message'] = "&lt;msg&gt;Hello!&lt;/msg&gt";//$cleaned_parameters['usermessage'];
-            var_dump($webservice_parameters);
+            $webservice_parameters['service_parameters']['message'] = $cleaned_parameters['usermessage'] . TEAM_CODE;
             $webservice_function = $webservice_parameters['required_service'];
             $webservice_call_parameters = $webservice_parameters['service_parameters'];
 
             $soapcall_message = $this->soap_wrapper->performSoapCall($soap_client_handle, $webservice_function, $webservice_call_parameters);
-            var_dump($soapcall_message);
 
             $this->xml_message = $soapcall_message;
         }
@@ -137,8 +135,8 @@ class SecureWebAppModel
                     'password' => $this->password,
                     'deviceMSISDN' => $this->msisdn,
                     'message' => 'TEMP VALUE',
-                    //'deliveryReport' => SOAP::Data->type(boolean => 'false'),//false,
-                    //'mtBearer' => 'SMS'
+                    'deliveryReport' => false,
+                    'mtBearer' => 'SMS'
                 ];
             default:
         }
