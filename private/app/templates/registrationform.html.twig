@@ -4,6 +4,9 @@
         <h2>{{ page_heading_2 }}</h2>
         <p class="cent">{{ page_text }}</p>
         <fieldset class="cent">
+        {% if error_message %}
+            <h2>{{ error_message }}</h2>
+        {% endif %}
         <form action="{{ action }}" method="{{ method }}">
             <label for="first_name">First Name: </label><input id="first_name" type="text" name="first_name" size="10" required>
             <br>

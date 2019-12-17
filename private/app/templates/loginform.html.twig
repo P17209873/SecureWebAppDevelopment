@@ -5,6 +5,12 @@
         <p class="cent">{{ page_text }}</p>
         <fieldset class="cent">
         <form action="{{action}}" method="{{method}}">
+            {% if error_message %}
+                <h2>{{ error_message }}</h2>
+            {% endif %}
+            {% if message %}
+                <h2>{{ message }}</h2>
+            {% endif %}
             <label for="username">Username: </label><input id="username" type="text" name="username" size="10" required>
             <br>
             <label for="password">Password: </label><input id="password" type="password" name="password" size="10" required>

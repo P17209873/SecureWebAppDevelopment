@@ -57,7 +57,7 @@ class LoginModel
 
         if($result == true) // This signifies that there was a QUERY ERROR
         {
-            return 'Unfortunately there has been a query error';
+            return 'Unfortunately Login was unable to connect.  Please try again later.';
         }
 
         else
@@ -79,7 +79,7 @@ class LoginModel
 
         if($result == true) // This signifies that there was a QUERY ERROR
         {
-            return 'Unfortunately there has been a query error';
+            return 'Unfortunately Login was unable to connect.  Please try again later.';
         }
 
         else
