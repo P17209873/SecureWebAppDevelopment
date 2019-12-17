@@ -3,7 +3,9 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
-$app->post('/registeruser', function(Request $request, Response $response) use ($app){
+$app->POST('/registeruser', function(Request $request, Response $response) use ($app){
+
+    session_start();
 
     // TODO: IT IS VERY IMPORTANT TO RECONSIDER cleanParameters FUNCTION IN AUTHENTICATE - DO I NEED TO MAKE IT IT'S OWN CLASS?
     $tainted_parameters = $request->getParsedBody();
@@ -41,6 +43,8 @@ $app->post('/registeruser', function(Request $request, Response $response) use (
 
             createNewUser($app, $cleaned_parameters, $hashed_password);
 
+            $_SESSION['message'] = 'User Successfully created';
+
             $url = $this->router->pathFor('login');
             return $response->withStatus(302)->withHeader('Location', $url);
         }
@@ -49,8 +53,9 @@ $app->post('/registeruser', function(Request $request, Response $response) use (
     else
     {
         // TODO: Handle this better
-        echo 'Sorry, there was an issue with your entered values';
-        return;
+        $_SESSION['error'] = 'Invalid Account Credentials';
+        $url = $this->router->pathFor('register');
+        return $response->withStatus(302)->withHeader('Location', $url);
     }
 
 })->setName('registeruser');

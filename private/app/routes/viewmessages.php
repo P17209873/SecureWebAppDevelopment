@@ -3,9 +3,10 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
-$app->GET(
-    '/viewmessages',
-    function(Request $request, Response $response) use ($app)
+$app->GET('/viewmessages', function(Request $request, Response $response) use ($app) {
+    session_start();
+
+    if (isset($_SESSION['userid']))
     {
         //$tainted_parameters = $request->getParsedBody();
         //var_dump($tainted_parameters);
@@ -29,8 +30,15 @@ $app->GET(
             ]);
         $processed_output = processOutput($app, $html_output);
         return $processed_output;
+    }
+    else
+    {
+        $_SESSION['error'] = 'Invalid access.  Please Login first.';
+        $url = $this->router->pathFor('login');
+        return $response->withStatus(302)->withHeader('Location', $url);
+    }
 
-    })->setName('viewmessages');;
+})->setName('viewmessages');;
 
 //THIS MIGHT NOT BE NEEDED ANYMORE
 function cleanupParameters($app, $tainted_parameters)

@@ -5,14 +5,15 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 $app->POST('/processusermessage', function(Request $request, Response $response) use ($app) {
 
+    session_start();
+
     $tainted_parameters = $request->getParsedBody();
     $tainted_parameters['detail'] = 'sendMessage';
     $cleaned_parameters = cleanupAllParameters($app, $tainted_parameters);
-    var_dump($cleaned_parameters);
     $successfully_sent = sendMessage($app, $cleaned_parameters);
-    var_dump($successfully_sent);
+    $_SESSION['message'] = $successfully_sent;
 
-    //return $response->withRedirect('home');
+    return $response->withRedirect('home', 301);
 
 })->setName('processusermessage');
 

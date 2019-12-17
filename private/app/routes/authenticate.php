@@ -9,19 +9,22 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
-$app->post('/authenticate', function (Request $request, Response $response, $args) use ($app){
+$app->POST('/authenticate', function (Request $request, Response $response, $args) use ($app){
 
     $tainted_parameters = $request->getParsedBody();
     $cleaned_parameters = cleanParameters($app, $tainted_parameters);
+
+    session_start();
 
     $bcrypt_wrapper = $app->getContainer()->get('bcryptWrapper');
 
     $user_id_result = checkUserID($app, $cleaned_parameters['sanitised_username']);
     $user_id_result = intval($user_id_result);
 
+    $routeRedirect = 'login';
     if($user_id_result != null)
     {
-        if($user_id_result != 'Unfortunately there has been a query error')
+        if($user_id_result != 'Unfortunately Login was unable to connect.  Please try again later.')
         {
             $check_user_password = checkUserPassword($app, $user_id_result, $cleaned_parameters['sanitised_username']);
 
@@ -31,27 +34,19 @@ $app->post('/authenticate', function (Request $request, Response $response, $arg
             switch($user_authenticated_result){
                 case true:
                     $user_authenticated_result = 1;
+                    $_SESSION['userid'] = $cleaned_parameters['sanitised_username'];
+                    $routeRedirect = 'home';
                     break;
                 case false:
                     $user_authenticated_result = 0;
+                    $_SESSION['error'] = 'Invalid Login Attempt';
                     break;
             }
-
-            if($user_authenticated_result == 1)
-            {
-                echo 'you are now logged in';
-            }
-
-            else{
-                echo 'you are not logged in';
-            }
-
             logAttemptToDatabase($app, $user_id_result, $user_authenticated_result);
         }
-
         else
         {
-            echo 'There has been an error performing the query';
+            $_SESSION['error'] = 'Unfortunately Login was unable to connect.  Please try again later.';
         }
 
         //
@@ -59,8 +54,10 @@ $app->post('/authenticate', function (Request $request, Response $response, $arg
 
     else // This signifies that there is NO SUCH USER in the database
     {
-        return 'Unfortunately this user doesn\'t exist';
+        $_SESSION['error'] = 'Invalid Login Attempt';
     }
+    $url = $this->router->pathFor($routeRedirect);
+    return $response->withStatus(302)->withHeader('Location', $url);
 
 })->setName('authenticate');
 
