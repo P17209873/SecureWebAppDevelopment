@@ -13,7 +13,7 @@ $app->GET('/viewmessages', function(Request $request, Response $response) use ($
         $tainted_parameters['detail'] = 'peekMessages';
         //TODO IS THIS NEEDED?
         $cleaned_parameters = cleanupParameters($app, $tainted_parameters);
-        $downloaded_messages = getMessage($app, $cleaned_parameters);
+        $downloaded_messages = getMessages($app, $cleaned_parameters);
         $validated_messages = validateDownloadedData($app, $downloaded_messages);
         $parsed_xml_messages = parseXml($app, $validated_messages);
         $team_messages = filterTeamMessages($app, $parsed_xml_messages);
@@ -76,7 +76,7 @@ function validateDownloadedData($app, $tainted_data)
     return $cleaned_data;
 }
 
-function getMessage($app, $cleaned_parameters)
+function getMessages($app, $cleaned_parameters)
 {
     $messages = [];
     $soap_wrapper = $app->getContainer()->get('soapWrapper');

@@ -15,6 +15,12 @@
                 <legend>Message Hub</legend>
                 <p>Welcome {{ username }}, please select whether you want to download, view or send messages!</p>
                 <br>
+                {% if current_state %}
+                    <label for="date">Time Received: {{ current_state.date }}</label>
+                    <br>
+                    <label for="message">Message: {{ current_state.message }}</label>
+                {% endif %}
+                <br>
                 <label for="view messages"><input id="view" type="radio" name="detail" value="view" checked="checked">View Messages</label>
                 <label for="send messages"><input id="send" type="radio" name="detail" value="send">Send Messages</label>
                 <br><br>
