@@ -30,6 +30,14 @@ $app->GET('/home', function (Request $request, Response $response, $args) use ($
 
     if (isset($_SESSION['userid']))
     {
+        $past_states = getMessages($app, array('detail' => 'peekMessages'));
+        $validated_past_states = validateDownloadedData($app, $past_states);
+        $parsed_past_states = parseXml($app, $validated_past_states);
+        $past_team_states = filterTeamMessages($app, $parsed_past_states);
+        $current_state_message = end($past_team_states);
+        $current_state['date'] = $current_state_message['RECEIVEDTIME'];
+        $current_state['message'] = $current_state_message['MESSAGE'];
+
         $html_output = $this->view->render($response,
             'homepageform.html.twig',
             [
@@ -38,6 +46,8 @@ $app->GET('/home', function (Request $request, Response $response, $args) use ($
                 'message' => $message,
                 'page_title' => APP_NAME,   //TODO: Title and text need changing
                 'page_heading_1' => APP_NAME,
+                'current_state' => $current_state,
+                'username' => $_SESSION['userid'],
                 'method' => 'post',
                 'action' => 'processchoice'
             ]);
