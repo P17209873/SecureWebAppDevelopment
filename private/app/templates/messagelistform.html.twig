@@ -1,1 +1,36 @@
-<!--TO-DO: CREATE THIS FORM-->
+{% extends 'banner.html.twig' %}
+{% block content %}
+    <div id="lg-form-container">
+        <ul id="navigation">
+            {% for item in navigation %}
+                <li><a href="logout.php">Logout</a></li>
+            {% endfor %}
+        </ul>
+        <h3>{{ page_heading_2 }}</h3>
+   <table>
+        <caption>State Messages</caption>
+        <tr>
+            <th>Switch A:</th>
+            <th>Switch B:</th>
+            <th>Switch C:</th>
+            <th>Switch D:</th>
+            <th>Fan:</th>
+            <th>Temperature:</th>
+            <th>Last key pressed:</th>
+        </tr>
+        {% for message in messages %}
+            <tr>
+                <td>{{  message.switcha  }}</td>
+                <td>{{ message.switchb }}</td>
+                <td>{{ message.switchc }}</td>
+                <td>{{ message.switchd }}</td>
+                <td>{{ message.fan }}</td>
+                <td>{{ message.temperature }}</td>
+                <td>{{ message.key }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+        <br><br>
+        <p class="curr_page"><a href="{{ landing_page }}">Homepage</a></p>
+    </div>
+{% endblock %}
