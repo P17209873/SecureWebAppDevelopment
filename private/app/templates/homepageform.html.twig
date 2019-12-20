@@ -13,7 +13,7 @@
         <form action="{{ action }}" method="{{ method }}">
             <fieldset>
                 <legend>Message Hub</legend>
-                <p>Welcome {{ username }}, please select whether you want to download, view or send messages!</p>
+                <p>Welcome {{ username }}, please select whether you want to view or send messages!</p>
                 <br>
                 {% if current_state %}
                     <label for="date">Time Received: {{ current_state.date }}</label>
