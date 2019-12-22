@@ -7,29 +7,54 @@
             {% endfor %}
         </ul>
         <h3>{{ page_heading_2 }}</h3>
-   <table>
-        <caption>State Messages</caption>
-        <tr>
-            <th>Switch A:</th>
-            <th>Switch B:</th>
-            <th>Switch C:</th>
-            <th>Switch D:</th>
-            <th>Fan:</th>
-            <th>Temperature:</th>
-            <th>Last key pressed:</th>
-        </tr>
-        {% for message in messages %}
-            <tr>
-                <td>{{  message.switcha  }}</td>
-                <td>{{ message.switchb }}</td>
-                <td>{{ message.switchc }}</td>
-                <td>{{ message.switchd }}</td>
-                <td>{{ message.fan }}</td>
-                <td>{{ message.temperature }}</td>
-                <td>{{ message.key }}</td>
-            </tr>
-        {% endfor %}
-        </table>
+   <!--<table>-->
+       {% if messages %}
+           {% for individualMessage in messages %}
+               {% if individualMessage.MESSAGE %}
+                   <!--<caption>State Messages</caption>
+                   <tr>
+                       <th>Switch 1:</th>
+                       <th>Switch 2:</th>
+                       <th>Switch 3:</th>
+                       <th>Switch 4:</th>
+                       <th>Fan:</th>
+                       <th>Temperature:</th>
+                       <th>Last key pressed:</th>
+                   </tr>-->
+                   {% for message in individualMessage.MESSAGE %}
+                       <h5> New Message:</h5>
+                       <br>
+                       {% for key, value in message %}
+                           <p>{{ key }}: {{ value }}</p>
+                       {% endfor %}
+                       <!--<p>{{ message.Switches.switch1 }}</p>
+                       <br>
+                       <p>{{ message.Switches.switch2 }}</p>
+                       <br>
+                       <p>{{ message.Switches.switch3 }}</p>
+                       <br>
+                       <p>{{ message.Switches.switch4 }}</p>
+                       <br>
+                       <p>{{ message.Fan }}</p>
+                       <br>
+                       <p>{{ message.Temperature }}</p>
+                       <br>
+                       <p>{{ message.Keypad }}</p>
+                       <br>-->
+                       <!--<tr>
+                           <td>{{ message.Switches.switch1 }}</td>
+                           <td>{{ message.Switches.switch2 }}</td>
+                           <td>{{ message.Switches.switch3 }}</td>
+                           <td>{{ message.Switches.switch4 }}</td>
+                           <td>{{ message.Fan }}</td>
+                           <td>{{ message.Temperature }}</td>
+                           <td>{{ message.Keypad }}</td>
+                       </tr>-->
+                   {% endfor %}
+               {% endif %}
+           {% endfor %}
+       {% endif %}
+        <!--</table>-->
         <br><br>
         <p class="curr_page"><a href="{{ landing_page }}">Homepage</a></p>
     </div>

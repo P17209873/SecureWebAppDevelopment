@@ -18,7 +18,15 @@
                 {% if current_state %}
                     <label for="date">Time Received: {{ current_state.date }}</label>
                     <br>
-                    <label for="message">Message: {{ current_state.message }}</label>
+                    {% for key, value in current_state.message.Switches %}
+                        <label for={{ key }}>{{ key }}: {{ value }}</label>
+                        <br>
+                    {% endfor %}
+                    <label for="Fan">Fan: {{ current_state.message.Fan }}</label>
+                    <br>
+                    <label for="Temperature">Temperature: {{ current_state.message.Temperature }}</label>
+                    <br>
+                    <label for="Keypad">Last Key Pressed: {{ current_state.message.Keypad }}</label>
                 {% endif %}
                 <br>
                 <label for="view messages"><input id="view" type="radio" name="detail" value="view" checked="checked">View Messages</label>
