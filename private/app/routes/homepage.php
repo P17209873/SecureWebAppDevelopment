@@ -33,7 +33,7 @@ $app->GET('/home', function (Request $request, Response $response, $args) use ($
         $past_states = getMessages($app, array('detail' => 'peekMessages'));
         $validated_past_states = validateDownloadedData($app, $past_states);
         $parsed_past_states = parseXml($app, $validated_past_states);
-        $past_team_states = filterTeamMessages($app, $parsed_past_states);
+        $past_team_states = filterMessages($app, $parsed_past_states);
         $current_state_message = end($past_team_states);
         $current_state['date'] = $current_state_message['RECEIVEDTIME'];
         $current_state['message'] = $current_state_message['MESSAGE'];
