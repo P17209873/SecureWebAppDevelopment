@@ -35,6 +35,7 @@ class Validator
     public function validateDownloadedData($tainted_data)
     {
         $validated_string_data = '';
+        var_dump($tainted_data);
 
         $validated_string_data = filter_var($tainted_data, FILTER_SANITIZE_STRING);
 
@@ -50,5 +51,65 @@ class Validator
             $sanitised_string = filter_var($string_to_sanitise, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
         }
         return $sanitised_string;
+    }
+
+    public function validateMessage($tainted_message)
+    {
+        $valid = false;
+
+        $switches_valid = false;
+        $fan_valid = false;
+        $temp_valid = false;
+        $key_valid = false;
+
+
+        if (isset($tainted_message['Switches']['switch1']) && isset($tainted_message['Switches']['switch2'])
+            && isset($tainted_message['Switches']['switch3']) && isset($tainted_message['Switches']['switch4']))
+        {
+            $number_valid_switches = 0;
+            foreach ($tainted_message['Switches'] as $switch)
+            {
+                if ($switch == 'on' || $switch == 'off')
+                {
+                    $number_valid_switches += 1;
+                }
+            }
+            if ($number_valid_switches == 4)
+            {
+                $switches_valid = true;
+            }
+        }
+
+        if (isset($tainted_message['Fan']))
+        {
+            if ($tainted_message['Fan'] == 'forward' || $tainted_message['Fan'] == 'reverse')
+            {
+                $fan_valid = true;
+            }
+        }
+
+        if (isset($tainted_message['Temperature']))
+        {
+
+            if (intval($tainted_message['Temperature']) >= 20 && intval($tainted_message['Temperature']) <= 50)
+            {
+                $temp_valid = true;
+            }
+        }
+
+        if (isset($tainted_message['Keypad']))
+        {
+
+            if (intval($tainted_message['Keypad']) >= 0 && intval($tainted_message['Keypad']) <= 9)
+            {
+                $key_valid = true;
+            }
+        }
+
+        if ($switches_valid && $fan_valid && $temp_valid && $key_valid)
+        {
+            $valid = true;
+        }
+        return $valid;
     }
 }
