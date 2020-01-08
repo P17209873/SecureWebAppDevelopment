@@ -20,7 +20,7 @@ $container['view'] = function ($container) {
 };
 
 $container['validator'] = function ($container) {
-    $validator = new \SecureWebAppCoursework\Validator(); // requires "secureWebAppCoursework\\": "secureWebAppCoursework/app/src" in composer.json
+    $validator = new \SecureWebAppCoursework\Validator();
     return $validator;
 };
 

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: Matt
@@ -10,63 +9,57 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
-$app->post('/home', function (Request $request, Response $response, $args) use ($app) {
+$app->POST('/authenticate', function (Request $request, Response $response, $args) use ($app){
 
     $tainted_parameters = $request->getParsedBody();
     $cleaned_parameters = cleanParameters($app, $tainted_parameters);
+
+    session_start();
 
     $bcrypt_wrapper = $app->getContainer()->get('bcryptWrapper');
 
     $user_id_result = checkUserID($app, $cleaned_parameters['sanitised_username']);
     $user_id_result = intval($user_id_result);
 
-    if ($user_id_result != null) {
-        if ($user_id_result != 'Unfortunately there has been a query error') {
+    $routeRedirect = 'login';
+    if($user_id_result != null)
+    {
+        if($user_id_result != 'Unfortunately Login was unable to connect.  Please try again later.')
+        {
             $check_user_password = checkUserPassword($app, $user_id_result, $cleaned_parameters['sanitised_username']);
 
             $user_authenticated_result = $bcrypt_wrapper->authenticatePassword($cleaned_parameters['password'], $check_user_password);
 
             // uses switch statement to prevent MySQL PDO error of incorrect integer value when trying to insert 'false'
-            switch ($user_authenticated_result) {
+            switch($user_authenticated_result){
                 case true:
                     $user_authenticated_result = 1;
+                    $_SESSION['userid'] = $cleaned_parameters['sanitised_username'];
+                    $routeRedirect = 'home';
                     break;
                 case false:
                     $user_authenticated_result = 0;
+                    $_SESSION['error'] = 'Invalid Login Attempt';
                     break;
             }
-
             logAttemptToDatabase($app, $user_id_result, $user_authenticated_result);
-
-            if ($user_authenticated_result == 1) {
-                $html_output = $this->view->render($response,
-                    'homepageform.html.twig',
-                    [
-                        'css_path' => CSS_PATH,
-                        'landing_page' => LANDING_PAGE,
-                        'page_title' => APP_NAME,   //TODO: Title and text need changing
-                        'page_heading_1' => APP_NAME,
-                        'username' => $cleaned_parameters['sanitised_username'],
-                        'method' => 'post',
-                        'action' => 'processchoice'
-                    ]);
-
-                $processed_output = processOutput($app, $html_output);
-                return $processed_output;
-            } else {
-                echo 'you are not logged in';
-            }
-        } else {
-            echo 'There has been an error performing the query';
+        }
+        else
+        {
+            $_SESSION['error'] = 'Unfortunately Login was unable to connect.  Please try again later.';
         }
 
         //
-    } else // This signifies that there is NO SUCH USER in the database
-    {
-        return 'Unfortunately this user doesn\'t exist';
     }
 
-})->setName('loggedin_homepage');
+    else // This signifies that there is NO SUCH USER in the database
+    {
+        $_SESSION['error'] = 'Invalid Login Attempt';
+    }
+    $url = $this->router->pathFor($routeRedirect);
+    return $response->withStatus(302)->withHeader('Location', $url);
+
+})->setName('authenticate');
 
 
 function checkUserPassword($app, $userid, $username)
@@ -103,15 +96,19 @@ function logAttemptToDatabase($app, $userid, $login_result)
     $model->storeLoginAttempt($userid, $login_result);
 }
 
-function cleanParameters($app, $tainted_parameters)
-{
+function cleanParameters($app, $tainted_parameters){
     $cleaned_parameters = [];
     $validator = $app->getContainer()->get('validator');
 
-    foreach ($tainted_parameters as $key => $param) {
-        if ($key != 'password' && $key != 'rpassword') {
+    foreach($tainted_parameters as $key=>$param)
+    {
+        if($key != 'password' && $key != 'rpassword')
+        {
             $cleaned_parameters['sanitised_' . $key] = $validator->sanitiseString($param);
-        } else {
+        }
+
+        else
+        {
             $cleaned_parameters[$key] = $tainted_parameters[$key];
         }
     }

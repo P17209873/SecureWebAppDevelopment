@@ -5,43 +5,49 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 $app->POST('/processusermessage', function(Request $request, Response $response) use ($app) {
 
-    $tainted_parameters = $request->getParsedBody();
-    $tainted_parameters['detail'] = 'sendMessage';
-    $cleaned_parameters = cleanupAllParameters($app, $tainted_parameters);
-    var_dump($cleaned_parameters);
-    $successfully_sent = sendMessage($app, $cleaned_parameters);
-    var_dump($successfully_sent);
+    session_start();
 
-    //return $response->withRedirect('home');
+    $tainted_parameters = $request->getParsedBody();
+
+    $cleaned_parameters = cleanupParameters($app, $tainted_parameters);
+
+    if (isset($cleaned_parameters['detail']) && isset($cleaned_parameters['usermessage']))
+    {
+        $successfully_sent = sendMessage($app, $cleaned_parameters);
+        $_SESSION['message'] = $successfully_sent;
+    }
+    else
+    {
+        $_SESSION['error'] = "Message didn't send";
+    }
+
+    return $response->withRedirect('home', 301);
 
 })->setName('processusermessage');
 
-function cleanupAllParameters($app, $tainted_parameters)
+function cleanupParameters($app, $tainted_parameters)
 {
     $cleaned_parameters = [];
-    $validated_detail = false;
-    $validated_message = false;
 
     $validator = $app->getContainer()->get('validator');
 
-    if (isset($tainted_parameters['detail']))
+    $tainted_message['Switches'] = [
+        'switch1' => $tainted_parameters['switch1'],
+        'switch2' => $tainted_parameters['switch2'],
+        'switch3' => $tainted_parameters['switch3'],
+        'switch4' => $tainted_parameters['switch4']
+    ];
+    $tainted_message['Fan'] = $tainted_parameters['fan'];
+    $tainted_message['Temperature'] = $tainted_parameters['temp'];
+    $tainted_message['Keypad'] = $tainted_parameters['key'];
+    $tainted_message['Id'] = TEAM_CODE;
+
+    if ($validator -> validateMessage($tainted_message))
     {
-        $tainted_detail = $tainted_parameters['detail'];
-        $validated_detail = $validator->validateDetailType($tainted_detail);
+        $cleaned_parameters['detail'] = 'sendMessage';
+        $cleaned_parameters['usermessage'] = json_encode($tainted_message);
     }
 
-    if (isset($tainted_parameters['usermessage']))
-    {
-        $tainted_message = $tainted_parameters['usermessage'];
-        //$validated_message = $validator->validateUserMessage($tainted_message);
-        $validated_message = $tainted_message;
-    }
-
-    if ($validated_detail != false && $validated_message != false)
-    {
-        $cleaned_parameters['detail'] = $validated_detail;
-        $cleaned_parameters['usermessage'] = $validated_message;
-    }
     return $cleaned_parameters;
 }
 

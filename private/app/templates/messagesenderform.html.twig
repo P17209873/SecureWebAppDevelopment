@@ -1,1 +1,47 @@
-<!--TO-DO: CREATE THIS FORM-->
+{% extends 'banner.html.twig' %}
+{% block content %}
+
+    <div id="page-content-div">
+        <ul id="navigation">
+            {% for item in navigation %}
+                <li><a href="logout.php">Logout</a></li>
+            {% endfor %}
+        </ul>
+        <h3>{{ page_heading_2 }}</h3>
+        <form action="{{ action }}" method ="{{ method }}">
+     <div id="page-content-div">
+        <ul id="navigation">
+            {% for item in navigation %}
+                <li><a href="logout.php">Logout</a></li>
+            {% endfor %}
+        </ul>
+        <h3>{{ page_heading_2 }}</h3>
+        <fieldset>
+        <form action="{{ action }}" method ="{{ method }}">
+            <p>{{ page_text }}</p>
+
+            <label for="switch1">Switch 1:<label for="ona">On<input id="on" type="radio" name="switch1" value="on"></label></label>
+            <label for="offa">Off<input id="off" type="radio" name="switch1" value="off"></label>
+            <br>
+            <label for="switch2">Switch 2:<label for="onb">On<input id="on" type="radio" name="switch2" value="on"></label></label>
+            <label for="offb">Off<input id="off" type="radio" name="switch2" value="off"></label>
+            <br>
+            <label for="switch3">Switch 3:<label for="onc">On<input id="on" type="radio" name="switch3" value="on"></label></label>
+            <label for="offc">Off<input id="off" type="radio" name="switch3" value="off"></label>
+            <br>
+            <label for="switch4">Switch 4:<label for="ond">On<input id="on" type="radio" name="switch4" value="on"></label></label>
+            <label for="offd">Off<input id="off" type="radio" name="switch4" value="off"></label>
+            <br>
+            <label for="fan">Fan:<label for="forward">Forward<input id="forward" type="radio" name="fan" value="forward"></label></label>
+            <label for="reverse">Reverse<input id="reverse" type="radio" name="fan" value="reverse"></label>
+            <br><br>
+            <label for="temp">Temperature:</label><input id="temp" type="number" name="temp" value="temp" min="20" max="50" placeholder="Enter a temperature between 20-50" required>
+            <br>
+            <label for="key">Last Key Pressed:</label><input id="key" type="number" name="key" value="key" min="0" max="9" placeholder="Enter a number between 0-9" required>
+            <hr>
+            <input type="submit" value="send">
+            <br><br>
+        </form>
+        </fieldset>
+    </div>
+{% endblock %}

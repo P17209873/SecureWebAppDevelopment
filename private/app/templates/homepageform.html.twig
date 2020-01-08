@@ -7,12 +7,29 @@
             {% endfor %}
         </ul>
         <h2>{{ page_heading_2 }}</h2>
+        {% if message %}
+            <h2>{{ message }}</h2>
+        {% endif %}
         <form action="{{ action }}" method="{{ method }}">
             <fieldset>
                 <legend>Message Hub</legend>
-                <p>Welcome {{ username }}, please select whether you want to download, view or send messages!</p>
+                <p>Welcome {{ username }}, please select whether you want to view or send messages!</p>
                 <br>
-                <label for="view messages"><input id="view" type="radio" name="detail" value="view">View Messages</label>
+                {% if current_state %}
+                    <label for="date">Time Received: {{ current_state.date }}</label>
+                    <br>
+                    {% for key, value in current_state.message.Switches %}
+                        <label for={{ key }}>{{ key }}: {{ value }}</label>
+                        <br>
+                    {% endfor %}
+                    <label for="Fan">Fan: {{ current_state.message.Fan }}</label>
+                    <br>
+                    <label for="Temperature">Temperature: {{ current_state.message.Temperature }}</label>
+                    <br>
+                    <label for="Keypad">Last Key Pressed: {{ current_state.message.Keypad }}</label>
+                {% endif %}
+                <br>
+                <label for="view messages"><input id="view" type="radio" name="detail" value="view" checked="checked">View Messages</label>
                 <label for="send messages"><input id="send" type="radio" name="detail" value="send">Send Messages</label>
                 <br><br>
                 <input type="submit" value="Continue">

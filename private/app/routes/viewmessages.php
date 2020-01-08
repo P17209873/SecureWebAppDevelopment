@@ -3,55 +3,40 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
-$app->GET(
-    '/viewmessages',
-    function(Request $request, Response $response) use ($app)
+$app->GET('/viewmessages', function(Request $request, Response $response) use ($app) {
+    session_start();
+
+    if (isset($_SESSION['userid']))
     {
-        //$tainted_parameters = $request->getParsedBody();
-        //var_dump($tainted_parameters);
-        $tainted_parameters['detail'] = 'peekMessages';
-        //TODO IS THIS NEEDED?
-        $cleaned_parameters = cleanupParameters($app, $tainted_parameters);
-        $downloaded_messages = getMessage($app, $cleaned_parameters);
-        $validated_messages = validateDownloadedData($app, $downloaded_messages);
-        $parsed_xml_messages = parseXml($app, $validated_messages);
-        $team_messages = filterTeamMessages($app, $parsed_xml_messages);
+        $cleaned_parameters['detail'] = 'peekMessages';;
+        $downloaded_messages = getMessages($app, $cleaned_parameters);
+        $validated_downloaded_messages = validateDownloadedData($app, $downloaded_messages);
+        $parsed_xml_messages = parseXml($app, $validated_downloaded_messages);
+        $filtered_messages = filterMessages($app, $parsed_xml_messages);
+        var_dump($filtered_messages);
 
         $html_output = $this->view->render($response,
-            'display_message.html.twig',
+            //'display_message.html.twig',
+            'messagelistform.html.twig',
             [
                 'css_path' => CSS_PATH,
                 'landing_page' => LANDING_PAGE,
                 'page_title' => APP_NAME,
                 'page_heading_1' => APP_NAME,
                 'page_heading_2' => 'Result',
-                'messages' => $team_messages
+                'messages' => $filtered_messages
             ]);
         $processed_output = processOutput($app, $html_output);
         return $processed_output;
-
-    })->setName('viewmessages');;
-
-//THIS MIGHT NOT BE NEEDED ANYMORE
-function cleanupParameters($app, $tainted_parameters)
-{
-    $cleaned_parameters = [];
-    $validated_detail = false;
-
-    $validator = $app->getContainer()->get('validator');
-
-    if (isset($tainted_parameters['detail']))
+    }
+    else
     {
-        $tainted_detail = $tainted_parameters['detail'];
-        $validated_detail = $validator->validateDetailType($tainted_detail);
+        $_SESSION['error'] = 'Invalid access.  Please Login first.';
+        $url = $this->router->pathFor('login');
+        return $response->withStatus(302)->withHeader('Location', $url);
     }
 
-    if ($validated_detail != false)
-    {
-        $cleaned_parameters['detail'] = $validated_detail;
-    }
-    return $cleaned_parameters;
-}
+})->setName('viewmessages');;
 
 function validateDownloadedData($app, $tainted_data)
 {
@@ -60,6 +45,7 @@ function validateDownloadedData($app, $tainted_data)
     {
         $validator = $app->getContainer()->get('validator');
         $cleaned_data = $validator->validateDownloadedData($tainted_data);
+        var_dump($tainted_data);
     }
     else
     {
@@ -68,7 +54,7 @@ function validateDownloadedData($app, $tainted_data)
     return $cleaned_data;
 }
 
-function getMessage($app, $cleaned_parameters)
+function getMessages($app, $cleaned_parameters)
 {
     $messages = [];
     $soap_wrapper = $app->getContainer()->get('soapWrapper');
@@ -109,19 +95,26 @@ function parseXml($app, $xml_strings_to_parse)
     return $parsedXmlArray;
 }
 
-function filterTeamMessages($app, $parsed_xml_messages)
+function filterMessages($app, $parsed_xml_messages)
 {
-    $team_messages = [];
-    foreach ($parsed_xml_messages as $msg)
+    $filtered_messages = [];
+
+    $validator = $app->getContainer()->get('validator');
+
+    foreach ($parsed_xml_messages as $message)
     {
-        if (isset($msg['MESSAGE']))
+        if (isset($message['MESSAGE']))
         {
-            var_dump($msg);
-            if (strpos($msg['MESSAGE'], TEAM_CODE) !== false)
+            $message_array = json_decode($message['MESSAGE'], true);
+            if (isset($message_array['Id']))
             {
-                $team_messages[] = $msg;
+                if ($validator->validateMessage($message_array))
+                {
+                    $message['MESSAGE'] = $message_array;
+                    $filtered_messages[] = $message;
+                }
             }
         }
     }
-    return $team_messages;
+    return $filtered_messages;
 }

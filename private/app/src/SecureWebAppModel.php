@@ -80,14 +80,12 @@ class SecureWebAppModel
      */
     public function sendMessage($cleaned_parameters)
     {
-        $userMessage = $cleaned_parameters['usermessage'];
-
         $soap_client_handle = $this->soap_wrapper->createSoapClient();
 
         if ($soap_client_handle !== false)
         {
             $webservice_parameters = $this->selectDetail();
-            $webservice_parameters['service_parameters']['message'] = $cleaned_parameters['usermessage'] . TEAM_CODE;
+            $webservice_parameters['service_parameters']['message'] = $cleaned_parameters['usermessage'];
             $webservice_function = $webservice_parameters['required_service'];
             $webservice_call_parameters = $webservice_parameters['service_parameters'];
 
@@ -123,7 +121,7 @@ class SecureWebAppModel
                 $select_detail['service_parameters'] = [
                     'username' => $this->username,
                     'password' => $this->password,
-                    'count' => 50,
+                    'count' => 400,
                     'deviceMsisdn' => $this->msisdn,
                     'countryCode' => '+44',
                 ];

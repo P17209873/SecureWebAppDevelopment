@@ -9,7 +9,16 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
-$app->get('/register', function(Request $request, Response $response) use ($app){
+$app->GET('/register', function(Request $request, Response $response) use ($app){
+
+    session_start();
+
+    $error_message = null;
+    if (isset($_SESSION['error']))
+    {
+        $error_message = $_SESSION['error'];
+        unset($_SESSION['error']);
+    }
 
     $html_output = $this->view->render($response,
         'registrationform.html.twig',
@@ -19,6 +28,7 @@ $app->get('/register', function(Request $request, Response $response) use ($app)
             'landing_page' => LANDING_PAGE,
             'method' => 'post',
             'action' => 'registeruser',
+            'error_message' => $error_message,
             'initial_input_box_value' => null,
             'page_title' => APP_NAME,   //TODO: Title and text need changing
             'page_heading_1' => APP_NAME,
