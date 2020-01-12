@@ -6,6 +6,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 $app->POST('/registeruser', function(Request $request, Response $response) use ($app){
 
     session_start();
+    $monologWrapper = $app->getContainer()->get('monologWrapper');
 
     // TODO: IT IS VERY IMPORTANT TO RECONSIDER cleanParameters FUNCTION IN AUTHENTICATE - DO I NEED TO MAKE IT IT'S OWN CLASS?
     $tainted_parameters = $request->getParsedBody();
@@ -44,6 +45,7 @@ $app->POST('/registeruser', function(Request $request, Response $response) use (
             createNewUser($app, $cleaned_parameters, $hashed_password);
 
             $_SESSION['message'] = 'User Successfully created';
+            $monologWrapper->addLogMessage($cleaned_parameters['sanitised_username'] . $_SESSION['message'], 'info');
 
             $url = $this->router->pathFor('login');
             return $response->withStatus(302)->withHeader('Location', $url);
@@ -54,6 +56,7 @@ $app->POST('/registeruser', function(Request $request, Response $response) use (
     {
         // TODO: Handle this better
         $_SESSION['error'] = 'Invalid Account Credentials';
+        $monologWrapper->addLogMessage($_SESSION['error'], 'info');
         $url = $this->router->pathFor('register');
         return $response->withStatus(302)->withHeader('Location', $url);
     }

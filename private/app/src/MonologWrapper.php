@@ -7,12 +7,7 @@ use Monolog\Handler\StreamHandler;
 
 class MonologWrapper
 {
-    private $log;
-
-    public function __construct()
-    {
-        $log = new Logger('logger');
-    }
+    public function __construct(){}
 
     public function __destruct(){}
 
@@ -22,8 +17,9 @@ class MonologWrapper
      * @param $log_type
      * @return int - returns selected log type in Logger format
      */
-    public function setLogType($log_type){
-        switch ($log_type){
+    public function setLogType($logType)
+    {
+        switch ($logType){
             case 'debug':
                 return Logger::DEBUG;
                 break;
@@ -46,5 +42,12 @@ class MonologWrapper
                 return Logger::EMERGENCY;
                 break;
         }
+    }
+
+    public function addLogMessage($message, $logType)
+    {
+        $logger = new Logger('SecureWebAppLogger');
+        $logger->pushHandler(new StreamHandler(LOG_FILE_LOCATION . LOG_FILE_NAME, $this->setLogType($logType)));
+        $logger->$logType($message);
     }
 }

@@ -8,10 +8,12 @@ use \Psr\Http\Message\ResponseInterface as Response;
 $app->GET('/', function (Request $request, Response $response) use ($app) {
 
     session_start();
+    $monologWrapper = $app->getContainer()->get('monologWrapper');
 
     $error_message = null;
     if (isset($_SESSION['error']))
     {
+        $monologWrapper->addLogMessage($_SESSION['error'], 'notice');
         $error_message = $_SESSION['error'];
         unset($_SESSION['error']);
     }
@@ -32,7 +34,7 @@ $app->GET('/', function (Request $request, Response $response) use ($app) {
             'method' => 'post', // post the session data
             'action' => 'authenticate',
             'initial_input_box_value' => null,
-            'page_title' => APP_NAME,
+            'page_title' => APP_NAME,   //TODO: Title and text need changing
             'page_heading_1' => APP_NAME,
             'error_message' => $error_message,
             'message' => $message,

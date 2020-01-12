@@ -14,6 +14,13 @@ $app->GET('/home', function (Request $request, Response $response, $args) use ($
 
     session_start();
 
+    $error_message=null;
+    if (isset($_SESSION['error']))
+    {
+        $error_message = 'Error Message Failed to send';
+        unset($_SESSION['error']);
+    }
+
     $message = null;
     if (isset($_SESSION['message']))
     {
@@ -43,6 +50,7 @@ $app->GET('/home', function (Request $request, Response $response, $args) use ($
             [
                 'css_path' => CSS_PATH,
                 'landing_page' => LANDING_PAGE,
+                'error_message' => $error_message,
                 'message' => $message,
                 'page_title' => APP_NAME,   //TODO: Title and text need changing
                 'page_heading_1' => APP_NAME,

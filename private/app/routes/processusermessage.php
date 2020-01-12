@@ -6,6 +6,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 $app->POST('/processusermessage', function(Request $request, Response $response) use ($app) {
 
     session_start();
+    $monologWrapper = $app->getContainer()->get('monologWrapper');
 
     $tainted_parameters = $request->getParsedBody();
 
@@ -15,10 +16,12 @@ $app->POST('/processusermessage', function(Request $request, Response $response)
     {
         $successfully_sent = sendMessage($app, $cleaned_parameters);
         $_SESSION['message'] = $successfully_sent;
+        $monologWrapper->addLogMessage($_SESSION['userid'] . ' send a new message', 'notice');
     }
     else
     {
         $_SESSION['error'] = "Message didn't send";
+        $monologWrapper->addLogMessage($_SESSION['userid'] . ' failed to send a message', 'notice');
     }
 
     return $response->withRedirect('home', 301);
