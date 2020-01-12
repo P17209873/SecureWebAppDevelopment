@@ -1,96 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="unit" tests="27" assertions="23" errors="1" warnings="3" failures="1" skipped="0" time="3.257875">
-    <testsuite name="BcryptWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/BcryptWrapperTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="1" skipped="0" time="0.782371">
-      <testcase name="testCreateHashedPassword" class="BcryptWrapperTest" classname="BcryptWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/BcryptWrapperTest.php" line="10" assertions="1" time="0.396709">
+  <testsuite name="unit" tests="24" assertions="24" errors="0" warnings="0" failures="1" skipped="0" time="1.791995">
+    <testsuite name="BcryptWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/BcryptWrapperTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="1" skipped="0" time="0.780609">
+      <testcase name="testCreateHashedPassword" class="BcryptWrapperTest" classname="BcryptWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/BcryptWrapperTest.php" line="10" assertions="1" time="0.390951">
         <failure type="PHPUnit\Framework\ExpectationFailedException">BcryptWrapperTest::testCreateHashedPassword
 Failed asserting that two strings are equal.
 --- Expected
 +++ Actual
 @@ @@
--'$2y$12$4w64w28xmAufvnPRsgsrAuMjXXUjK/JAI4AWhBLhZ7euzg5Yu/6VO'
-+'$2y$12$XcBjLOJxw5tphhcd9QYqKuOIl2m5NownreYoeK8jq0h9.tf9OdXWe'
+-'$2y$12$RKExftTveVFY6SbqbKpAl.Q/5bE94N274V.BPH0U.0oE.GZkAhl1i'
++'$2y$12$ZjF3wrqvXz9emEsrBBWBCemWw7xPJbaCDDOSs9sCUauqyAF.Z4pwC'
 
 /home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/BcryptWrapperTest.php:15
 </failure>
       </testcase>
-      <testcase name="testAuthenticatePassword" class="BcryptWrapperTest" classname="BcryptWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/BcryptWrapperTest.php" line="18" assertions="1" time="0.385662"/>
+      <testcase name="testAuthenticatePassword" class="BcryptWrapperTest" classname="BcryptWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/BcryptWrapperTest.php" line="18" assertions="1" time="0.389658"/>
     </testsuite>
-    <testsuite name="DatabaseWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/DatabaseWrapperTest.php" tests="1" assertions="0" errors="0" warnings="1" failures="0" skipped="0" time="0.000805">
-      <testcase name="Warning" assertions="0" time="0.000805">
-        <warning type="PHPUnit\Framework\Warning">Warning
-No tests found in class "DatabaseWrapperTest".
-
-</warning>
-      </testcase>
+    <testsuite name="DatabaseWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/DatabaseWrapperTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.001798">
+      <testcase name="testValidMakeDatabaseConnection" class="DatabaseWrapperTest" classname="DatabaseWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/DatabaseWrapperTest.php" line="9" assertions="1" time="0.001798"/>
     </testsuite>
-    <testsuite name="LoginModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/LoginModelTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.006982">
-      <testcase name="testInValidCheckUserID" class="LoginModelTest" classname="LoginModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/LoginModelTest.php" line="9" assertions="1" time="0.002358"/>
-      <testcase name="testValidCheckUserID" class="LoginModelTest" classname="LoginModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/LoginModelTest.php" line="37" assertions="1" time="0.001661"/>
-      <testcase name="testValidcheckUserPassword" class="LoginModelTest" classname="LoginModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/LoginModelTest.php" line="65" assertions="1" time="0.001577"/>
-      <testcase name="testInValidcheckUserPassword" class="LoginModelTest" classname="LoginModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/LoginModelTest.php" line="92" assertions="1" time="0.001386"/>
+    <testsuite name="LoginModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/LoginModelTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.007480">
+      <testcase name="testInValidCheckUserID" class="LoginModelTest" classname="LoginModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/LoginModelTest.php" line="9" assertions="1" time="0.001963"/>
+      <testcase name="testValidCheckUserID" class="LoginModelTest" classname="LoginModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/LoginModelTest.php" line="37" assertions="1" time="0.002037"/>
+      <testcase name="testValidcheckUserPassword" class="LoginModelTest" classname="LoginModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/LoginModelTest.php" line="65" assertions="1" time="0.001693"/>
+      <testcase name="testInValidcheckUserPassword" class="LoginModelTest" classname="LoginModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/LoginModelTest.php" line="92" assertions="1" time="0.001787"/>
     </testsuite>
-    <testsuite name="MonologWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/MonologWrapperTest.php" tests="2" assertions="1" errors="1" warnings="0" failures="0" skipped="0" time="0.002743">
-      <testcase name="testSetDebug" class="MonologWrapperTest" classname="MonologWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/MonologWrapperTest.php" line="9" assertions="1" time="0.001766"/>
-      <testcase name="testAddLogMessage" class="MonologWrapperTest" classname="MonologWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/MonologWrapperTest.php" line="16" assertions="0" time="0.000977">
-        <error type="Error">MonologWrapperTest::testAddLogMessage
-Error: Call to undefined method SecureWebAppCoursework\MonologWrapper::addLogMessage()
-
-/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/MonologWrapperTest.php:19
-</error>
-      </testcase>
+    <testsuite name="MonologWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/MonologWrapperTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.005171">
+      <testcase name="testSetDebug" class="MonologWrapperTest" classname="MonologWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/MonologWrapperTest.php" line="9" assertions="1" time="0.001661"/>
+      <testcase name="testAddLogMessage" class="MonologWrapperTest" classname="MonologWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/MonologWrapperTest.php" line="16" assertions="1" time="0.003510"/>
     </testsuite>
-    <testsuite name="ProcessOutputTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ProcessOutputTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.000795">
-      <testcase name="testProcessOutput" class="ProcessOutputTest" classname="ProcessOutputTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ProcessOutputTest.php" line="9" assertions="1" time="0.000795"/>
+    <testsuite name="ProcessOutputTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ProcessOutputTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.000774">
+      <testcase name="testProcessOutput" class="ProcessOutputTest" classname="ProcessOutputTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ProcessOutputTest.php" line="9" assertions="1" time="0.000774"/>
     </testsuite>
-    <testsuite name="RegistrationModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/RegistrationModelTest.php" tests="1" assertions="0" errors="0" warnings="1" failures="0" skipped="0" time="0.000374">
-      <testcase name="Warning" assertions="0" time="0.000374">
-        <warning type="PHPUnit\Framework\Warning">Warning
-No tests found in class "RegistrationModelTest".
-
-</warning>
-      </testcase>
+    <testsuite name="RegistrationModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/RegistrationModelTest.php" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.005944">
+      <testcase name="testValidCreateNewUser" class="RegistrationModelTest" classname="RegistrationModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/RegistrationModelTest.php" line="10" assertions="1" time="0.002550"/>
+      <testcase name="testValidDoesUserNameExist" class="RegistrationModelTest" classname="RegistrationModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/RegistrationModelTest.php" line="36" assertions="1" time="0.001754"/>
+      <testcase name="testValidDoesEmailExist" class="RegistrationModelTest" classname="RegistrationModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/RegistrationModelTest.php" line="62" assertions="1" time="0.001640"/>
     </testsuite>
-    <testsuite name="SQLQueriesTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SQLQueriesTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.002598">
-      <testcase name="testStoreUserLoginLog" class="SQLQueriesTest" classname="SQLQueriesTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SQLQueriesTest.php" line="9" assertions="1" time="0.000610"/>
-      <testcase name="testCreateNewUser" class="SQLQueriesTest" classname="SQLQueriesTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SQLQueriesTest.php" line="17" assertions="1" time="0.000636"/>
-      <testcase name="testGetUserID" class="SQLQueriesTest" classname="SQLQueriesTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SQLQueriesTest.php" line="25" assertions="1" time="0.000741"/>
-      <testcase name="testGetUserEmail" class="SQLQueriesTest" classname="SQLQueriesTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SQLQueriesTest.php" line="33" assertions="1" time="0.000611"/>
+    <testsuite name="SQLQueriesTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SQLQueriesTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.002827">
+      <testcase name="testStoreUserLoginLog" class="SQLQueriesTest" classname="SQLQueriesTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SQLQueriesTest.php" line="9" assertions="1" time="0.000667"/>
+      <testcase name="testCreateNewUser" class="SQLQueriesTest" classname="SQLQueriesTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SQLQueriesTest.php" line="17" assertions="1" time="0.000798"/>
+      <testcase name="testGetUserID" class="SQLQueriesTest" classname="SQLQueriesTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SQLQueriesTest.php" line="25" assertions="1" time="0.000633"/>
+      <testcase name="testGetUserEmail" class="SQLQueriesTest" classname="SQLQueriesTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SQLQueriesTest.php" line="33" assertions="1" time="0.000729"/>
     </testsuite>
-    <testsuite name="SecureWebAppModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SecureWebAppModelTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="1.936904">
-      <testcase name="testTrueSelectDetail" class="SecureWebAppModelTest" classname="SecureWebAppModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SecureWebAppModelTest.php" line="18" assertions="1" time="1.936904"/>
+    <testsuite name="SecureWebAppModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SecureWebAppModelTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.430915">
+      <testcase name="testTrueSelectDetail" class="SecureWebAppModelTest" classname="SecureWebAppModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SecureWebAppModelTest.php" line="9" assertions="1" time="0.430915"/>
     </testsuite>
-    <testsuite name="SessionModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SessionModelTest.php" tests="1" assertions="0" errors="0" warnings="1" failures="0" skipped="0" time="0.000300">
-      <testcase name="Warning" assertions="0" time="0.000300">
-        <warning type="PHPUnit\Framework\Warning">Warning
-No tests found in class "SessionModelTest".
-
-</warning>
-      </testcase>
+    <testsuite name="SoapWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SoapWrapperTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.552691">
+      <testcase name="testCreateSoapClient" class="SoapWrapperTest" classname="SoapWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SoapWrapperTest.php" line="9" assertions="1" time="0.001494"/>
+      <testcase name="testSuccessPerformSoapCall" class="SoapWrapperTest" classname="SoapWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SoapWrapperTest.php" line="17" assertions="1" time="0.551197"/>
     </testsuite>
-    <testsuite name="SoapWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SoapWrapperTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.517060">
-      <testcase name="testCreateSoapClient" class="SoapWrapperTest" classname="SoapWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SoapWrapperTest.php" line="9" assertions="1" time="0.001169"/>
-      <testcase name="testSuccessPerformSoapCall" class="SoapWrapperTest" classname="SoapWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SoapWrapperTest.php" line="22" assertions="1" time="0.515891"/>
+    <testsuite name="ValidatorTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ValidatorTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.001673">
+      <testcase name="testTrueValidateDetailType" class="ValidatorTest" classname="ValidatorTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ValidatorTest.php" line="9" assertions="1" time="0.000953"/>
+      <testcase name="testFalseValidateDetailType" class="ValidatorTest" classname="ValidatorTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ValidatorTest.php" line="14" assertions="1" time="0.000720"/>
     </testsuite>
-    <testsuite name="ValidatorTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ValidatorTest.php" tests="6" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.004930">
-      <testcase name="testTrueValidateDetailType" class="ValidatorTest" classname="ValidatorTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ValidatorTest.php" line="9" assertions="1" time="0.001317"/>
-      <testcase name="testFalseValidateDetailType" class="ValidatorTest" classname="ValidatorTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ValidatorTest.php" line="14" assertions="1" time="0.000806"/>
-      <testcase name="testTrueValidateDownloadedData" class="ValidatorTest" classname="ValidatorTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ValidatorTest.php" line="20" assertions="1" time="0.000648">
-        <system-out>&lt;pre class='xdebug-var-dump' dir='ltr'&gt;
-&lt;small&gt;/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/private/app/src/Validator.php:38:&lt;/small&gt;&lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'randomString'&lt;/font&gt; &lt;i&gt;(length=12)&lt;/i&gt;
-&lt;/pre&gt;</system-out>
-      </testcase>
-      <testcase name="testFalseValidateDownloadedData" class="ValidatorTest" classname="ValidatorTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ValidatorTest.php" line="25" assertions="1" time="0.000685">
-        <system-out>&lt;pre class='xdebug-var-dump' dir='ltr'&gt;
-&lt;small&gt;/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/private/app/src/Validator.php:38:&lt;/small&gt;&lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'randomString'&lt;/font&gt; &lt;i&gt;(length=12)&lt;/i&gt;
-&lt;/pre&gt;</system-out>
-      </testcase>
-      <testcase name="testTrueSanitiseString" class="ValidatorTest" classname="ValidatorTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ValidatorTest.php" line="31" assertions="1" time="0.000710"/>
-      <testcase name="testFalseSanitiseString" class="ValidatorTest" classname="ValidatorTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ValidatorTest.php" line="36" assertions="1" time="0.000764"/>
-    </testsuite>
-    <testsuite name="XmlParserTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/XmlParserTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.002013">
-      <testcase name="testXMLConstruct" class="XmlParserTest" classname="XmlParserTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/XmlParserTest.php" line="9" assertions="1" time="0.001136"/>
-      <testcase name="testSetXmlStringToParseAndParsing" class="XmlParserTest" classname="XmlParserTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/XmlParserTest.php" line="16" assertions="1" time="0.000877"/>
+    <testsuite name="XmlParserTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/XmlParserTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.002112">
+      <testcase name="testXMLConstruct" class="XmlParserTest" classname="XmlParserTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/XmlParserTest.php" line="9" assertions="1" time="0.000935"/>
+      <testcase name="testSetXmlStringToParseAndParsing" class="XmlParserTest" classname="XmlParserTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/XmlParserTest.php" line="16" assertions="1" time="0.001177"/>
     </testsuite>
   </testsuite>
 </testsuites>

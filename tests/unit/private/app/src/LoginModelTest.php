@@ -8,7 +8,7 @@ class LoginModelTest extends TestCase
 {
     public function testInValidCheckUserID() {
         $loginModel = new \SecureWebAppCoursework\LoginModel();
-        //hard coded pdo settings, not a good way and insecure
+        //hard coded pdo settings, not a good way
         $settings = [
             'rdbms' => 'mysql',
             'host' => 'localhost',//'mysql.tech.dmu.ac.uk',

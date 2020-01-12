@@ -14,14 +14,12 @@ class DatabaseWrapper
     private $db_handle;
     private $errors;
     private $prepared_statement;
-    private $sql_queries;
 
     public function __construct()
     {
         $this->database_connection_settings = null;
         $this->db_handle = null;
         $this->prepared_statement = null;
-        $this->sql_queries = null;
         $this->errors = [];
     }
 
@@ -69,17 +67,6 @@ class DatabaseWrapper
         }
 
         return $pdo_error;
-    }
-
-    /**
-     * Retrieves the predefined SQL queries from the SQLQueries class, when // TODO: Complete this comment
-     *
-     * @param $sql_queries
-     */
-
-    public function setSqlQueries($sql_queries)
-    {
-        $this->sql_queries = $sql_queries;
     }
 
     /**
