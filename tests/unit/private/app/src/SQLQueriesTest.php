@@ -9,7 +9,7 @@ class SQLQueriesTest extends TestCase
     public function testStoreUserLoginLog() {
         $SQLQueries = new \SecureWebAppCoursework\SQLQueries();
 
-        $query_string  = "INSERT INTO UserLoginLogs SET UserID = :User_ID LoginCompleted = :LoginCompleted";
+        $query_string  = "INSERT INTO userloginlogs SET userid = :userid, logincompleted = :logincompleted";
 
         $this->assertEquals($query_string, $SQLQueries -> storeUserLoginLog());
     }
@@ -17,7 +17,7 @@ class SQLQueriesTest extends TestCase
     public function testCreateNewUser() {
         $SQLQueries = new \SecureWebAppCoursework\SQLQueries();
 
-        $query_string = "INSERT INTO Users SET UserUsername = :UserUsername, UserPassword = :UserPassword, UserEmail = :UserEmail, UserFirstName = :UserFirstName, UserLastName = :UserLastName";
+        $query_string = "INSERT INTO users SET userusername = :userusername, userpassword = :userpassword, useremail = :useremail, userfirstname = :userfirstname, userlastname = :userlastname";
 
         $this->assertEquals($query_string, $SQLQueries -> createNewUser());
     }
@@ -25,7 +25,7 @@ class SQLQueriesTest extends TestCase
     public function testGetUserID() {
         $SQLQueries = new \SecureWebAppCoursework\SQLQueries();
 
-        $query_string = "SELECT UserID FROM Users WHERE UserUsername = :UserUsername";
+        $query_string = "SELECT userid FROM users WHERE userusername = :userusername";
 
         $this->assertEquals($query_string, $SQLQueries -> getUserID());
     }
@@ -33,7 +33,7 @@ class SQLQueriesTest extends TestCase
     public function testGetUserEmail() {
         $SQLQueries = new \SecureWebAppCoursework\SQLQueries();
 
-        $query_string = "SELECT UserID FROM Users WHERE UserEmail = :UserEmail";
+        $query_string = "SELECT userid FROM users WHERE useremail = :useremail";
 
         $this->assertEquals($query_string, $SQLQueries -> getUserEmail());
     }

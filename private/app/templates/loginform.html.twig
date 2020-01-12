@@ -1,27 +1,47 @@
-{% extends 'banner.html.twig' %}
-{% block content %}
+<!DOCTYPE html>
+<html lang=”en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="author" content="Matthew Trim, Christopher Sherlock, Sam Spencer-Mcfadden" />
+    <link rel="stylesheet" href="{{ css_path }}" type="text/css"/>
+    <script type="text/javascript" src="{{  js_path }}"></script>
+    <title>{{ page_title }}</title>
+</head>
+<body>
+    <div id="banner-div">
+        <h1>{{ page_heading_1 }}</h1>
+        <p class="cent">
+            Maintained by Chris, Matt & Sam
+        </p>
+        <hr class="deepline">
+    </div>
+    <div id="clear-div"></div>
     <div id="page-content-div">
         <h2>{{ page_heading_2 }}</h2>
         <p class="cent">{{ page_text }}</p>
         <fieldset class="cent">
-        <form action="{{action}}" method="{{method}}">
-            {% if error_message %}
-                <h2>{{ error_message }}</h2>
-            {% endif %}
-            {% if message %}
-                <h2>{{ message }}</h2>
-            {% endif %}
-            <label for="username">Username: </label><input id="username" type="text" name="username" size="10" required>
-            <br>
-            <label for="password">Password: </label><input id="password" type="password" name="password" size="10" required>
-            <br>
-            <input name="showPWcheck" type="checkbox" onclick="showPassword()">Show password
-            <br><br>
-            <p>
-                <input type="submit" value="Login">
-                <a href="{{ register }}"><button type="button">Register an account</button></a>
-            </p>
-        </form>
+            <form action="{{action}}" method="{{method}}">
+                {% if error_message %}
+                    <h2>{{ error_message }}</h2>
+                {% endif %}
+                {% if message %}
+                    <h2>{{ message }}</h2>
+                {% endif %}
+                <label for="username">Username: </label><input id="username" type="text" name="username" size="10" required>
+                <br>
+                <label for="password">Password: </label><input id="password" type="password" name="password" size="10" required>
+                <br>
+                <input name="showPWcheck" type="checkbox" onclick="showPassword()">Show password
+                <br><br>
+                <p>
+                    <input type="submit" value="Login">
+                    <a href="{{ register }}"><button type="button">Register an account</button></a>
+                </p>
+            </form>
         </fieldset>
     </div>
-{% endblock %}
+    <div id="footer" class="cent">
+    </div>
+</body>
+</html>

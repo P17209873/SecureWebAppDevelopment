@@ -32,7 +32,7 @@ $app->GET('/', function (Request $request, Response $response) use ($app) {
             'method' => 'post', // post the session data
             'action' => 'authenticate',
             'initial_input_box_value' => null,
-            'page_title' => APP_NAME,   //TODO: Title and text need changing
+            'page_title' => APP_NAME,
             'page_heading_1' => APP_NAME,
             'error_message' => $error_message,
             'message' => $message,
