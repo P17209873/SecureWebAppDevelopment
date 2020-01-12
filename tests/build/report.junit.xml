@@ -1,133 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="unit" tests="23" assertions="23" errors="0" warnings="0" failures="4" skipped="0" time="1.791010">
-    <testsuite name="BcryptWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/BcryptWrapperTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="1" skipped="0" time="0.773599">
-      <testcase name="testCreateHashedPassword" class="BcryptWrapperTest" classname="BcryptWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/BcryptWrapperTest.php" line="10" assertions="1" time="0.389424">
+  <testsuite name="unit" tests="25" assertions="23" errors="0" warnings="2" failures="1" skipped="0" time="1.784227">
+    <testsuite name="BcryptWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/BcryptWrapperTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="1" skipped="0" time="0.773522">
+      <testcase name="testCreateHashedPassword" class="BcryptWrapperTest" classname="BcryptWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/BcryptWrapperTest.php" line="10" assertions="1" time="0.388868">
         <failure type="PHPUnit\Framework\ExpectationFailedException">BcryptWrapperTest::testCreateHashedPassword
 Failed asserting that two strings are equal.
 --- Expected
 +++ Actual
 @@ @@
--'$2y$12$LQ8TLWt58.0jsTokAS/gl.O5v/qs1gAE3g0mcd5IohDfTOESo5iha'
-+'$2y$12$h1vXF6XtwdEnBW0pvSYeyuCNEOC39givOXsLiny0M4E79jeIc7qoO'
+-'$2y$12$i/a8ESXWp94/8IrERpvzc.MhgYH0IUoFfgW8068MGvfcJUhTXgwc6'
++'$2y$12$W5oD8SDelejJ3gWOx2yzQejDj1meesJnPmJofr7VmIsIGMvdVlsTG'
 
 /home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/BcryptWrapperTest.php:15
 </failure>
       </testcase>
-      <testcase name="testAuthenticatePassword" class="BcryptWrapperTest" classname="BcryptWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/BcryptWrapperTest.php" line="18" assertions="1" time="0.384175"/>
+      <testcase name="testAuthenticatePassword" class="BcryptWrapperTest" classname="BcryptWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/BcryptWrapperTest.php" line="18" assertions="1" time="0.384654"/>
     </testsuite>
-    <testsuite name="DatabaseWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/DatabaseWrapperTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="1" skipped="0" time="0.004481">
-      <testcase name="testdbConnection" class="DatabaseWrapperTest" classname="DatabaseWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/DatabaseWrapperTest.php" line="10" assertions="1" time="0.004481">
-        <failure type="PHPUnit\Framework\ExpectationFailedException">DatabaseWrapperTest::testdbConnection
-Failed asserting that true matches expected false.
+    <testsuite name="DatabaseWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/DatabaseWrapperTest.php" tests="1" assertions="0" errors="0" warnings="1" failures="0" skipped="0" time="0.000833">
+      <testcase name="Warning" assertions="0" time="0.000833">
+        <warning type="PHPUnit\Framework\Warning">Warning
+No tests found in class "DatabaseWrapperTest".
 
-/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/DatabaseWrapperTest.php:13
-</failure>
+</warning>
       </testcase>
     </testsuite>
-    <testsuite name="LoginModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/LoginModelTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.003028">
-      <testcase name="testAttemptLogin" class="LoginModelTest" classname="LoginModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/LoginModelTest.php" line="20" assertions="1" time="0.003028"/>
+    <testsuite name="LoginModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/LoginModelTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.006679">
+      <testcase name="testInValidCheckUserID" class="LoginModelTest" classname="LoginModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/LoginModelTest.php" line="9" assertions="1" time="0.001989"/>
+      <testcase name="testValidCheckUserID" class="LoginModelTest" classname="LoginModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/LoginModelTest.php" line="37" assertions="1" time="0.001585"/>
+      <testcase name="testValidcheckUserPassword" class="LoginModelTest" classname="LoginModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/LoginModelTest.php" line="65" assertions="1" time="0.001480"/>
+      <testcase name="testInValidcheckUserPassword" class="LoginModelTest" classname="LoginModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/LoginModelTest.php" line="92" assertions="1" time="0.001625"/>
     </testsuite>
-    <testsuite name="MonologWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/MonologWrapperTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.005349">
-      <testcase name="testSetDebug" class="MonologWrapperTest" classname="MonologWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/MonologWrapperTest.php" line="9" assertions="1" time="0.005349">
+    <testsuite name="MonologWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/MonologWrapperTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.001747">
+      <testcase name="testSetDebug" class="MonologWrapperTest" classname="MonologWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/MonologWrapperTest.php" line="9" assertions="1" time="0.001747">
         <system-out>&lt;pre class='xdebug-var-dump' dir='ltr'&gt;
 &lt;small&gt;/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/MonologWrapperTest.php:11:&lt;/small&gt;&lt;small&gt;int&lt;/small&gt; &lt;font color='#4e9a06'&gt;100&lt;/font&gt;
 &lt;/pre&gt;</system-out>
       </testcase>
     </testsuite>
-    <testsuite name="ProcessOutputTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ProcessOutputTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.003024">
-      <testcase name="testProcessOutput" class="ProcessOutputTest" classname="ProcessOutputTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ProcessOutputTest.php" line="9" assertions="1" time="0.003024"/>
+    <testsuite name="ProcessOutputTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ProcessOutputTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.000858">
+      <testcase name="testProcessOutput" class="ProcessOutputTest" classname="ProcessOutputTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ProcessOutputTest.php" line="9" assertions="1" time="0.000858"/>
     </testsuite>
-    <testsuite name="RegistrationModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/RegistrationModelTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="1" skipped="0" time="0.004323">
-      <testcase name="testCreateNewUser" class="RegistrationModelTest" classname="RegistrationModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/RegistrationModelTest.php" line="9" assertions="1" time="0.004323">
-        <failure type="PHPUnit\Framework\ExpectationFailedException">RegistrationModelTest::testCreateNewUser
-Failed asserting that true matches expected false.
+    <testsuite name="RegistrationModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/RegistrationModelTest.php" tests="1" assertions="0" errors="0" warnings="1" failures="0" skipped="0" time="0.000290">
+      <testcase name="Warning" assertions="0" time="0.000290">
+        <warning type="PHPUnit\Framework\Warning">Warning
+No tests found in class "RegistrationModelTest".
 
-/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/RegistrationModelTest.php:12
-</failure>
+</warning>
       </testcase>
     </testsuite>
-    <testsuite name="SQLQueriesTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SQLQueriesTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.010792">
-      <testcase name="testStoreUserLoginLog" class="SQLQueriesTest" classname="SQLQueriesTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SQLQueriesTest.php" line="9" assertions="1" time="0.002976"/>
-      <testcase name="testCreateNewUser" class="SQLQueriesTest" classname="SQLQueriesTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SQLQueriesTest.php" line="17" assertions="1" time="0.002580"/>
-      <testcase name="testGetUserID" class="SQLQueriesTest" classname="SQLQueriesTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SQLQueriesTest.php" line="25" assertions="1" time="0.002616"/>
-      <testcase name="testGetUserEmail" class="SQLQueriesTest" classname="SQLQueriesTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SQLQueriesTest.php" line="33" assertions="1" time="0.002620"/>
+    <testsuite name="SQLQueriesTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SQLQueriesTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.002700">
+      <testcase name="testStoreUserLoginLog" class="SQLQueriesTest" classname="SQLQueriesTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SQLQueriesTest.php" line="9" assertions="1" time="0.000660"/>
+      <testcase name="testCreateNewUser" class="SQLQueriesTest" classname="SQLQueriesTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SQLQueriesTest.php" line="17" assertions="1" time="0.000655"/>
+      <testcase name="testGetUserID" class="SQLQueriesTest" classname="SQLQueriesTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SQLQueriesTest.php" line="25" assertions="1" time="0.000699"/>
+      <testcase name="testGetUserEmail" class="SQLQueriesTest" classname="SQLQueriesTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SQLQueriesTest.php" line="33" assertions="1" time="0.000686"/>
     </testsuite>
-    <testsuite name="SecureWebAppModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SecureWebAppModelTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.407635">
-      <testcase name="testTrueSelectDetail" class="SecureWebAppModelTest" classname="SecureWebAppModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SecureWebAppModelTest.php" line="18" assertions="1" time="0.407635">
+    <testsuite name="SecureWebAppModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SecureWebAppModelTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.707398">
+      <testcase name="testTrueSelectDetail" class="SecureWebAppModelTest" classname="SecureWebAppModelTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SecureWebAppModelTest.php" line="18" assertions="1" time="0.707398"/>
+    </testsuite>
+    <testsuite name="SoapWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SoapWrapperTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.284048">
+      <testcase name="testCreateSoapClient" class="SoapWrapperTest" classname="SoapWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SoapWrapperTest.php" line="9" assertions="1" time="0.001267"/>
+      <testcase name="testSuccessPerformSoapCall" class="SoapWrapperTest" classname="SoapWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SoapWrapperTest.php" line="22" assertions="1" time="0.282781"/>
+    </testsuite>
+    <testsuite name="ValidatorTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ValidatorTest.php" tests="6" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.004461">
+      <testcase name="testTrueValidateDetailType" class="ValidatorTest" classname="ValidatorTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ValidatorTest.php" line="9" assertions="1" time="0.000999"/>
+      <testcase name="testFalseValidateDetailType" class="ValidatorTest" classname="ValidatorTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ValidatorTest.php" line="14" assertions="1" time="0.000666"/>
+      <testcase name="testTrueValidateDownloadedData" class="ValidatorTest" classname="ValidatorTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ValidatorTest.php" line="20" assertions="1" time="0.000724">
         <system-out>&lt;pre class='xdebug-var-dump' dir='ltr'&gt;
-&lt;small&gt;/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/private/app/src/SoapWrapper.php:31:&lt;/small&gt;
-&lt;b&gt;array&lt;/b&gt; &lt;i&gt;(size=11)&lt;/i&gt;
-  0 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'int sendMessage(string $username, string $password, string $deviceMSISDN, string $message, boolean $deliveryReport, string $mtBearer)'&lt;/font&gt; &lt;i&gt;(length=133)&lt;/i&gt;
-  1 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'ArrayOf_xsd_string readMessages(string $username, string $password, int $count, string $deviceMsisdn, string $countryCode)'&lt;/font&gt; &lt;i&gt;(length=122)&lt;/i&gt;
-  2 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'boolean flushMessages(string $username, string $password, string $deviceMSISDN, string $countryCode)'&lt;/font&gt; &lt;i&gt;(length=100)&lt;/i&gt;
-  3 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'ArrayOf_xsd_string getDeliveryReports(string $username, string $password, string $deviceMSISDN, string $countryCode)'&lt;/font&gt; &lt;i&gt;(length=116)&lt;/i&gt;
-  4 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'ArrayOf_xsd_string waitForMessage(string $username, string $password, int $timeout, string $deviceMSISDN, int $msgref, string $countryCode)'&lt;/font&gt; &lt;i&gt;(length=139)&lt;/i&gt;
-  5 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'int sendMessageWithValidityPeriod(string $username, string $password, string $deviceMSISDN, string $message, boolean $deliveryReport, string $mtBearer, string $binarySmsDcs, string $validityDaysHoursMins)'&lt;/font&gt; &lt;i&gt;(length=204)&lt;/i&gt;
-  6 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'int sendBinarySmsMessage(string $username, string $password, string $deviceMSISDN, string $message, boolean $deliveryReport, string $mtBearer, string $binarySmsDcs)'&lt;/font&gt; &lt;i&gt;(length=164)&lt;/i&gt;
-  7 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'ArrayOf_xsd_string sendAndWait(string $username, string $password, int $timeout, string $deviceMSISDN, string $message, boolean $deliveryReport, string $mtBearer)'&lt;/font&gt; &lt;i&gt;(length=162)&lt;/i&gt;
-  8 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'ArrayOf_xsd_string sendBinarySmsAndWait(string $username, string $password, int $timeout, string $deviceMSISDN, string $message, boolean $deliveryReport, string $mtBearer, string $binarySmsDcs)'&lt;/font&gt; &lt;i&gt;(length=193)&lt;/i&gt;
-  9 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'ArrayOf_xsd_string peekMessages(string $username, string $password, int $count, string $deviceMsisdn, string $countryCode)'&lt;/font&gt; &lt;i&gt;(length=122)&lt;/i&gt;
-  10 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'ArrayOf_xsd_string getDeliveryReportsFromDate(string $username, string $password, string $deviceMSISDN, string $countryCode, string $fromDate)'&lt;/font&gt; &lt;i&gt;(length=142)&lt;/i&gt;
+&lt;small&gt;/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/private/app/src/Validator.php:38:&lt;/small&gt;&lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'randomString'&lt;/font&gt; &lt;i&gt;(length=12)&lt;/i&gt;
 &lt;/pre&gt;</system-out>
       </testcase>
-    </testsuite>
-    <testsuite name="SoapWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SoapWrapperTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.552004">
-      <testcase name="testCreateSoapClient" class="SoapWrapperTest" classname="SoapWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SoapWrapperTest.php" line="9" assertions="1" time="0.003850">
+      <testcase name="testFalseValidateDownloadedData" class="ValidatorTest" classname="ValidatorTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ValidatorTest.php" line="25" assertions="1" time="0.000640">
         <system-out>&lt;pre class='xdebug-var-dump' dir='ltr'&gt;
-&lt;small&gt;/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/private/app/src/SoapWrapper.php:31:&lt;/small&gt;
-&lt;b&gt;array&lt;/b&gt; &lt;i&gt;(size=11)&lt;/i&gt;
-  0 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'int sendMessage(string $username, string $password, string $deviceMSISDN, string $message, boolean $deliveryReport, string $mtBearer)'&lt;/font&gt; &lt;i&gt;(length=133)&lt;/i&gt;
-  1 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'ArrayOf_xsd_string readMessages(string $username, string $password, int $count, string $deviceMsisdn, string $countryCode)'&lt;/font&gt; &lt;i&gt;(length=122)&lt;/i&gt;
-  2 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'boolean flushMessages(string $username, string $password, string $deviceMSISDN, string $countryCode)'&lt;/font&gt; &lt;i&gt;(length=100)&lt;/i&gt;
-  3 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'ArrayOf_xsd_string getDeliveryReports(string $username, string $password, string $deviceMSISDN, string $countryCode)'&lt;/font&gt; &lt;i&gt;(length=116)&lt;/i&gt;
-  4 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'ArrayOf_xsd_string waitForMessage(string $username, string $password, int $timeout, string $deviceMSISDN, int $msgref, string $countryCode)'&lt;/font&gt; &lt;i&gt;(length=139)&lt;/i&gt;
-  5 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'int sendMessageWithValidityPeriod(string $username, string $password, string $deviceMSISDN, string $message, boolean $deliveryReport, string $mtBearer, string $binarySmsDcs, string $validityDaysHoursMins)'&lt;/font&gt; &lt;i&gt;(length=204)&lt;/i&gt;
-  6 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'int sendBinarySmsMessage(string $username, string $password, string $deviceMSISDN, string $message, boolean $deliveryReport, string $mtBearer, string $binarySmsDcs)'&lt;/font&gt; &lt;i&gt;(length=164)&lt;/i&gt;
-  7 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'ArrayOf_xsd_string sendAndWait(string $username, string $password, int $timeout, string $deviceMSISDN, string $message, boolean $deliveryReport, string $mtBearer)'&lt;/font&gt; &lt;i&gt;(length=162)&lt;/i&gt;
-  8 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'ArrayOf_xsd_string sendBinarySmsAndWait(string $username, string $password, int $timeout, string $deviceMSISDN, string $message, boolean $deliveryReport, string $mtBearer, string $binarySmsDcs)'&lt;/font&gt; &lt;i&gt;(length=193)&lt;/i&gt;
-  9 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'ArrayOf_xsd_string peekMessages(string $username, string $password, int $count, string $deviceMsisdn, string $countryCode)'&lt;/font&gt; &lt;i&gt;(length=122)&lt;/i&gt;
-  10 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'ArrayOf_xsd_string getDeliveryReportsFromDate(string $username, string $password, string $deviceMSISDN, string $countryCode, string $fromDate)'&lt;/font&gt; &lt;i&gt;(length=142)&lt;/i&gt;
+&lt;small&gt;/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/private/app/src/Validator.php:38:&lt;/small&gt;&lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'randomString'&lt;/font&gt; &lt;i&gt;(length=12)&lt;/i&gt;
 &lt;/pre&gt;</system-out>
       </testcase>
-      <testcase name="testSuccessPerformSoapCall" class="SoapWrapperTest" classname="SoapWrapperTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/SoapWrapperTest.php" line="22" assertions="1" time="0.548154">
-        <system-out>&lt;pre class='xdebug-var-dump' dir='ltr'&gt;
-&lt;small&gt;/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/private/app/src/SoapWrapper.php:31:&lt;/small&gt;
-&lt;b&gt;array&lt;/b&gt; &lt;i&gt;(size=11)&lt;/i&gt;
-  0 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'int sendMessage(string $username, string $password, string $deviceMSISDN, string $message, boolean $deliveryReport, string $mtBearer)'&lt;/font&gt; &lt;i&gt;(length=133)&lt;/i&gt;
-  1 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'ArrayOf_xsd_string readMessages(string $username, string $password, int $count, string $deviceMsisdn, string $countryCode)'&lt;/font&gt; &lt;i&gt;(length=122)&lt;/i&gt;
-  2 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'boolean flushMessages(string $username, string $password, string $deviceMSISDN, string $countryCode)'&lt;/font&gt; &lt;i&gt;(length=100)&lt;/i&gt;
-  3 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'ArrayOf_xsd_string getDeliveryReports(string $username, string $password, string $deviceMSISDN, string $countryCode)'&lt;/font&gt; &lt;i&gt;(length=116)&lt;/i&gt;
-  4 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'ArrayOf_xsd_string waitForMessage(string $username, string $password, int $timeout, string $deviceMSISDN, int $msgref, string $countryCode)'&lt;/font&gt; &lt;i&gt;(length=139)&lt;/i&gt;
-  5 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'int sendMessageWithValidityPeriod(string $username, string $password, string $deviceMSISDN, string $message, boolean $deliveryReport, string $mtBearer, string $binarySmsDcs, string $validityDaysHoursMins)'&lt;/font&gt; &lt;i&gt;(length=204)&lt;/i&gt;
-  6 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'int sendBinarySmsMessage(string $username, string $password, string $deviceMSISDN, string $message, boolean $deliveryReport, string $mtBearer, string $binarySmsDcs)'&lt;/font&gt; &lt;i&gt;(length=164)&lt;/i&gt;
-  7 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'ArrayOf_xsd_string sendAndWait(string $username, string $password, int $timeout, string $deviceMSISDN, string $message, boolean $deliveryReport, string $mtBearer)'&lt;/font&gt; &lt;i&gt;(length=162)&lt;/i&gt;
-  8 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'ArrayOf_xsd_string sendBinarySmsAndWait(string $username, string $password, int $timeout, string $deviceMSISDN, string $message, boolean $deliveryReport, string $mtBearer, string $binarySmsDcs)'&lt;/font&gt; &lt;i&gt;(length=193)&lt;/i&gt;
-  9 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'ArrayOf_xsd_string peekMessages(string $username, string $password, int $count, string $deviceMsisdn, string $countryCode)'&lt;/font&gt; &lt;i&gt;(length=122)&lt;/i&gt;
-  10 &lt;font color='#888a85'&gt;=&amp;gt;&lt;/font&gt; &lt;small&gt;string&lt;/small&gt; &lt;font color='#cc0000'&gt;'ArrayOf_xsd_string getDeliveryReportsFromDate(string $username, string $password, string $deviceMSISDN, string $countryCode, string $fromDate)'&lt;/font&gt; &lt;i&gt;(length=142)&lt;/i&gt;
-&lt;/pre&gt;</system-out>
-      </testcase>
+      <testcase name="testTrueSanitiseString" class="ValidatorTest" classname="ValidatorTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ValidatorTest.php" line="31" assertions="1" time="0.000695"/>
+      <testcase name="testFalseSanitiseString" class="ValidatorTest" classname="ValidatorTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ValidatorTest.php" line="36" assertions="1" time="0.000737"/>
     </testsuite>
-    <testsuite name="ValidatorTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ValidatorTest.php" tests="6" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.016446">
-      <testcase name="testTrueValidateDetailType" class="ValidatorTest" classname="ValidatorTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ValidatorTest.php" line="9" assertions="1" time="0.003219"/>
-      <testcase name="testFalseValidateDetailType" class="ValidatorTest" classname="ValidatorTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ValidatorTest.php" line="14" assertions="1" time="0.002674"/>
-      <testcase name="testTrueValidateDownloadedData" class="ValidatorTest" classname="ValidatorTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ValidatorTest.php" line="20" assertions="1" time="0.002760"/>
-      <testcase name="testFalseValidateDownloadedData" class="ValidatorTest" classname="ValidatorTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ValidatorTest.php" line="25" assertions="1" time="0.002602"/>
-      <testcase name="testTrueSanitiseString" class="ValidatorTest" classname="ValidatorTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ValidatorTest.php" line="31" assertions="1" time="0.002574"/>
-      <testcase name="testFalseSanitiseString" class="ValidatorTest" classname="ValidatorTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/ValidatorTest.php" line="36" assertions="1" time="0.002617"/>
-    </testsuite>
-    <testsuite name="XmlParserTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/XmlParserTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.006522">
-      <testcase name="testXMLConstruct" class="XmlParserTest" classname="XmlParserTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/XmlParserTest.php" line="9" assertions="1" time="0.003170"/>
-      <testcase name="testSetXmlStringToParseAndParsing" class="XmlParserTest" classname="XmlParserTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/XmlParserTest.php" line="16" assertions="1" time="0.003352"/>
-    </testsuite>
-    <testsuite name="bootstrapTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/bootstrapTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="1" skipped="0" time="0.003807">
-      <testcase name="testFakeTest" class="bootstrapTest" classname="bootstrapTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/bootstrapTest.php" line="51" assertions="1" time="0.003807">
-        <failure type="PHPUnit\Framework\ExpectationFailedException">bootstrapTest::testFakeTest
-Failed asserting that true matches expected false.
-
-/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/bootstrapTest.php:53
-</failure>
-      </testcase>
+    <testsuite name="XmlParserTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/XmlParserTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.001691">
+      <testcase name="testXMLConstruct" class="XmlParserTest" classname="XmlParserTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/XmlParserTest.php" line="9" assertions="1" time="0.000923"/>
+      <testcase name="testSetXmlStringToParseAndParsing" class="XmlParserTest" classname="XmlParserTest" file="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/tests/unit/private/app/src/XmlParserTest.php" line="16" assertions="1" time="0.000768"/>
     </testsuite>
   </testsuite>
 </testsuites>
