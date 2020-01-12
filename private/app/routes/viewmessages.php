@@ -13,7 +13,6 @@ $app->GET('/viewmessages', function(Request $request, Response $response) use ($
         $validated_downloaded_messages = validateDownloadedData($app, $downloaded_messages);
         $parsed_xml_messages = parseXml($app, $validated_downloaded_messages);
         $filtered_messages = filterMessages($app, $parsed_xml_messages);
-        var_dump($filtered_messages);
 
         $html_output = $this->view->render($response,
             //'display_message.html.twig',
