@@ -15,6 +15,7 @@ $app->POST('/authenticate', function (Request $request, Response $response, $arg
     $cleaned_parameters = cleanParameters($app, $tainted_parameters);
 
     session_start();
+    $monologWrapper = $app->getContainer()->get('monologWrapper');
 
     $bcrypt_wrapper = $app->getContainer()->get('bcryptWrapper');
 
@@ -35,6 +36,7 @@ $app->POST('/authenticate', function (Request $request, Response $response, $arg
                 case true:
                     $user_authenticated_result = 1;
                     $_SESSION['userid'] = $cleaned_parameters['sanitised_username'];
+                    $monologWrapper->addLogMessage($_SESSION['userid'] . ' logged in', 'info');
                     $routeRedirect = 'home';
                     break;
                 case false:
@@ -47,6 +49,7 @@ $app->POST('/authenticate', function (Request $request, Response $response, $arg
         else
         {
             $_SESSION['error'] = 'Unfortunately Login was unable to connect.  Please try again later.';
+            $monologWrapper->addLogMessage('Login attempt unable to connect', 'warning');
         }
 
         //

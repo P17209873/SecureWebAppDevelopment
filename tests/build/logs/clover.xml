@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1578851611">
-  <project timestamp="1578851611">
+<coverage generated="1578864910">
+  <project timestamp="1578864910">
     <package name="SecureWebAppCoursework">
       <file name="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/private/app/src/BcryptWrapper.php">
         <class name="SecureWebAppCoursework\BcryptWrapper" namespace="SecureWebAppCoursework">
