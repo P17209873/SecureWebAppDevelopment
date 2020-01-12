@@ -9,9 +9,13 @@ namespace SecureWebAppCoursework;
  */
 class Validator
 {
-    public function __construct() { }
+    public function __construct()
+    {
+    }
 
-    public function __destruct() { }
+    public function __destruct()
+    {
+    }
 
     /**
      * Validates details - compares to DETAIL_TYPES array in settings.php
@@ -21,8 +25,7 @@ class Validator
         $checked_detail_type = false;
         $detail_types = DETAIL_TYPES;
 
-        if (in_array($type_to_check, $detail_types) === true)
-        {
+        if (in_array($type_to_check, $detail_types) === true) {
             $checked_detail_type = $type_to_check;
         }
 
@@ -46,8 +49,7 @@ class Validator
     {
         $sanitised_string = false;
 
-        if (!empty($string_to_sanitise))
-        {
+        if (!empty($string_to_sanitise)) {
             $sanitised_string = filter_var($string_to_sanitise, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
         }
         return $sanitised_string;
@@ -63,51 +65,40 @@ class Validator
         $key_valid = false;
 
 
-        if (isset($tainted_message['Switches']['switch1']) && isset($tainted_message['Switches']['switch2'])
-            && isset($tainted_message['Switches']['switch3']) && isset($tainted_message['Switches']['switch4']))
-        {
+        if (
+            isset($tainted_message['Switches']['switch1']) && isset($tainted_message['Switches']['switch2'])
+            && isset($tainted_message['Switches']['switch3']) && isset($tainted_message['Switches']['switch4'])
+        ) {
             $number_valid_switches = 0;
-            foreach ($tainted_message['Switches'] as $switch)
-            {
-                if ($switch == 'on' || $switch == 'off')
-                {
+            foreach ($tainted_message['Switches'] as $switch) {
+                if ($switch == 'on' || $switch == 'off') {
                     $number_valid_switches += 1;
                 }
             }
-            if ($number_valid_switches == 4)
-            {
+            if ($number_valid_switches == 4) {
                 $switches_valid = true;
             }
         }
 
-        if (isset($tainted_message['Fan']))
-        {
-            if ($tainted_message['Fan'] == 'forward' || $tainted_message['Fan'] == 'reverse')
-            {
+        if (isset($tainted_message['Fan'])) {
+            if ($tainted_message['Fan'] == 'forward' || $tainted_message['Fan'] == 'reverse') {
                 $fan_valid = true;
             }
         }
 
-        if (isset($tainted_message['Temperature']))
-        {
-
-            if (intval($tainted_message['Temperature']) >= 20 && intval($tainted_message['Temperature']) <= 50)
-            {
+        if (isset($tainted_message['Temperature'])) {
+            if (intval($tainted_message['Temperature']) >= 20 && intval($tainted_message['Temperature']) <= 50) {
                 $temp_valid = true;
             }
         }
 
-        if (isset($tainted_message['Keypad']))
-        {
-
-            if (intval($tainted_message['Keypad']) >= 0 && intval($tainted_message['Keypad']) <= 9)
-            {
+        if (isset($tainted_message['Keypad'])) {
+            if (intval($tainted_message['Keypad']) >= 0 && intval($tainted_message['Keypad']) <= 9) {
                 $key_valid = true;
             }
         }
 
-        if ($switches_valid && $fan_valid && $temp_valid && $key_valid)
-        {
+        if ($switches_valid && $fan_valid && $temp_valid && $key_valid) {
             $valid = true;
         }
         return $valid;

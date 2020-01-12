@@ -14,7 +14,9 @@ class MonologWrapper
         $log = new Logger('logger');
     }
 
-    public function __destruct(){}
+    public function __destruct()
+    {
+    }
 
     /**
      * Allows the log type to be set externally, and passed through into the application
@@ -22,8 +24,9 @@ class MonologWrapper
      * @param $log_type
      * @return int - returns selected log type in Logger format
      */
-    public function setLogType($log_type){
-        switch ($log_type){
+    public function setLogType($log_type)
+    {
+        switch ($log_type) {
             case 'debug':
                 return Logger::DEBUG;
                 break;

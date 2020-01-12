@@ -22,12 +22,12 @@ define('CSS_PATH', $css_path);
 define('APP_NAME', 'Coursework');
 define('LANDING_PAGE', $_SERVER['SCRIPT_NAME']);
 
-define ('BCRYPT_ALGO', PASSWORD_DEFAULT);
-define ('BCRYPT_COST', 12);
+define('BCRYPT_ALGO', PASSWORD_DEFAULT);
+define('BCRYPT_COST', 12);
 
-define ('TEAM_CODE', '18-3110-AC');
+define('TEAM_CODE', '18-3110-AC');
 
-define ('SYSTEM_MSISDN', '+447817814149');
+define('SYSTEM_MSISDN', '+447817814149');
 
 $wsdl = 'https://m2mconnect.ee.co.uk/orange-soap/services/MessageServiceByCountry?wsdl';
 define('WSDL', $wsdl);

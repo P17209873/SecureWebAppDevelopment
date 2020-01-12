@@ -39,26 +39,12 @@ CREATE TABLE retrievedmessages(
 	retrievedmessageid INT(11) NOT NULL AUTO_INCREMENT,
 	messagesentto VARCHAR(35) NOT NULL,
 	messagesentfrom VARCHAR(35) NOT NULL,
-	userid INT(11) NOT NULL,
+	receivedtime VARCHAR(70),
+	bearer VARCHAR(5),
+	messageref VARCHAR (5),
 	stateid INT(11) NOT NULL,
 	PRIMARY KEY (retrievedmessageid),
-	FOREIGN KEY (userid) REFERENCES users(userid),
   	FOREIGN KEY (stateid) REFERENCES  circuitboardstates(stateid)
-);
-
-DROP TABLE IF EXISTS logs;
-
-CREATE TABLE logs (
-	logid INT(11) NOT NULL AUTO_INCREMENT,
-	logtype VARCHAR(25) NOT NULL,
-	logmessage VARCHAR(500) NOT NULL,
-	userid INT(11) NOT NULL,
-	retrievedmessageid INT(11),
-	circuitboardstateid INT(11),
-	PRIMARY KEY (logid),
-	FOREIGN KEY (userid) REFERENCES users(userid),
-	FOREIGN KEY (retrievedmessageid) REFERENCES retrievedmessages(retrievedmessageid),
-	FOREIGN KEY (circuitboardstateid) REFERENCES  circuitboardstates(stateid)
 );
 
 DROP TABLE IF EXISTS userloginlogs;
@@ -70,14 +56,4 @@ CREATE TABLE userloginlogs (
 	logintimestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	PRIMARY KEY (userloginlogsid),
 	FOREIGN KEY (userid) REFERENCES users(userid)
-);
-
-DROP TABLE IF EXISTS sessions;
-
-CREATE TABLE sessions (
-	sessionid INT(11) NOT NULL AUTO_INCREMENT,
-  session_data LONGTEXT,
-	userid INT(11) NOT NULL,
-  PRIMARY KEY (sessionid),
-  FOREIGN KEY (userid) REFERENCES users(userid)
 );

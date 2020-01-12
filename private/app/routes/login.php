@@ -10,20 +10,19 @@ $app->GET('/', function (Request $request, Response $response) use ($app) {
     session_start();
 
     $error_message = null;
-    if (isset($_SESSION['error']))
-    {
+    if (isset($_SESSION['error'])) {
         $error_message = $_SESSION['error'];
         unset($_SESSION['error']);
     }
 
     $message = null;
-    if (isset($_SESSION['message']))
-    {
+    if (isset($_SESSION['message'])) {
         $message = $_SESSION['message'];
         unset($_SESSION['message']);
     }
 
-    $html_output = $this->view->render($response,
+    $html_output = $this->view->render(
+        $response,
         'loginform.html.twig',
         [
             'css_path' => CSS_PATH,
@@ -38,11 +37,11 @@ $app->GET('/', function (Request $request, Response $response) use ($app) {
             'message' => $message,
             'page_text' => 'Please log in to your account',
             'register' => 'register',
-        ]);
+        ]
+    );
 
      $processed_output = processOutput($app, $html_output);
      return $processed_output;
-
 })->setName('login');
 
 function processOutput($app, $html_output)
@@ -51,4 +50,3 @@ function processOutput($app, $html_output)
     $html_output = $process_output->processOutput($html_output);
     return $html_output;
 }
-

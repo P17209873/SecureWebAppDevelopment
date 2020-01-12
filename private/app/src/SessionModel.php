@@ -31,7 +31,9 @@ class SessionModel
         $this->sql_queries = null;
     }
 
-    public function __destruct() { }
+    public function __destruct()
+    {
+    }
 
     public function setSessionUsername($username)
     {
@@ -63,15 +65,14 @@ class SessionModel
     {
         $store_result = false;
 
-        $this->session_wrapper_database->setSqlQueries( $this->sql_queries);
+        $this->session_wrapper_database->setSqlQueries($this->sql_queries);
         $this->session_wrapper_database->setDatabaseConnectionSettings($this->database_connection_settings);
         $this->session_wrapper_database->makeDatabaseConnection();
 
         $store_result_username = $this->session_wrapper_database->setSessionVar('user_name', $this->username);
         $store_result_password = $this->session_wrapper_database->setSessionVar('user_password', $this->password);
 
-        if ($store_result_username !== false && $store_result_password !== false)
-        {
+        if ($store_result_username !== false && $store_result_password !== false) {
             $store_result = true;
         }
         return $store_result;

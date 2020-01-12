@@ -14,9 +14,13 @@ class LoginModel
     private $database_connection_settings;
     private $sql_queries;
 
-    public function __construct(){}
+    public function __construct()
+    {
+    }
 
-    public function __destruct(){}
+    public function __destruct()
+    {
+    }
 
     public function setDatabaseWrapper($database_wrapper)
     {
@@ -55,13 +59,9 @@ class LoginModel
         $result = $this->database_wrapper->safeQuery($query_string, $query_params);
 
 
-        if($result == true) // This signifies that there was a QUERY ERROR
-        {
+        if ($result == true) { // This signifies that there was a QUERY ERROR
             return 'Unfortunately Login was unable to connect.  Please try again later.';
-        }
-
-        else
-        {
+        } else {
             $result = $this->database_wrapper->safeFetchArray();
             return $result['userpassword'];
         }
@@ -77,13 +77,9 @@ class LoginModel
 
         $result = $this->database_wrapper->safeQuery($query_string, $query_params);
 
-        if($result == true) // This signifies that there was a QUERY ERROR
-        {
+        if ($result == true) { // This signifies that there was a QUERY ERROR
             return 'Unfortunately Login was unable to connect.  Please try again later.';
-        }
-
-        else
-        {
+        } else {
             $result = $this->database_wrapper->safeFetchArray();
             return $result['userid'];
         }
