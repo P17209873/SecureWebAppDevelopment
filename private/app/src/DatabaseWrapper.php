@@ -14,7 +14,6 @@ class DatabaseWrapper
     private $db_handle;
     private $errors;
     private $prepared_statement;
-    private $sql_queries;
 
     public function __construct()
     {
@@ -25,7 +24,9 @@ class DatabaseWrapper
         $this->errors = [];
     }
 
-    public function __destruct() { }
+    public function __destruct()
+    {
+    }
 
     /**
      * Takes passed database connection settings and copies to local variable
@@ -57,29 +58,15 @@ class DatabaseWrapper
         $user_password = $database_settings['user_password'];
         $pdo_attributes = $database_settings['options'];
 
-        try
-        {
+        try {
             $pdo_handle = new \PDO($host_details, $user_name, $user_password, $pdo_attributes);
             $this->db_handle = $pdo_handle;
-        }
-        catch (\PDOException $exception_object)
-        {
+        } catch (\PDOException $exception_object) {
             trigger_error('error connecting to database');
             $pdo_error = 'error connecting to database';
         }
 
         return $pdo_error;
-    }
-
-    /**
-     * Retrieves the predefined SQL queries from the SQLQueries class, when // TODO: Complete this comment
-     *
-     * @param $sql_queries
-     */
-
-    public function setSqlQueries($sql_queries)
-    {
-        $this->sql_queries = $sql_queries;
     }
 
     /**
@@ -96,14 +83,11 @@ class DatabaseWrapper
         $this->errors['db_error'] = false;
         $query_parameters = $params;
 
-        try
-        {
+        try {
             $this->prepared_statement = $this->db_handle->prepare($query_string);
             $execute_result = $this->prepared_statement->execute($query_parameters);
             $this->errors['execute-OK'] = $execute_result;
-        }
-        catch (PDOException $exception_object)
-        {
+        } catch (PDOException $exception_object) {
             $error_message  = 'PDO Exception caught. ';
             $error_message .= 'Error with the database access.' . "\n";
             $error_message .= 'SQL query: ' . $query_string . "\n";
@@ -147,6 +131,19 @@ class DatabaseWrapper
         $row = $this->prepared_statement->fetch(\PDO::FETCH_ASSOC);
         $this->prepared_statement->closeCursor();
         return $row;
+    }
+
+
+    /**
+     * Safely fetches a result set
+     *
+     * @return mixed
+     */
+    public function safeFetchAll()
+    {
+        $result_set = $this->prepared_statement->fetchAll();
+        $this->prepared_statement->closeCursor();
+        return $result_set;
     }
 
     /**

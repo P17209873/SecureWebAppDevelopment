@@ -1,7 +1,9 @@
 <?php
+
 /**
  * This file declares the necessary dependencies for the Slim Application container, allowing the application to run.
  */
+
 // Register component on container
 $container['view'] = function ($container) {
     $view = new \Slim\Views\Twig(
@@ -71,6 +73,6 @@ $container['registrationModel'] = function ($container) {
 };
 
 $container['bcryptWrapper'] = function ($container) {
-  $bcryptWrapper = new \SecureWebAppCoursework\BcryptWrapper();
-  return $bcryptWrapper;
+    $bcryptWrapper = new \SecureWebAppCoursework\BcryptWrapper();
+    return $bcryptWrapper;
 };

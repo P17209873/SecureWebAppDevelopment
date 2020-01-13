@@ -22,21 +22,16 @@ $app->GET('/home', function (Request $request, Response $response, $args) use ($
     }
 
     $message = null;
-    if (isset($_SESSION['message']))
-    {
-        if (is_int($_SESSION['message']))
-        {
+    if (isset($_SESSION['message'])) {
+        if (is_int($_SESSION['message'])) {
             $message = 'Message Successfully Sent';
-        }
-        else
-        {
+        } else {
             $message = 'Message Failed to send';
         }
         unset($_SESSION['message']);
     }
 
-    if (isset($_SESSION['userid']))
-    {
+    if (isset($_SESSION['userid'])) {
         $past_states = getMessages($app, array('detail' => 'peekMessages'));
         $validated_past_states = validateDownloadedData($app, $past_states);
         $parsed_past_states = parseXml($app, $validated_past_states);
@@ -45,7 +40,8 @@ $app->GET('/home', function (Request $request, Response $response, $args) use ($
         $current_state['date'] = $current_state_message['RECEIVEDTIME'];
         $current_state['message'] = $current_state_message['MESSAGE'];
 
-        $html_output = $this->view->render($response,
+        $html_output = $this->view->render(
+            $response,
             'homepageform.html.twig',
             [
                 'css_path' => CSS_PATH,
@@ -58,15 +54,13 @@ $app->GET('/home', function (Request $request, Response $response, $args) use ($
                 'username' => $_SESSION['userid'],
                 'method' => 'post',
                 'action' => 'processchoice'
-            ]);
+            ]
+        );
         $processed_output = processOutput($app, $html_output);
         return $processed_output;
-    }
-    else
-    {
+    } else {
         $_SESSION['error'] = 'Invalid access.  Please Login first.';
         $url = $this->router->pathFor('login');
         return $response->withStatus(302)->withHeader('Location', $url);
     }
-
 })->setName('home');

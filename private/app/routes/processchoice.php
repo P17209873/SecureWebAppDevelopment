@@ -3,22 +3,19 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
-$app->POST('/processchoice', function(Request $request, Response $response) use ($app) {
+$app->POST('/processchoice', function (Request $request, Response $response) use ($app) {
 
     $tainted_parameters = $request->getParsedBody();
 
     $routeRedirect = getRedirect($app, $tainted_parameters);
 
     return $response->withRedirect($routeRedirect);
-
 })->setName('processchoice');
 
 function getRedirect($app, $tainted_paramaters)
 {
-    if (isset($tainted_paramaters['detail']))
-    {
-        switch($tainted_paramaters['detail'])
-        {
+    if (isset($tainted_paramaters['detail'])) {
+        switch ($tainted_paramaters['detail']) {
             case 'view':
                 $routeRedirect = 'viewmessages';
                 break;
@@ -29,10 +26,8 @@ function getRedirect($app, $tainted_paramaters)
                 $routeRedirect = 'login';
                 break;
         }
-    } else
-    {
+    } else {
         $routeRedirect = 'login';
     }
     return $routeRedirect;
 }
-

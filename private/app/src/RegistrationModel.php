@@ -14,9 +14,13 @@ class RegistrationModel
     private $database_connection_settings;
     private $sql_queries;
 
-    public function __construct(){}
+    public function __construct()
+    {
+    }
 
-    public function __destruct(){}
+    public function __destruct()
+    {
+    }
 
     public function setDatabaseWrapper($database_wrapper)
     {
@@ -42,7 +46,7 @@ class RegistrationModel
      * @param $cleaned_lastname
      * @param $cleaned_email
      */
-    public function createNewUser($cleaned_username, $hashed_password, $cleaned_firstname, $cleaned_lastname, $cleaned_email)  : bool
+    public function createNewUser($cleaned_username, $hashed_password, $cleaned_firstname, $cleaned_lastname, $cleaned_email): bool
     {
         $query_string = $this->sql_queries->createNewUser();
 
@@ -56,13 +60,9 @@ class RegistrationModel
         $result = $this->database_wrapper->safeQuery($query_string, $query_params);
 
         //switches the value of the boolean to make for a more user friendly codebase - if result is false, the query executed successfully, inverting this to true infers this better
-        if($result == false)
-        {
+        if ($result == false) {
             return true;
-        }
-
-        else
-        {
+        } else {
             return false;
         }
     }
@@ -83,21 +83,15 @@ class RegistrationModel
 
         $result = $this->database_wrapper->safeQuery($query_string, $query_params);
 
-        if($result == true) // This signifies that there was a QUERY ERROR (meaning the query has run)
-        {
+        if ($result == true) { // This signifies that there was a QUERY ERROR (meaning the query has run)
             return 'Unfortunately there has been a query error';
-        }
-
-        else // desired behaviour for when a query has RAN SUCCESSFULLY
+        } else // desired behaviour for when a query has RAN SUCCESSFULLY
         {
             $result = $this->database_wrapper->safeFetchArray();
 
-            if($result != null) //if result is not null, user exists
-            {
+            if ($result != null) { //if result is not null, user exists
                 return true;
-            }
-
-            else // if result is null, user doesn't exist
+            } else // if result is null, user doesn't exist
             {
                 return false;
             }
@@ -120,21 +114,15 @@ class RegistrationModel
 
         $result = $this->database_wrapper->safeQuery($query_string, $query_params);
 
-        if($result == true) // This signifies that there was a QUERY ERROR (meaning the query has run)
-        {
+        if ($result == true) { // This signifies that there was a QUERY ERROR (meaning the query has run)
             return 'Unfortunately there has been a query error';
-        }
-
-        else // desired behaviour for when a query has RAN SUCCESSFULLY
+        } else // desired behaviour for when a query has RAN SUCCESSFULLY
         {
             $result = $this->database_wrapper->safeFetchArray();
 
-            if($result != null) //if result is not null, email exists
-            {
+            if ($result != null) { //if result is not null, email exists
                 return true;
-            }
-
-            else // if result is null, email doesn't exist
+            } else // if result is null, email doesn't exist
             {
                 return false;
             }

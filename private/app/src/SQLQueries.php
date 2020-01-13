@@ -9,9 +9,13 @@ namespace SecureWebAppCoursework;
  */
 class SQLQueries
 {
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 
-    public function __destruct() {}
+    public function __destruct()
+    {
+    }
 
     //TODO: Add necessary queries here!
     //TODO: Add Docblock comments to query methods
@@ -83,9 +87,66 @@ class SQLQueries
      *
      * @return string
      */
-    public function getUserEmail(){
+    public function getUserEmail()
+    {
         $query_string = "SELECT userid FROM users ";
         $query_string .= "WHERE useremail = :useremail";
+
+        return $query_string;
+    }
+
+
+    /**
+     * This query inserts the circuitboardstates values into the table. This table stores the message values.
+     *
+     * @return string
+     */
+    public function insertIntoCircuitBoardStates()
+    {
+        $query_string = "INSERT INTO circuitboardstates ";
+        $query_string .= "SET ";
+        $query_string .= "switch01state = :switch01state, ";
+        $query_string .= "switch02state = :switch02state, ";
+        $query_string .= "switch03state = :switch03state, ";
+        $query_string .= "switch04state = :switch04state, ";
+        $query_string .= "fanstate = :fanstate, ";
+        $query_string .= "heatertemperature = :heatertemperature, ";
+        $query_string .= "keypadvalue = :keypadvalue";
+
+        return $query_string;
+    }
+
+    /**
+     * This query inserts the retrievedmessages values into the table. This table stores the message metadata.
+     *
+     * @return string
+     */
+    public function insertIntoRetrievedMessages()
+    {
+        $query_string = "INSERT INTO retrievedmessages ";
+        $query_string .= "SET ";
+        $query_string .= "messagesentto = :messagesentto, ";
+        $query_string .= "messagesentfrom = :messagesentfrom, ";
+        $query_string .= "receivedtime = :receivedtime, ";
+        $query_string .= "bearer = :bearer, ";
+        $query_string .= "messageref = :messageref, ";
+        $query_string .= "stateid = :stateid";
+
+        return $query_string;
+    }
+
+    /**
+     * This query retrieves the retrievedmessages and circuitboardstate values, stitching them together using an Inner Join
+     *
+     * @return string
+     */
+    public function retrieveMessagesFromDB()
+    {
+        $query_string = "SELECT retrievedmessages.retrievedmessageid, retrievedmessages.messagesentto, retrievedmessages.messagesentfrom, ";
+        $query_string .= "retrievedmessages.receivedtime, retrievedmessages.bearer, retrievedmessages.messageref    , retrievedmessages.stateid, ";
+        $query_string .= "circuitboardstates.stateid, circuitboardstates.switch01state, circuitboardstates.switch02state, circuitboardstates.switch03state, circuitboardstates.switch04state, ";
+        $query_string .= "circuitboardstates.fanstate, circuitboardstates.heatertemperature, circuitboardstates.keypadvalue ";
+        $query_string .= "FROM retrievedmessages INNER JOIN circuitboardstates ON retrievedmessages.stateid = circuitboardstates.stateid";
 
         return $query_string;
     }
