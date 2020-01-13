@@ -1,13 +1,17 @@
 <?php
-
 /**
- * class XmlParser
+ * XmlParser.php
  *
  * Parses a given XML string and returns an associative array
  */
-
 namespace SecureWebAppCoursework;
 
+/**
+ * Performs XML parsing
+ *
+ * Class XmlParser
+ * @package SecureWebAppCoursework
+ */
 class XmlParser
 {
     private $xml_parser;            // handle to instance of the XML parser

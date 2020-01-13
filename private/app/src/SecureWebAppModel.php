@@ -1,12 +1,16 @@
 <?php
-
+/**
+ * SecureWebAppModel.php
+ *
+ * Acts as the data model for the SOAP Server
+ */
 namespace SecureWebAppCoursework;
 
 /**
  * SecureWebAppModel.php
  *
  * This class acts as the Data Model of the application, containing all methods that implement and manage the data logic
- * required to access the M2M SOAP Service
+ * required to access the M2M SOAP Service, alongside database logic necessary for updating the messages tables
  */
 class SecureWebAppModel
 {
@@ -35,9 +39,7 @@ class SecureWebAppModel
         $this->password = 'cameraN1nthchair';
     }
 
-    public function __destruct()
-    {
-    }
+    public function __destruct(){}
 
     /**
      * @param $soap_wrapper
@@ -125,20 +127,18 @@ class SecureWebAppModel
      * Executes the Select From CircuitBoardStates Database query
      */
 
-    public function retrieveMessagesFromDB()
+    public function getMessagesFromDB()
     {
         $this->database_wrapper->setDatabaseConnectionSettings($this->database_connection_settings);
         $this->database_wrapper->makeDatabaseConnection();
 
-        $query_string = $this->sql_queries->retrieveMessagesFromDB();
+        $query_string = $this->sql_queries->getMessagesFromDB();
 
         $this->database_wrapper->safeQuery($query_string);
 
         $result = $this->database_wrapper->safeFetchAll();
         return $result;
     }
-
-    //soap server functions
 
     /**
      * @param $cleaned_parameters

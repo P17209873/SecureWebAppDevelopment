@@ -1,21 +1,22 @@
 <?php
-
-namespace SecureWebAppCoursework;
-
 /**
  * SoapWrapper.php
  *
  * Contains all of the necessary functions to create the SOAP client and perform the SOAP call.
  */
+namespace SecureWebAppCoursework;
+
+/**
+ * Creates SOAP client and performs API calls
+ *
+ * Class SoapWrapper
+ * @package SecureWebAppCoursework
+ */
 class SoapWrapper
 {
 
-    public function __construct()
-    {
-    }
-    public function __destruct()
-    {
-    }
+    public function __construct(){}
+    public function __destruct(){}
 
     /**
      * Creates the SOAP client

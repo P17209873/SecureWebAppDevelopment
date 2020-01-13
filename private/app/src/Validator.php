@@ -1,21 +1,22 @@
 <?php
-
-namespace SecureWebAppCoursework;
-
 /**
  * Validator.php
  *
  * Class is used to validate the data that has been downloaded from EE M2M, as well as any user input
  */
+namespace SecureWebAppCoursework;
+
+/**
+ * Validates any input
+ *
+ * Class Validator
+ * @package SecureWebAppCoursework
+ */
 class Validator
 {
-    public function __construct()
-    {
-    }
+    public function __construct(){}
 
-    public function __destruct()
-    {
-    }
+    public function __destruct(){}
 
     /**
      * Validates details - compares to DETAIL_TYPES array in settings.php
@@ -35,7 +36,7 @@ class Validator
     /**
      * Filters and sanitizes any string data
      */
-    public function validateDownloadedData($tainted_data)
+    public function validateDownloadedData($tainted_data) : string
     {
         $validated_string_data = '';
         var_dump($tainted_data);
@@ -45,6 +46,9 @@ class Validator
         return $validated_string_data;
     }
 
+    /**
+     * Filters and sanitizes any string data
+     */
     public function sanitiseString(string $string_to_sanitise): string
     {
         $sanitised_string = false;
@@ -55,6 +59,9 @@ class Validator
         return $sanitised_string;
     }
 
+    /**
+     * Validates the downloaded EE M2M message data
+     */
     public function validateMessage($tainted_message)
     {
         $valid = false;

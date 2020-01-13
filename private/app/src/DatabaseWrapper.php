@@ -1,5 +1,4 @@
 <?php
-
 /**
  * DatabaseWrapper.php
  *
@@ -8,6 +7,12 @@
 
 namespace SecureWebAppCoursework;
 
+/**
+ * Wrapper class used to perform database functions
+ *
+ * Class DatabaseWrapper
+ * @package SecureWebAppCoursework
+ */
 class DatabaseWrapper
 {
     private $database_connection_settings;
@@ -23,9 +28,7 @@ class DatabaseWrapper
         $this->errors = [];
     }
 
-    public function __destruct()
-    {
-    }
+    public function __destruct(){}
 
     /**
      * Takes passed database connection settings and copies to local variable

@@ -1,24 +1,23 @@
 <?php
-
-namespace SecureWebAppCoursework;
-
 /**
  * SQLQueries.php
  *
  * hosts all SQL queries to be used by the data models
  */
+
+namespace SecureWebAppCoursework;
+
+/**
+ * Defines all the SQL queries that the application depends on to run
+ *
+ * Class SQLQueries
+ * @package SecureWebAppCoursework
+ */
 class SQLQueries
 {
-    public function __construct()
-    {
-    }
+    public function __construct(){}
 
-    public function __destruct()
-    {
-    }
-
-    //TODO: Add necessary queries here!
-    //TODO: Add Docblock comments to query methods
+    public function __destruct(){}
 
     /**
      * This query inserts login attempts into the UserLoginLogs table, taking the UserID and LoginCompleted values to store every attempt,
@@ -56,7 +55,7 @@ class SQLQueries
     /**
      * @return string
      */
-    public function checkUserPassword()
+    public function getUserPassword()
     {
         $query_string = "SELECT userid, userusername, userpassword ";
         $query_string .= "FROM users ";
@@ -140,7 +139,7 @@ class SQLQueries
      *
      * @return string
      */
-    public function retrieveMessagesFromDB()
+    public function getMessagesFromDB()
     {
         $query_string = "SELECT retrievedmessages.retrievedmessageid, retrievedmessages.messagesentto, retrievedmessages.messagesentfrom, ";
         $query_string .= "retrievedmessages.receivedtime, retrievedmessages.bearer, retrievedmessages.messageref    , retrievedmessages.stateid, ";

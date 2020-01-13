@@ -1,22 +1,31 @@
 <?php
-
 /**
+ * BcryptWrapper.php
+ *
  * Bcrypt Wrapper class to make using bcrypt inbuilt functions easier. (thanks cfi!)
  */
 
 namespace SecureWebAppCoursework;
 
+/**
+ * Wrapper class used to perform bcrypt functions
+ *
+ * Class BcryptWrapper
+ * @package SecureWebAppCoursework
+ */
 class BcryptWrapper
 {
 
-    public function __construct()
-    {
-    }
+    public function __construct(){}
 
-    public function __destruct()
-    {
-    }
+    public function __destruct(){}
 
+    /**
+     * Wraps the password_hash method in an easy to use function that returns a hashed password
+     *
+     * @param $string_to_hash
+     * @return bool|string
+     */
     public function createHashedPassword($string_to_hash)
     {
         $password_to_hash = $string_to_hash;
@@ -29,6 +38,14 @@ class BcryptWrapper
         return $bcrypt_hashed_password;
     }
 
+    /**
+     * Wraps the password_verify function in an easy to use function that verifies that the stored user password hash with
+     * the new password entered by the user
+     *
+     * @param $string_to_check
+     * @param $stored_user_password_hash
+     * @return bool
+     */
     public function authenticatePassword($string_to_check, $stored_user_password_hash)
     {
         $user_authenticated = false;
