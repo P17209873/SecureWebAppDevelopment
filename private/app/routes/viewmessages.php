@@ -8,7 +8,7 @@ $app->GET('/viewmessages', function (Request $request, Response $response) use (
 
     if (isset($_SESSION['userid'])) {
         $retrieved_messages = selectAllMessagesFromDb($app);
-
+      
         $html_output = $this->view->render(
             $response,
             'messagelistform.html.twig',

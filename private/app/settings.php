@@ -27,7 +27,10 @@ define('BCRYPT_COST', 12);
 
 define('TEAM_CODE', '18-3110-AC');
 
-define('SYSTEM_MSISDN', '+447817814149');
+define ('LOG_FILE_NAME', 'secureWebApp.log');
+define ('LOG_FILE_LOCATION', '../logs/');
+
+define ('SYSTEM_MSISDN', '+447817814149');
 
 $wsdl = 'https://m2mconnect.ee.co.uk/orange-soap/services/MessageServiceByCountry?wsdl';
 define('WSDL', $wsdl);
