@@ -54,6 +54,7 @@ $app->GET('/home', function (Request $request, Response $response, $args) use ($
                 'message' => $message,
                 'page_title' => APP_NAME,   //TODO: Title and text need changing
                 'page_heading_1' => APP_NAME,
+                'page_heading_2' => 'Homepage',
                 'current_state' => $current_state,
                 'username' => $_SESSION['userid'],
                 'method' => 'post',

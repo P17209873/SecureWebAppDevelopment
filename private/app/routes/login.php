@@ -36,9 +36,9 @@ $app->GET('/', function (Request $request, Response $response) use ($app) {
             'initial_input_box_value' => null,
             'page_title' => APP_NAME,
             'page_heading_1' => APP_NAME,
+            'page_heading_2' => 'Please log in to your account',
             'error_message' => $error_message,
             'message' => $message,
-            'page_text' => 'Please log in to your account',
             'register' => 'register',
         ]);
 
