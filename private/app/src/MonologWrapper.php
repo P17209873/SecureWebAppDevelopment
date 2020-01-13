@@ -46,7 +46,6 @@ class MonologWrapper
                 break;
         }
     }
-}
 
     public function addLogMessage($message, $logType)
     {
