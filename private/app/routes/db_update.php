@@ -4,7 +4,8 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
 /**
- * This route is used as a database
+ * This route is used as a database updater, updating the database with SOAP server messages after ensuring they
+ * don't already exist in the database
  */
 
 // REMEMBER TO UNCOMMENT crontab -e LINE WHEN FILE IS UPLOADED TO DMU WEB SERVERS
@@ -16,7 +17,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
  * 2. Perform a foreach loop to check whether the messages received already exist in the database (need to select from and insert into)
  * 3. If they do, drop them
  * 4. If they don't, add to database
- * (also put hyperlink on the homepage to allow the user to manually update the messages by pressing the button
+ * (also put hyperlink on the homepage to allow the user to manually update the messages by pressing the button)
  */
 
 $app->get('/test/db_update', function (Request $request, Response $response) use ($app) {
@@ -43,6 +44,9 @@ $app->get('/test/db_update', function (Request $request, Response $response) use
             insertIntoRetrievedMessages($app, $soap_message);
         }
     }
+    
+    
+    
 })->setName('db_update');
 
 /**
