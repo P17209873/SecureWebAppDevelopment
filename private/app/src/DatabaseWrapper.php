@@ -20,7 +20,6 @@ class DatabaseWrapper
         $this->database_connection_settings = null;
         $this->db_handle = null;
         $this->prepared_statement = null;
-        $this->sql_queries = null;
         $this->errors = [];
     }
 

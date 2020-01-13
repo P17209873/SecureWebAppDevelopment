@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1578864910">
-  <project timestamp="1578864910">
+<coverage generated="1578869643">
+  <project timestamp="1578869643">
     <package name="SecureWebAppCoursework">
       <file name="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/private/app/src/BcryptWrapper.php">
         <class name="SecureWebAppCoursework\BcryptWrapper" namespace="SecureWebAppCoursework">
@@ -25,69 +25,65 @@
       </file>
       <file name="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/private/app/src/DatabaseWrapper.php">
         <class name="SecureWebAppCoursework\DatabaseWrapper" namespace="SecureWebAppCoursework">
-          <metrics complexity="12" methods="9" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="51" coveredstatements="30" elements="60" coveredelements="33"/>
+          <metrics complexity="11" methods="8" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="48" coveredstatements="29" elements="56" coveredelements="32"/>
         </class>
-        <line num="19" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="4"/>
-        <line num="21" type="stmt" count="4"/>
-        <line num="22" type="stmt" count="4"/>
-        <line num="23" type="stmt" count="4"/>
-        <line num="24" type="stmt" count="4"/>
-        <line num="25" type="stmt" count="4"/>
-        <line num="26" type="stmt" count="4"/>
-        <line num="35" type="method" name="setDatabaseConnectionSettings" visibility="public" complexity="1" crap="1" count="4"/>
-        <line num="37" type="stmt" count="4"/>
-        <line num="38" type="stmt" count="4"/>
-        <line num="46" type="method" name="makeDatabaseConnection" visibility="public" complexity="2" crap="2.03" count="4"/>
-        <line num="48" type="stmt" count="4"/>
-        <line num="49" type="stmt" count="4"/>
-        <line num="51" type="stmt" count="4"/>
-        <line num="52" type="stmt" count="4"/>
-        <line num="53" type="stmt" count="4"/>
-        <line num="54" type="stmt" count="4"/>
-        <line num="55" type="stmt" count="4"/>
-        <line num="56" type="stmt" count="4"/>
-        <line num="57" type="stmt" count="4"/>
-        <line num="58" type="stmt" count="4"/>
-        <line num="62" type="stmt" count="4"/>
-        <line num="63" type="stmt" count="4"/>
+        <line num="18" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="8"/>
+        <line num="20" type="stmt" count="8"/>
+        <line num="21" type="stmt" count="8"/>
+        <line num="22" type="stmt" count="8"/>
+        <line num="23" type="stmt" count="8"/>
+        <line num="24" type="stmt" count="8"/>
+        <line num="33" type="method" name="setDatabaseConnectionSettings" visibility="public" complexity="1" crap="1" count="8"/>
+        <line num="35" type="stmt" count="8"/>
+        <line num="36" type="stmt" count="8"/>
+        <line num="44" type="method" name="makeDatabaseConnection" visibility="public" complexity="2" crap="2.03" count="8"/>
+        <line num="46" type="stmt" count="8"/>
+        <line num="47" type="stmt" count="8"/>
+        <line num="49" type="stmt" count="8"/>
+        <line num="50" type="stmt" count="8"/>
+        <line num="51" type="stmt" count="8"/>
+        <line num="52" type="stmt" count="8"/>
+        <line num="53" type="stmt" count="8"/>
+        <line num="54" type="stmt" count="8"/>
+        <line num="55" type="stmt" count="8"/>
+        <line num="56" type="stmt" count="8"/>
+        <line num="60" type="stmt" count="8"/>
+        <line num="61" type="stmt" count="8"/>
+        <line num="63" type="stmt" count="0"/>
         <line num="65" type="stmt" count="0"/>
-        <line num="67" type="stmt" count="0"/>
-        <line num="68" type="stmt" count="0"/>
-        <line num="71" type="stmt" count="4"/>
-        <line num="80" type="method" name="setSqlQueries" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="82" type="stmt" count="0"/>
-        <line num="83" type="stmt" count="0"/>
-        <line num="94" type="method" name="safeQuery" visibility="public" complexity="2" crap="2.62" count="4"/>
-        <line num="96" type="stmt" count="4"/>
-        <line num="97" type="stmt" count="4"/>
-        <line num="101" type="stmt" count="4"/>
-        <line num="102" type="stmt" count="4"/>
-        <line num="103" type="stmt" count="4"/>
-        <line num="105" type="stmt" count="0"/>
-        <line num="107" type="stmt" count="0"/>
-        <line num="108" type="stmt" count="0"/>
-        <line num="109" type="stmt" count="0"/>
-        <line num="110" type="stmt" count="0"/>
+        <line num="66" type="stmt" count="0"/>
+        <line num="69" type="stmt" count="8"/>
+        <line num="81" type="method" name="safeQuery" visibility="public" complexity="2" crap="2.62" count="7"/>
+        <line num="83" type="stmt" count="7"/>
+        <line num="84" type="stmt" count="7"/>
+        <line num="88" type="stmt" count="7"/>
+        <line num="89" type="stmt" count="7"/>
+        <line num="90" type="stmt" count="7"/>
+        <line num="92" type="stmt" count="0"/>
+        <line num="94" type="stmt" count="0"/>
+        <line num="95" type="stmt" count="0"/>
+        <line num="96" type="stmt" count="0"/>
+        <line num="97" type="stmt" count="0"/>
+        <line num="99" type="stmt" count="0"/>
+        <line num="100" type="stmt" count="0"/>
+        <line num="102" type="stmt" count="7"/>
+        <line num="110" type="method" name="countRows" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="112" type="stmt" count="0"/>
         <line num="113" type="stmt" count="0"/>
-        <line num="115" type="stmt" count="4"/>
-        <line num="123" type="method" name="countRows" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="125" type="stmt" count="0"/>
-        <line num="126" type="stmt" count="0"/>
-        <line num="134" type="method" name="safeFetchRow" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="136" type="stmt" count="0"/>
-        <line num="137" type="stmt" count="0"/>
-        <line num="145" type="method" name="safeFetchArray" visibility="public" complexity="1" crap="1" count="4"/>
-        <line num="147" type="stmt" count="4"/>
-        <line num="148" type="stmt" count="4"/>
-        <line num="149" type="stmt" count="4"/>
-        <line num="157" type="method" name="lastInsertedID" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="159" type="stmt" count="0"/>
-        <line num="161" type="stmt" count="0"/>
-        <line num="162" type="stmt" count="0"/>
-        <line num="163" type="stmt" count="0"/>
-        <line num="164" type="stmt" count="0"/>
-        <metrics loc="166" ncloc="114" classes="1" methods="9" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="51" coveredstatements="30" elements="60" coveredelements="33"/>
+        <line num="121" type="method" name="safeFetchRow" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="123" type="stmt" count="0"/>
+        <line num="124" type="stmt" count="0"/>
+        <line num="132" type="method" name="safeFetchArray" visibility="public" complexity="1" crap="1" count="6"/>
+        <line num="134" type="stmt" count="6"/>
+        <line num="135" type="stmt" count="6"/>
+        <line num="136" type="stmt" count="6"/>
+        <line num="144" type="method" name="lastInsertedID" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="146" type="stmt" count="0"/>
+        <line num="148" type="stmt" count="0"/>
+        <line num="149" type="stmt" count="0"/>
+        <line num="150" type="stmt" count="0"/>
+        <line num="151" type="stmt" count="0"/>
+        <metrics loc="153" ncloc="106" classes="1" methods="8" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="48" coveredstatements="29" elements="56" coveredelements="32"/>
       </file>
       <file name="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/private/app/src/LoginModel.php">
         <class name="SecureWebAppCoursework\LoginModel" namespace="SecureWebAppCoursework" fullPackage="SecureWebAppCoursework" package="SecureWebAppCoursework">
@@ -133,29 +129,31 @@
       </file>
       <file name="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/private/app/src/MonologWrapper.php">
         <class name="SecureWebAppCoursework\MonologWrapper" namespace="SecureWebAppCoursework">
-          <metrics complexity="10" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="5" elements="20" coveredelements="6"/>
+          <metrics complexity="11" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="20" coveredstatements="7" elements="22" coveredelements="8"/>
         </class>
-        <line num="12" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="14" type="stmt" count="1"/>
-        <line num="15" type="stmt" count="1"/>
-        <line num="25" type="method" name="setLogType" visibility="public" complexity="8" crap="42.33" count="1"/>
-        <line num="26" type="stmt" count="1"/>
-        <line num="27" type="stmt" count="1"/>
-        <line num="28" type="stmt" count="1"/>
+        <line num="20" type="method" name="setLogType" visibility="public" complexity="8" crap="42.33" count="2"/>
+        <line num="22" type="stmt" count="2"/>
+        <line num="23" type="stmt" count="2"/>
+        <line num="24" type="stmt" count="2"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
         <line num="30" type="stmt" count="0"/>
-        <line num="31" type="stmt" count="0"/>
+        <line num="32" type="stmt" count="0"/>
         <line num="33" type="stmt" count="0"/>
-        <line num="34" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="0"/>
         <line num="36" type="stmt" count="0"/>
-        <line num="37" type="stmt" count="0"/>
+        <line num="38" type="stmt" count="0"/>
         <line num="39" type="stmt" count="0"/>
-        <line num="40" type="stmt" count="0"/>
+        <line num="41" type="stmt" count="0"/>
         <line num="42" type="stmt" count="0"/>
-        <line num="43" type="stmt" count="0"/>
         <line num="45" type="stmt" count="0"/>
-        <line num="46" type="stmt" count="0"/>
-        <line num="49" type="stmt" count="0"/>
-        <metrics loc="49" ncloc="43" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="5" elements="20" coveredelements="6"/>
+        <line num="47" type="method" name="addLogMessage" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="49" type="stmt" count="1"/>
+        <line num="50" type="stmt" count="1"/>
+        <line num="51" type="stmt" count="1"/>
+        <line num="52" type="stmt" count="1"/>
+        <metrics loc="52" ncloc="46" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="20" coveredstatements="7" elements="22" coveredelements="8"/>
       </file>
       <file name="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/private/app/src/ProcessOutput.php">
         <class name="SecureWebAppCoursework\ProcessOutput" namespace="SecureWebAppCoursework">
@@ -168,87 +166,53 @@
       </file>
       <file name="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/private/app/src/RegistrationModel.php">
         <class name="SecureWebAppCoursework\RegistrationModel" namespace="SecureWebAppCoursework" fullPackage="SecureWebAppCoursework" package="SecureWebAppCoursework">
-          <metrics complexity="13" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="72" coveredstatements="0" elements="78" coveredelements="0"/>
+          <metrics complexity="13" methods="6" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="38" coveredstatements="24" elements="44" coveredelements="27"/>
         </class>
-        <line num="21" type="method" name="setDatabaseWrapper" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="22" type="stmt" count="0"/>
-        <line num="23" type="stmt" count="0"/>
-        <line num="24" type="stmt" count="0"/>
-        <line num="26" type="method" name="setDatabaseConnectionSettings" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="27" type="stmt" count="0"/>
-        <line num="28" type="stmt" count="0"/>
-        <line num="29" type="stmt" count="0"/>
-        <line num="31" type="method" name="setSqlQueries" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="32" type="stmt" count="0"/>
-        <line num="33" type="stmt" count="0"/>
-        <line num="34" type="stmt" count="0"/>
-        <line num="45" type="method" name="createNewUser" visibility="public" complexity="2" crap="6" count="0"/>
-        <line num="46" type="stmt" count="0"/>
-        <line num="47" type="stmt" count="0"/>
-        <line num="49" type="stmt" count="0"/>
-        <line num="50" type="stmt" count="0"/>
-        <line num="51" type="stmt" count="0"/>
-        <line num="53" type="stmt" count="0"/>
-        <line num="54" type="stmt" count="0"/>
-        <line num="56" type="stmt" count="0"/>
-        <line num="59" type="stmt" count="0"/>
-        <line num="60" type="stmt" count="0"/>
-        <line num="61" type="stmt" count="0"/>
-        <line num="62" type="stmt" count="0"/>
-        <line num="64" type="stmt" count="0"/>
-        <line num="65" type="stmt" count="0"/>
+        <line num="21" type="method" name="setDatabaseWrapper" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="23" type="stmt" count="3"/>
+        <line num="24" type="stmt" count="3"/>
+        <line num="26" type="method" name="setDatabaseConnectionSettings" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="28" type="stmt" count="3"/>
+        <line num="29" type="stmt" count="3"/>
+        <line num="31" type="method" name="setSqlQueries" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="33" type="stmt" count="3"/>
+        <line num="34" type="stmt" count="3"/>
+        <line num="45" type="method" name="createNewUser" visibility="public" complexity="2" crap="2.00" count="1"/>
+        <line num="47" type="stmt" count="1"/>
+        <line num="49" type="stmt" count="1"/>
+        <line num="50" type="stmt" count="1"/>
+        <line num="51" type="stmt" count="1"/>
+        <line num="53" type="stmt" count="1"/>
+        <line num="54" type="stmt" count="1"/>
+        <line num="56" type="stmt" count="1"/>
+        <line num="59" type="stmt" count="1"/>
+        <line num="61" type="stmt" count="1"/>
         <line num="66" type="stmt" count="0"/>
-        <line num="67" type="stmt" count="0"/>
-        <line num="68" type="stmt" count="0"/>
-        <line num="76" type="method" name="doesUsernameExist" visibility="public" complexity="3" crap="12" count="0"/>
-        <line num="77" type="stmt" count="0"/>
-        <line num="78" type="stmt" count="0"/>
-        <line num="79" type="stmt" count="0"/>
-        <line num="81" type="stmt" count="0"/>
-        <line num="82" type="stmt" count="0"/>
-        <line num="84" type="stmt" count="0"/>
-        <line num="86" type="stmt" count="0"/>
-        <line num="87" type="stmt" count="0"/>
+        <line num="76" type="method" name="doesUsernameExist" visibility="public" complexity="3" crap="3.05" count="2"/>
+        <line num="78" type="stmt" count="2"/>
+        <line num="79" type="stmt" count="2"/>
+        <line num="81" type="stmt" count="2"/>
+        <line num="82" type="stmt" count="2"/>
+        <line num="84" type="stmt" count="2"/>
+        <line num="86" type="stmt" count="2"/>
         <line num="88" type="stmt" count="0"/>
-        <line num="89" type="stmt" count="0"/>
-        <line num="91" type="stmt" count="0"/>
-        <line num="92" type="stmt" count="0"/>
-        <line num="93" type="stmt" count="0"/>
-        <line num="95" type="stmt" count="0"/>
-        <line num="96" type="stmt" count="0"/>
+        <line num="93" type="stmt" count="2"/>
+        <line num="95" type="stmt" count="2"/>
         <line num="97" type="stmt" count="0"/>
-        <line num="98" type="stmt" count="0"/>
-        <line num="100" type="stmt" count="0"/>
-        <line num="101" type="stmt" count="0"/>
-        <line num="102" type="stmt" count="0"/>
-        <line num="103" type="stmt" count="0"/>
-        <line num="104" type="stmt" count="0"/>
-        <line num="105" type="stmt" count="0"/>
+        <line num="102" type="stmt" count="2"/>
         <line num="113" type="method" name="doesEmailExist" visibility="public" complexity="3" crap="12" count="0"/>
-        <line num="114" type="stmt" count="0"/>
         <line num="115" type="stmt" count="0"/>
         <line num="116" type="stmt" count="0"/>
         <line num="118" type="stmt" count="0"/>
         <line num="119" type="stmt" count="0"/>
         <line num="121" type="stmt" count="0"/>
         <line num="123" type="stmt" count="0"/>
-        <line num="124" type="stmt" count="0"/>
         <line num="125" type="stmt" count="0"/>
-        <line num="126" type="stmt" count="0"/>
-        <line num="128" type="stmt" count="0"/>
-        <line num="129" type="stmt" count="0"/>
         <line num="130" type="stmt" count="0"/>
         <line num="132" type="stmt" count="0"/>
-        <line num="133" type="stmt" count="0"/>
         <line num="134" type="stmt" count="0"/>
-        <line num="135" type="stmt" count="0"/>
-        <line num="137" type="stmt" count="0"/>
-        <line num="138" type="stmt" count="0"/>
         <line num="139" type="stmt" count="0"/>
-        <line num="140" type="stmt" count="0"/>
-        <line num="141" type="stmt" count="0"/>
-        <line num="142" type="stmt" count="0"/>
-        <metrics loc="142" ncloc="97" classes="1" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="72" coveredstatements="0" elements="78" coveredelements="0"/>
+        <metrics loc="142" ncloc="97" classes="1" methods="6" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="38" coveredstatements="24" elements="44" coveredelements="27"/>
       </file>
       <file name="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/private/app/src/SQLQueries.php">
         <class name="SecureWebAppCoursework\SQLQueries" namespace="SecureWebAppCoursework">
@@ -260,15 +224,15 @@
         <line num="29" type="stmt" count="1"/>
         <line num="30" type="stmt" count="1"/>
         <line num="31" type="stmt" count="1"/>
-        <line num="39" type="method" name="createNewUser" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="41" type="stmt" count="1"/>
-        <line num="42" type="stmt" count="1"/>
-        <line num="43" type="stmt" count="1"/>
-        <line num="44" type="stmt" count="1"/>
-        <line num="45" type="stmt" count="1"/>
-        <line num="46" type="stmt" count="1"/>
-        <line num="47" type="stmt" count="1"/>
-        <line num="49" type="stmt" count="1"/>
+        <line num="39" type="method" name="createNewUser" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="41" type="stmt" count="2"/>
+        <line num="42" type="stmt" count="2"/>
+        <line num="43" type="stmt" count="2"/>
+        <line num="44" type="stmt" count="2"/>
+        <line num="45" type="stmt" count="2"/>
+        <line num="46" type="stmt" count="2"/>
+        <line num="47" type="stmt" count="2"/>
+        <line num="49" type="stmt" count="2"/>
         <line num="55" type="method" name="checkUserPassword" visibility="public" complexity="1" crap="1" count="2"/>
         <line num="57" type="stmt" count="2"/>
         <line num="58" type="stmt" count="2"/>
@@ -276,10 +240,10 @@
         <line num="60" type="stmt" count="2"/>
         <line num="61" type="stmt" count="2"/>
         <line num="63" type="stmt" count="2"/>
-        <line num="72" type="method" name="getUserID" visibility="public" complexity="1" crap="1" count="3"/>
-        <line num="74" type="stmt" count="3"/>
-        <line num="75" type="stmt" count="3"/>
-        <line num="77" type="stmt" count="3"/>
+        <line num="72" type="method" name="getUserID" visibility="public" complexity="1" crap="1" count="5"/>
+        <line num="74" type="stmt" count="5"/>
+        <line num="75" type="stmt" count="5"/>
+        <line num="77" type="stmt" count="5"/>
         <line num="86" type="method" name="getUserEmail" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="87" type="stmt" count="1"/>
         <line num="88" type="stmt" count="1"/>
@@ -436,7 +400,7 @@
       </file>
       <file name="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/private/app/src/Validator.php">
         <class name="SecureWebAppCoursework\Validator" namespace="SecureWebAppCoursework">
-          <metrics complexity="29" methods="4" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="38" coveredstatements="13" elements="42" coveredelements="16"/>
+          <metrics complexity="29" methods="4" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="38" coveredstatements="5" elements="42" coveredelements="6"/>
         </class>
         <line num="19" type="method" name="validateDetailType" visibility="public" complexity="2" crap="2" count="2"/>
         <line num="21" type="stmt" count="2"/>
@@ -444,16 +408,16 @@
         <line num="24" type="stmt" count="2"/>
         <line num="26" type="stmt" count="1"/>
         <line num="29" type="stmt" count="2"/>
-        <line num="35" type="method" name="validateDownloadedData" visibility="public" complexity="1" crap="1" count="2"/>
-        <line num="37" type="stmt" count="2"/>
-        <line num="38" type="stmt" count="2"/>
-        <line num="40" type="stmt" count="2"/>
-        <line num="42" type="stmt" count="2"/>
-        <line num="45" type="method" name="sanitiseString" visibility="public" complexity="2" crap="2" count="2"/>
-        <line num="47" type="stmt" count="2"/>
-        <line num="49" type="stmt" count="2"/>
-        <line num="51" type="stmt" count="2"/>
-        <line num="53" type="stmt" count="2"/>
+        <line num="35" type="method" name="validateDownloadedData" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <line num="42" type="stmt" count="0"/>
+        <line num="45" type="method" name="sanitiseString" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="47" type="stmt" count="0"/>
+        <line num="49" type="stmt" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <line num="53" type="stmt" count="0"/>
         <line num="56" type="method" name="validateMessage" visibility="public" complexity="22" crap="506" count="0"/>
         <line num="58" type="stmt" count="0"/>
         <line num="60" type="stmt" count="0"/>
@@ -480,7 +444,7 @@
         <line num="109" type="stmt" count="0"/>
         <line num="111" type="stmt" count="0"/>
         <line num="113" type="stmt" count="0"/>
-        <metrics loc="114" ncloc="103" classes="1" methods="4" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="38" coveredstatements="13" elements="42" coveredelements="16"/>
+        <metrics loc="114" ncloc="103" classes="1" methods="4" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="38" coveredstatements="5" elements="42" coveredelements="6"/>
       </file>
       <file name="/home/p3t-user/PhpstormProjects/SecureWebAppDevelopment/private/app/src/XmlParser.php">
         <class name="SecureWebAppCoursework\XmlParser" namespace="SecureWebAppCoursework">
@@ -533,6 +497,6 @@
         <metrics loc="133" ncloc="82" classes="1" methods="10" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="34" coveredstatements="22" elements="44" coveredelements="28"/>
       </file>
     </package>
-    <metrics files="12" loc="1139" ncloc="870" classes="12" methods="61" coveredmethods="29" conditionals="0" coveredconditionals="0" statements="397" coveredstatements="179" elements="458" coveredelements="208"/>
+    <metrics files="12" loc="1129" ncloc="865" classes="12" methods="60" coveredmethods="30" conditionals="0" coveredconditionals="0" statements="362" coveredstatements="196" elements="422" coveredelements="226"/>
   </project>
 </coverage>
