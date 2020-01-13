@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang=”en">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
 
     <meta name="author" content="Matthew Trim, Christopher Sherlock, Sam Spencer-Mcfadden" />
     <link rel="stylesheet" href="{{ css_path }}" type="text/css"/>
-    <script type="text/javascript" src="{{  js_path }}"></script>
+    <script src="{{ js_path }}"></script>
     <title>{{ page_title }}</title>
 </head>
 <body>
@@ -18,8 +18,7 @@
     </div>
     <div id="clear-div"></div>
     <div id="page-content-div">
-        <h2>{{ page_heading_2 }}</h2>
-        <p class="cent">{{ page_text }}</p>
+        <h2 class="cent">{{ page_heading_2 }}</h2>
         <fieldset class="cent">
             <form action="{{action}}" method="{{method}}">
                 {% if error_message %}
@@ -36,7 +35,7 @@
                 <br><br>
                 <p>
                     <input type="submit" value="Login">
-                    <a href="{{ register }}"><button type="button">Register an account</button></a>
+                    <a href="{{ register }}" class="button">Register an account</a>
                 </p>
             </form>
         </fieldset>
