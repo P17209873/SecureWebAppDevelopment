@@ -31,7 +31,8 @@ $app->get('/test/db_update', function (Request $request, Response $response) use
     $db_messages = rebuildDatabaseMessages($app);
     $remapped_db_messages = remapMessageKeyValues($db_messages);
 
-    foreach ($filtered_messages as $soap_message) {
+    foreach ($filtered_messages as $soap_message)
+    {
         $sameMessage = false;
         foreach ($remapped_db_messages as $db_message) {
             if ($db_message == $soap_message) {
@@ -39,12 +40,12 @@ $app->get('/test/db_update', function (Request $request, Response $response) use
             }
         }
 
-        if ($sameMessage == false) {
+        if ($sameMessage == false)
+        {
             insertIntoCircuitBoardStates($app, $soap_message['MESSAGE']);
             insertIntoRetrievedMessages($app, $soap_message);
         }
     }
-    
     
     
 })->setName('db_update');
@@ -69,7 +70,6 @@ function getMessages($app, $cleaned_parameters)
 
     return $messages;
 }
-
 
 /**
  * Validates the retrieved messages from the SOAP Server and the database retrieval
@@ -160,11 +160,18 @@ function rebuildDatabaseMessages($app)
     $securewebapp_model->setDatabaseWrapper($app->getContainer()->get('databaseWrapper'));
     $securewebapp_model->setSqlQueries($app->getContainer()->get('sqlQueries'));
     $securewebapp_model->setDatabaseConnectionSettings($settings['pdo_settings']);
-    $result = $securewebapp_model->retrieveMessagesFromDB();
+    $result = $securewebapp_model->getMessagesFromDB();
 
     return $result;
 }
 
+/**
+ * Remaps the key values of the messages retrieved from the Database to be compared with the messages from the
+ * SOAP server
+ *
+ * @param $db_messages
+ * @return array
+ */
 function remapMessageKeyValues($db_messages)
 {
     $remapped_messages = array();

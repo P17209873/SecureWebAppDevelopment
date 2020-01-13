@@ -19,7 +19,8 @@ $app->GET('/sendmessage', function (Request $request, Response $response) use ($
                 'page_title' => APP_NAME,
                 'page_heading_1' => APP_NAME,
                 'page_heading_2' => 'Edit the Systems state',
-                'page_text' => 'Send a Message'
+                'page_text' => 'Send a Message',
+                'loggedin' => true
             ]
         );
 

@@ -18,7 +18,8 @@ $app->GET('/viewmessages', function (Request $request, Response $response) use (
                 'page_title' => APP_NAME,
                 'page_heading_1' => APP_NAME,
                 'page_heading_2' => 'Result',
-                'messages' => $retrieved_messages
+                'messages' => $retrieved_messages,
+                'loggedin' => true
             ]
         );
         $processed_output = processOutput($app, $html_output);
@@ -39,57 +40,7 @@ function selectAllMessagesFromDb($app)
     $model->setSqlQueries($app->getContainer()->get('sqlQueries'));
     $model->setDatabaseConnectionSettings($settings['pdo_settings']);
 
-    $messages = $model->retrieveMessagesFromDB();
+    $messages = $model->getMessagesFromDB();
 
     return $messages;
-}
-
-function parseXml($app, $xml_strings_to_parse)
-{
-    $parsedXmlArray = [];
-
-    $xmlParser = $app->getContainer()->get('xmlParser');
-
-    foreach ($xml_strings_to_parse as $xml_string_to_parse)
-    {
-        if (is_string($xml_string_to_parse) == true)
-        {
-            $xmlParser->resetXmlParser();
-            $xmlParser->setXmlStringToParse($xml_string_to_parse);
-            $xmlParser->parseTheXmlString();
-            $parsedXml = $xmlParser->getParsedData();
-
-        }
-        else
-        {
-            $parsedXml = $xml_string_to_parse;
-        }
-        $parsedXmlArray[] = $parsedXml;
-    }
-
-    return $parsedXmlArray;
-}
-
-function filterMessages($app, $parsed_xml_messages)
-{
-    $filtered_messages = [];
-
-    $validator = $app->getContainer()->get('validator');
-
-    foreach ($parsed_xml_messages as $message)
-    {
-        if (isset($message['MESSAGE']))
-        {
-            $message_array = json_decode($message['MESSAGE'], true);
-            if (isset($message_array['Id']))
-            {
-                if ($validator->validateMessage($message_array))
-                {
-                    $message['MESSAGE'] = $message_array;
-                    $filtered_messages[] = $message;
-                }
-            }
-        }
-    }
-    return $filtered_messages;
 }

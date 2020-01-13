@@ -40,6 +40,7 @@ $app->GET('/', function (Request $request, Response $response) use ($app) {
             'error_message' => $error_message,
             'message' => $message,
             'register' => 'register',
+            'loggedin' => false
         ]
     );
 
@@ -47,6 +48,13 @@ $app->GET('/', function (Request $request, Response $response) use ($app) {
      return $processed_output;
 })->setName('login');
 
+/**
+ * Calls object of output processor from the application container
+ *
+ * @param $app
+ * @param $html_output
+ * @return mixed
+ */
 function processOutput($app, $html_output)
 {
     $process_output = $app->getContainer()->get('processOutput');
