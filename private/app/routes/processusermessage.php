@@ -3,17 +3,17 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
-$app->POST('/processusermessage', function(Request $request, Response $response) use ($app) {
+$app->POST('/processusermessage', function (Request $request, Response $response) use ($app) {
 
     session_start();
     $monologWrapper = $app->getContainer()->get('monologWrapper');
 
     $tainted_parameters = $request->getParsedBody();
+    var_dump($tainted_parameters);
 
     $cleaned_parameters = cleanupParameters($app, $tainted_parameters);
 
-    if (isset($cleaned_parameters['detail']) && isset($cleaned_parameters['usermessage']))
-    {
+    if (isset($cleaned_parameters['detail']) && isset($cleaned_parameters['usermessage'])) {
         $successfully_sent = sendMessage($app, $cleaned_parameters);
         $_SESSION['message'] = $successfully_sent;
         $monologWrapper->addLogMessage($_SESSION['userid'] . ' send a new message', 'notice');
@@ -25,7 +25,6 @@ $app->POST('/processusermessage', function(Request $request, Response $response)
     }
 
     return $response->withRedirect('home', 301);
-
 })->setName('processusermessage');
 
 function cleanupParameters($app, $tainted_parameters)
@@ -45,8 +44,7 @@ function cleanupParameters($app, $tainted_parameters)
     $tainted_message['Keypad'] = $tainted_parameters['key'];
     $tainted_message['Id'] = TEAM_CODE;
 
-    if ($validator -> validateMessage($tainted_message))
-    {
+    if ($validator -> validateMessage($tainted_message)) {
         $cleaned_parameters['detail'] = 'sendMessage';
         $cleaned_parameters['usermessage'] = json_encode($tainted_message);
     }
@@ -57,13 +55,10 @@ function cleanupParameters($app, $tainted_parameters)
 function validatingDownloadedData($app, $tainted_data)
 {
     $cleaned_data = '';
-    if (is_string($tainted_data) == true)
-    {
+    if (is_string($tainted_data) == true) {
         $validator = $app->getContainer()->get('validator');
         $cleaned_data = $validator->validateDownloadedData($tainted_data);
-    }
-    else
-    {
+    } else {
         $cleaned_data = $tainted_data;
     }
     return $cleaned_data;

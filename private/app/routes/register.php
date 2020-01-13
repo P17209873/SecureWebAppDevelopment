@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: p17209873
@@ -9,18 +10,18 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
-$app->GET('/register', function(Request $request, Response $response) use ($app){
+$app->GET('/register', function (Request $request, Response $response) use ($app) {
 
     session_start();
 
     $error_message = null;
-    if (isset($_SESSION['error']))
-    {
+    if (isset($_SESSION['error'])) {
         $error_message = $_SESSION['error'];
         unset($_SESSION['error']);
     }
 
-    $html_output = $this->view->render($response,
+    $html_output = $this->view->render(
+        $response,
         'registrationform.html.twig',
         [
             'css_path' => CSS_PATH,
@@ -33,9 +34,9 @@ $app->GET('/register', function(Request $request, Response $response) use ($app)
             'page_title' => APP_NAME,   //TODO: Title and text need changing
             'page_heading_1' => APP_NAME,
             'page_text' => 'Enter registration details',
-        ]);
+        ]
+    );
 
     $processed_output = processOutput($app, $html_output);
     return $processed_output;
-
 })->setName('register');

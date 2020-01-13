@@ -1,4 +1,5 @@
 <?php
+
 /**
  * class XmlParser
  *
@@ -89,16 +90,12 @@ class XmlParser
     private function open_element($parser, $element_name, $attributes)
     {
         $this->element_name = $element_name;
-        if (sizeof($attributes) > 0)
-        {
-            foreach ($attributes as $att_name => $att_value)
-            {
+        if (sizeof($attributes) > 0) {
+            foreach ($attributes as $att_name => $att_value) {
                 $tag_att = $element_name . "." . $att_name;
                 $this->temporary_attributes[$tag_att] = $att_value;
             }
-        }
-        else
-        {
+        } else {
             $this->temporary_attributes = [];
         }
     }
@@ -111,13 +108,10 @@ class XmlParser
      */
     private function process_element_data($parser, $element_data)
     {
-        if (array_key_exists($this->element_name, $this->parsed_data) === false)
-        {
+        if (array_key_exists($this->element_name, $this->parsed_data) === false) {
             $this->parsed_data[$this->element_name] = $element_data;
-            if (sizeof($this->temporary_attributes) > 0)
-            {
-                foreach ($this->temporary_attributes as $tag_att_name => $tag_att_value)
-                {
+            if (sizeof($this->temporary_attributes) > 0) {
+                foreach ($this->temporary_attributes as $tag_att_name => $tag_att_value) {
                     $this->parsed_data[$tag_att_name] = $tag_att_value;
                 }
             }

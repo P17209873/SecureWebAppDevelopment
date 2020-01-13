@@ -14,3 +14,4 @@ require 'routes/processusermessage.php';
 require 'routes/register.php';
 require 'routes/homepage.php';
 require 'routes/registeruser.php';
+require 'routes/db_update.php';

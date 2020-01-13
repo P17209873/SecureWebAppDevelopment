@@ -3,7 +3,7 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
-$app->POST('/registeruser', function(Request $request, Response $response) use ($app){
+$app->POST('/registeruser', function (Request $request, Response $response) use ($app) {
 
     session_start();
     $monologWrapper = $app->getContainer()->get('monologWrapper');
@@ -17,26 +17,22 @@ $app->POST('/registeruser', function(Request $request, Response $response) use (
 
     // Long if statement ensures that all the input form parameters are valid: e.g 2 password fields are identical, that the usernames and emails don't already exist in the database,
     // and that there are no spaces in the username field
-    if($username_exists_result != true && $cleaned_parameters['password'] === $cleaned_parameters['rpassword'] &&
-        $email_exists_result != true && strpos($cleaned_parameters['sanitised_username'], " ") === false )
-    {
+    if (
+        $username_exists_result != true && $cleaned_parameters['password'] === $cleaned_parameters['rpassword'] &&
+        $email_exists_result != true && strpos($cleaned_parameters['sanitised_username'], " ") === false
+    ) {
         // ensures that there are no nulls in the passed values
         $check_nulls = array();
-        foreach($cleaned_parameters as $key=>$value)
-        {
-            if($value != null)
-            {
-                $check_nulls[$key]=false;
-            }
-            else
-            {
-                $check_nulls[$key]=true;
+        foreach ($cleaned_parameters as $key => $value) {
+            if ($value != null) {
+                $check_nulls[$key] = false;
+            } else {
+                $check_nulls[$key] = true;
             }
         }
 
         //
-        if(!(in_array(true, $check_nulls)))
-        {
+        if (!(in_array(true, $check_nulls))) {
             $hashed_password = hashPassword($app, $cleaned_parameters['password']);
 
             $cleaned_parameters['password'] = ''; // clears the original password completely
@@ -50,17 +46,13 @@ $app->POST('/registeruser', function(Request $request, Response $response) use (
             $url = $this->router->pathFor('login');
             return $response->withStatus(302)->withHeader('Location', $url);
         }
-    }
-
-    else
-    {
+    } else {
         // TODO: Handle this better
         $_SESSION['error'] = 'Invalid Account Credentials';
         $monologWrapper->addLogMessage($_SESSION['error'], 'info');
         $url = $this->router->pathFor('register');
         return $response->withStatus(302)->withHeader('Location', $url);
     }
-
 })->setName('registeruser');
 
 function hashPassword($app, $password_to_hash): string
@@ -72,7 +64,8 @@ function hashPassword($app, $password_to_hash): string
 
 
 function doesUsernameExist($app, $username)
-{ // return - if true, user exists - if false, user doesn't exist
+{
+ // return - if true, user exists - if false, user doesn't exist
     $settings = $app->getContainer()->get('settings');
 
     $model = $app->getContainer()->get('registrationModel');
@@ -119,12 +112,9 @@ function createNewUser($app, $cleaned_parameters, $hashed_password)
     $verification = $model->createNewUser($cleaned_username, $hashed_password, $cleaned_firstname, $cleaned_lastname, $cleaned_email);
 
     //TODO: Update the echo tag
-    if($verification == true)
-    {
+    if ($verification == true) {
         echo '<div style="text-align: center;">Your account has been created, please log in.</div>';
-    }
-    else
-    {
+    } else {
         echo 'there was an issue creating the new user';
     }
 }

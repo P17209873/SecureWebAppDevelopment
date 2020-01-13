@@ -9,7 +9,9 @@ class MonologWrapper
 {
     public function __construct(){}
 
-    public function __destruct(){}
+    public function __destruct()
+    {
+    }
 
     /**
      * Allows the log type to be set externally, and passed through into the application
@@ -17,6 +19,7 @@ class MonologWrapper
      * @param $log_type
      * @return int - returns selected log type in Logger format
      */
+
     public function setLogType($logType)
     {
         switch ($logType){
@@ -43,6 +46,7 @@ class MonologWrapper
                 break;
         }
     }
+}
 
     public function addLogMessage($message, $logType)
     {
