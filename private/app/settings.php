@@ -22,10 +22,10 @@ define('CSS_PATH', $css_path);
 define('APP_NAME', 'Coursework');
 define('LANDING_PAGE', $_SERVER['SCRIPT_NAME']);
 
-define('BCRYPT_ALGO', PASSWORD_DEFAULT);
-define('BCRYPT_COST', 12);
+define ('BCRYPT_ALGO', PASSWORD_DEFAULT);
+define ('BCRYPT_COST', 12);
 
-define('TEAM_CODE', '18-3110-AC');
+define ('TEAM_CODE', '18-3110-AC');
 
 define ('LOG_FILE_NAME', 'secureWebApp.log');
 define ('LOG_FILE_LOCATION', '../logs/');

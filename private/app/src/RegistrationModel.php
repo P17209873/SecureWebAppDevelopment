@@ -1,18 +1,12 @@
 <?php
-/**
- * RegistrationModel.php
- *
- * Performs registration tasks
- */
 
 namespace SecureWebAppCoursework;
 
 /**
- *
- * Data model that deals with registering new users of the application
- *
  * Class RegistrationModel
  * @package SecureWebAppCoursework
+ *
+ * Data model that deals with registering new users of the application
  */
 class RegistrationModel
 {
@@ -24,34 +18,16 @@ class RegistrationModel
 
     public function __destruct(){}
 
-    /**
-     * Sets the database wrapper using parameters. In all cases the database wrapper is accessed from the
-     * object stored in the application container
-     *
-     * @param $database_wrapper
-     */
     public function setDatabaseWrapper($database_wrapper)
     {
         $this->database_wrapper = $database_wrapper;
     }
 
-    /**
-     * Sets the database connection settings using parameters. In all cases the database connection settings are
-     * accessed from the object stored in the application container
-     *
-     * @param $database_connection_settings
-     */
     public function setDatabaseConnectionSettings($database_connection_settings)
     {
         $this->database_connection_settings = $database_connection_settings;
     }
 
-    /**
-     * Sets the SQL queries using parameters. In all cases the SQL queries are access from the object stored
-     * in the application container
-     *
-     * @param $sql_queries
-     */
     public function setSqlQueries($sql_queries)
     {
         $this->sql_queries = $sql_queries;
@@ -65,9 +41,8 @@ class RegistrationModel
      * @param $cleaned_firstname
      * @param $cleaned_lastname
      * @param $cleaned_email
-     * @return bool
      */
-    public function createNewUser($cleaned_username, $hashed_password, $cleaned_firstname, $cleaned_lastname, $cleaned_email): bool
+    public function createNewUser($cleaned_username, $hashed_password, $cleaned_firstname, $cleaned_lastname, $cleaned_email)  : bool
     {
         $query_string = $this->sql_queries->createNewUser();
 
@@ -81,9 +56,13 @@ class RegistrationModel
         $result = $this->database_wrapper->safeQuery($query_string, $query_params);
 
         //switches the value of the boolean to make for a more user friendly codebase - if result is false, the query executed successfully, inverting this to true infers this better
-        if ($result == false) {
+        if($result == false)
+        {
             return true;
-        } else {
+        }
+
+        else
+        {
             return false;
         }
     }
@@ -104,15 +83,21 @@ class RegistrationModel
 
         $result = $this->database_wrapper->safeQuery($query_string, $query_params);
 
-        if ($result == true) { // This signifies that there was a QUERY ERROR (meaning the query has run)
+        if($result == true) // This signifies that there was a QUERY ERROR (meaning the query has run)
+        {
             return 'Unfortunately there has been a query error';
-        } else // desired behaviour for when a query has RAN SUCCESSFULLY
+        }
+
+        else // desired behaviour for when a query has RAN SUCCESSFULLY
         {
             $result = $this->database_wrapper->safeFetchArray();
 
-            if ($result != null) { //if result is not null, user exists
+            if($result != null) //if result is not null, user exists
+            {
                 return true;
-            } else // if result is null, user doesn't exist
+            }
+
+            else // if result is null, user doesn't exist
             {
                 return false;
             }
@@ -122,7 +107,7 @@ class RegistrationModel
     /**
      * Checks the database to see whether the email passed in already exists.
      *
-     * @param $email
+     * @param $username
      * @return bool|string <- string for error, bool for successfully performed query (true indicates that an email exists)
      */
     public function doesEmailExist($email)
@@ -135,18 +120,21 @@ class RegistrationModel
 
         $result = $this->database_wrapper->safeQuery($query_string, $query_params);
 
-        if ($result == true)
-        { // This signifies that there was a QUERY ERROR (meaning the query has run)
+        if($result == true) // This signifies that there was a QUERY ERROR (meaning the query has run)
+        {
             return 'Unfortunately there has been a query error';
         }
+
         else // desired behaviour for when a query has RAN SUCCESSFULLY
         {
             $result = $this->database_wrapper->safeFetchArray();
 
-            if ($result != null)
-            { //if result is not null, email exists
+            if($result != null) //if result is not null, email exists
+            {
                 return true;
-            } else // if result is null, email doesn't exist
+            }
+
+            else // if result is null, email doesn't exist
             {
                 return false;
             }

@@ -1,44 +1,42 @@
 {% extends 'banner.html.twig' %}
 {% block content %}
-    <div id="lg-form-container" class="cent">
+    <div id="lg-form-container">
         <ul id="navigation">
             {% for item in navigation %}
                 <li><a href="logout.php">Logout</a></li>
             {% endfor %}
         </ul>
         <h3>{{ page_heading_2 }}</h3>
+        <table>
 
-        <fieldset>
-            <table id="display-messages-table">
-
-                    <caption>State Messages</caption>
+                <caption>State Messages</caption>
+                <tr>
+                    <th>Time:</th>
+                    <th>Switch 1:</th>
+                    <th>Switch 2:</th>
+                    <th>Switch 3:</th>
+                    <th>Switch 4:</th>
+                    <th>Fan:</th>
+                    <th>Temperature:</th>
+                    <th>Last key pressed:</th>
+                </tr>
+            {% if messages %}
+                {% for individualMessage in messages %}
                     <tr>
-                        <th>Time:</th>
-                        <th>Switch 1:</th>
-                        <th>Switch 2:</th>
-                        <th>Switch 3:</th>
-                        <th>Switch 4:</th>
-                        <th>Fan:</th>
-                        <th>Temperature:</th>
-                        <th>Last key pressed:</th>
-                    </tr>
-                {% if messages %}
-                    {% for individualMessage in messages %}
-                        <tr>
-                            <td>{{ individualMessage.receivedtime }}</td>
-                            <td>{{ individualMessage.switch01state }}</td>
-                            <td>{{ individualMessage.switch01state }}</td>
-                            <td>{{ individualMessage.switch01state }}</td>
-                            <td>{{ individualMessage.switch01state }}</td>
-                            <td>{{ individualMessage.fanstate }}</td>
-                            <td>{{ individualMessage.heatertemperature }}</td>
-                            <td>{{individualMessage.keypadvalue }}</td>
-                        </tr>
-                    {% endfor %}
-                {% endif %}
-            </table>
-        </fieldset>
+                        <td>{{ individualMessage.RECEIVEDTIME }}</td>
+                        {% for message in individualMessage.MESSAGE %}
+                                {% for value in message%}
+                                    <td> {{ value }}</td>
+                                {% endfor %}
 
+                        {% endfor %}
+                        <td>{{ individualMessage.MESSAGE.Fan }}</td>
+                        <td>{{ individualMessage.MESSAGE.Temperature }}</td>
+                        <td>{{individualMessage.MESSAGE.Keypad }}</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </table>
         <br><br>
     </div>
 {% endblock %}

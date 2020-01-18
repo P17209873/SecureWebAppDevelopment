@@ -1,20 +1,10 @@
 <?php
-/**
- * MonologWrapper.php
- *
- * MonologWrapper class that wraps Monolog functions
- */
+
 namespace SecureWebAppCoursework;
 
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
-/**
- * Performs Monolog functions, wrapped in a class and accessed by the application via the application container object
- *
- * Class MonologWrapper
- * @package SecureWebAppCoursework
- */
 class MonologWrapper
 {
     public function __construct(){}
@@ -27,7 +17,6 @@ class MonologWrapper
      * @param $log_type
      * @return int - returns selected log type in Logger format
      */
-
     public function setLogType($logType)
     {
         switch ($logType){
@@ -55,12 +44,6 @@ class MonologWrapper
         }
     }
 
-    /**
-     * Adds the log message to the log file
-     *
-     * @param $message
-     * @param $logType
-     */
     public function addLogMessage($message, $logType)
     {
         $logger = new Logger('SecureWebAppLogger');

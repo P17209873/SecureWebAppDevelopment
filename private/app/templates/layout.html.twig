@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+
         <meta name="author" content="Matthew Trim, Christopher Sherlock, Sam Spencer-Mcfadden" />
         <link rel="stylesheet" href="{{ css_path }}" type="text/css"/>
         <title>{% block title %}{% endblock %}</title>
@@ -11,14 +12,7 @@
         {% block content %}{% endblock %}
         <div id="footer" class="cent">
             <a href={{ path_for('home') }}>Home</a>
-            {% if loggedin == true %}
-                <a href={{ path_for('logout') }}>Logout</a>
-                <a href={{ path_for('db_update')}}>Perform Manual Database Update </a>
-            {% endblock %}
-            {% if loggedin == false %}
-                <a href={{ path_for('login') }}>Login</a>
-                <a href={{ path_for('register')}}>Register</a>
-            {% endif %}
+            <a href={{ path_for('logout') }}>Logout</a>
         </div>
     </body>
 </html>

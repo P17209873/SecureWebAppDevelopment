@@ -19,13 +19,13 @@ $app->GET('/', function (Request $request, Response $response) use ($app) {
     }
 
     $message = null;
-    if (isset($_SESSION['message'])) {
+    if (isset($_SESSION['message']))
+    {
         $message = $_SESSION['message'];
         unset($_SESSION['message']);
     }
 
-    $html_output = $this->view->render(
-        $response,
+    $html_output = $this->view->render($response,
         'loginform.html.twig',
         [
             'css_path' => CSS_PATH,
@@ -40,24 +40,17 @@ $app->GET('/', function (Request $request, Response $response) use ($app) {
             'error_message' => $error_message,
             'message' => $message,
             'register' => 'register',
-            'loggedin' => false
-        ]
-    );
+        ]);
 
      $processed_output = processOutput($app, $html_output);
      return $processed_output;
+
 })->setName('login');
 
-/**
- * Calls object of output processor from the application container
- *
- * @param $app
- * @param $html_output
- * @return mixed
- */
 function processOutput($app, $html_output)
 {
     $process_output = $app->getContainer()->get('processOutput');
     $html_output = $process_output->processOutput($html_output);
     return $html_output;
 }
+
