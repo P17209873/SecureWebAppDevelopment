@@ -10,8 +10,6 @@ class ProcessOutput
 
     public function processOutput($html_output)
     {
-        $processed_output = ''; //TODO: not needed, why was it ever here?
-
         return $html_output;
     }
 }

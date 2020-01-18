@@ -4,6 +4,7 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
 $app->GET('/viewmessages', function(Request $request, Response $response) use ($app) {
+
     session_start();
 
     if (isset($_SESSION['userid']))
@@ -15,7 +16,6 @@ $app->GET('/viewmessages', function(Request $request, Response $response) use ($
         $filtered_messages = filterMessages($app, $parsed_xml_messages);
 
         $html_output = $this->view->render($response,
-            //'display_message.html.twig',
             'messagelistform.html.twig',
             [
                 'css_path' => CSS_PATH,
@@ -39,12 +39,10 @@ $app->GET('/viewmessages', function(Request $request, Response $response) use ($
 
 function validateDownloadedData($app, $tainted_data)
 {
-    $cleaned_data = '';
     if (is_string($tainted_data) == true)
     {
         $validator = $app->getContainer()->get('validator');
         $cleaned_data = $validator->validateDownloadedData($tainted_data);
-        var_dump($tainted_data);
     }
     else
     {
@@ -55,7 +53,6 @@ function validateDownloadedData($app, $tainted_data)
 
 function getMessages($app, $cleaned_parameters)
 {
-    $messages = [];
     $soap_wrapper = $app->getContainer()->get('soapWrapper');
 
     $securewebapp_model = $app->getContainer()->get('secureWebAppModel');

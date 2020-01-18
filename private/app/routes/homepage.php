@@ -52,7 +52,7 @@ $app->GET('/home', function (Request $request, Response $response, $args) use ($
                 'landing_page' => LANDING_PAGE,
                 'error_message' => $error_message,
                 'message' => $message,
-                'page_title' => APP_NAME,   //TODO: Title and text need changing
+                'page_title' => APP_NAME,
                 'page_heading_1' => APP_NAME,
                 'page_heading_2' => 'Homepage',
                 'current_state' => $current_state,

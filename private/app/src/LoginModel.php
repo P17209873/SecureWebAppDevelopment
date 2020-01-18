@@ -55,7 +55,7 @@ class LoginModel
         $result = $this->database_wrapper->safeQuery($query_string, $query_params);
 
 
-        if($result == true) // This signifies that there was a QUERY ERROR
+        if($result == true)
         {
             return 'Unfortunately Login was unable to connect.  Please try again later.';
         }
@@ -77,7 +77,7 @@ class LoginModel
 
         $result = $this->database_wrapper->safeQuery($query_string, $query_params);
 
-        if($result == true) // This signifies that there was a QUERY ERROR
+        if($result == true)
         {
             return 'Unfortunately Login was unable to connect.  Please try again later.';
         }

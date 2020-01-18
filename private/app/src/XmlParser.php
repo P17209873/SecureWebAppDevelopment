@@ -9,10 +9,10 @@ namespace SecureWebAppCoursework;
 
 class XmlParser
 {
-    private $xml_parser;            // handle to instance of the XML parser
-    private $parsed_data;           // array holds extracted data
-    private $element_name;          // store the current element name
-    private $temporary_attributes;  // temporarily store tag attributes and values
+    private $xml_parser;
+    private $parsed_data;
+    private $element_name;
+    private $temporary_attributes;
     private $xml_string_to_parse;
 
     public function __construct()
@@ -65,10 +65,8 @@ class XmlParser
 
         xml_set_object($this->xml_parser, $this);
 
-        // assign functions to be called when a new element is entered and exited
         xml_set_element_handler($this->xml_parser, "open_element", "close_element");
 
-        // assign the function to be used when an element contains data
         xml_set_character_data_handler($this->xml_parser, "process_element_data");
 
         $this->parseTheDataString();

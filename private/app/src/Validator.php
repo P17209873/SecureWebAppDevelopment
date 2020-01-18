@@ -34,9 +34,6 @@ class Validator
      */
     public function validateDownloadedData($tainted_data)
     {
-        $validated_string_data = '';
-        var_dump($tainted_data);
-
         $validated_string_data = filter_var($tainted_data, FILTER_SANITIZE_STRING);
 
         return $validated_string_data;
@@ -90,7 +87,6 @@ class Validator
 
         if (isset($tainted_message['Temperature']))
         {
-
             if (intval($tainted_message['Temperature']) >= 20 && intval($tainted_message['Temperature']) <= 50)
             {
                 $temp_valid = true;
@@ -99,7 +95,6 @@ class Validator
 
         if (isset($tainted_message['Keypad']))
         {
-
             if (intval($tainted_message['Keypad']) >= 0 && intval($tainted_message['Keypad']) <= 9)
             {
                 $key_valid = true;

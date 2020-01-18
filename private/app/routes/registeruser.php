@@ -8,19 +8,15 @@ $app->POST('/registeruser', function(Request $request, Response $response) use (
     session_start();
     $monologWrapper = $app->getContainer()->get('monologWrapper');
 
-    // TODO: IT IS VERY IMPORTANT TO RECONSIDER cleanParameters FUNCTION IN AUTHENTICATE - DO I NEED TO MAKE IT IT'S OWN CLASS?
     $tainted_parameters = $request->getParsedBody();
-    $cleaned_parameters = cleanParameters($app, $tainted_parameters); //cleaned parameters exists in loggedin_homepage.php route file
+    $cleaned_parameters = cleanParameters($app, $tainted_parameters);
 
     $username_exists_result = doesUsernameExist($app, $cleaned_parameters['sanitised_username']);
     $email_exists_result = doesEmailExist($app, $cleaned_parameters['sanitised_email']);
 
-    // Long if statement ensures that all the input form parameters are valid: e.g 2 password fields are identical, that the usernames and emails don't already exist in the database,
-    // and that there are no spaces in the username field
     if($username_exists_result != true && $cleaned_parameters['password'] === $cleaned_parameters['rpassword'] &&
         $email_exists_result != true && strpos($cleaned_parameters['sanitised_username'], " ") === false )
     {
-        // ensures that there are no nulls in the passed values
         $check_nulls = array();
         foreach($cleaned_parameters as $key=>$value)
         {
@@ -34,17 +30,22 @@ $app->POST('/registeruser', function(Request $request, Response $response) use (
             }
         }
 
-        //
         if(!(in_array(true, $check_nulls)))
         {
             $hashed_password = hashPassword($app, $cleaned_parameters['password']);
 
-            $cleaned_parameters['password'] = ''; // clears the original password completely
-            $cleaned_parameters['rpassword'] = ''; // clears the (repeated) original password completely
+            $cleaned_parameters['password'] = '';
+            $cleaned_parameters['rpassword'] = '';
 
-            createNewUser($app, $cleaned_parameters, $hashed_password);
-
-            $_SESSION['message'] = 'User Successfully created';
+            $validNewUser = createNewUser($app, $cleaned_parameters, $hashed_password);
+            if($validNewUser == true)
+            {
+                $_SESSION['message'] = 'User Successfully created';
+            }
+            else
+            {
+                $_SESSION['message'] = 'Failed to create User';
+            }
             $monologWrapper->addLogMessage($cleaned_parameters['sanitised_username'] . $_SESSION['message'], 'info');
 
             $url = $this->router->pathFor('login');
@@ -54,7 +55,6 @@ $app->POST('/registeruser', function(Request $request, Response $response) use (
 
     else
     {
-        // TODO: Handle this better
         $_SESSION['error'] = 'Invalid Account Credentials';
         $monologWrapper->addLogMessage($_SESSION['error'], 'info');
         $url = $this->router->pathFor('register');
@@ -72,7 +72,7 @@ function hashPassword($app, $password_to_hash): string
 
 
 function doesUsernameExist($app, $username)
-{ // return - if true, user exists - if false, user doesn't exist
+{
     $settings = $app->getContainer()->get('settings');
 
     $model = $app->getContainer()->get('registrationModel');
@@ -116,15 +116,5 @@ function createNewUser($app, $cleaned_parameters, $hashed_password)
     $cleaned_lastname = $cleaned_parameters['sanitised_last_name'];
     $cleaned_email = $cleaned_parameters['sanitised_email'];
 
-    $verification = $model->createNewUser($cleaned_username, $hashed_password, $cleaned_firstname, $cleaned_lastname, $cleaned_email);
-
-    //TODO: Update the echo tag
-    if($verification == true)
-    {
-        echo '<div style="text-align: center;">Your account has been created, please log in.</div>';
-    }
-    else
-    {
-        echo 'there was an issue creating the new user';
-    }
+    return $model->createNewUser($cleaned_username, $hashed_password, $cleaned_firstname, $cleaned_lastname, $cleaned_email);
 }

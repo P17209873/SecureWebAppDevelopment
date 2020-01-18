@@ -18,9 +18,6 @@ class SoapWrapper
      */
     public function createSoapClient()
     {
-        $soap_client_handle = false;
-        $soap_client_parameters = array();
-        $exception = '';
         $wsdl = WSDL;
 
         $soap_client_parameters = ['trace' => true, 'exceptions' => true];
@@ -28,7 +25,6 @@ class SoapWrapper
         try
         {
             $soap_client_handle = new \SoapClient($wsdl, $soap_client_parameters);
-            //var_dump($soap_client_handle->__getFunctions());
         }
         catch (\SoapFault $exception)
         {
@@ -43,7 +39,6 @@ class SoapWrapper
     public function performSoapCall($soap_client, $webservice_function, $webservice_call_parameters)
     {
         $soap_call_result = null;
-        $raw_xml = '';
 
         if ($soap_client)
         {
